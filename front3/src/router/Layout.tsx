@@ -51,7 +51,7 @@ export default function Layout() {
               message="Do you want to call Dave now?"
               onConfirm={() => {
                 setShowConfirmCall(false);
-                window.location.href = "tel:+14696672486";
+                window.location.href = "tel:+19402053616";
               }}
               onCancel={() => setShowConfirmCall(false)}
             />

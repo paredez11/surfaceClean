@@ -18,7 +18,7 @@ const ContactPage = () => {
         You can reach me directly by <strong>email</strong> at{' '}
         <a href="mailto:surfaceclean111@yahoo.com">surfaceclean111@yahoo.com</a> or by{' '}
         <strong>phone</strong> at{' '}
-        <a href="tel:+14696672486">(469) 667-2486</a>.
+        <a href="tel:+19402053616">(469) 667-2486</a>.
       </p>
       <p>Thanks for stopping by, and I look forward to helping you find the right solution!</p>
     </div>

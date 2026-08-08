@@ -9,7 +9,7 @@ interface CallNowButtonProps {
 
 const CallNowButton = ({
   label = "CALL NOW!",
-  phone = "+14696672486",
+  phone = "+19402053616",
 }: CallNowButtonProps) => {
   const [showConfirm, setShowConfirm] = useState(false);
 
