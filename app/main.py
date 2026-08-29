@@ -5,9 +5,7 @@ from fastapi import FastAPI
 from routes import router
 from config import settings
 import logging
-from utils.db import engine, Base
 from fastapi.middleware.cors import CORSMiddleware
-from seeds.cli import seed_all_async
 
 app = FastAPI(title="Surface Clean API", debug=settings.DEBUG)
 
@@ -27,15 +25,6 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(
 @app.on_event("startup")
 async def startup_event():
     logging.info("Starting up the Surface Clean API")
-
-    async with engine.begin() as conn:
-        await conn.run_sync(Base.metadata.create_all)
-
-    try:
-        await seed_all_async()
-        logging.info("✅ Seeding run finished (idempotent).")
-    except Exception as e:
-        logging.exception(f"Seed step skipped/failed: {e}")
 
 @app.on_event("shutdown")
 async def shutdown_event():

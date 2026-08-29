@@ -34,15 +34,6 @@ async def login(payload: LoginRequest, db: AsyncSession = Depends(get_async_db))
     result = await db.execute(select(User).where(User.email == payload.email))
     user = result.scalars().first()
 
-    print("📧 Email received:", payload.email)
-    print("🔍 User found in DB:", bool(user))
-    if user:
-        print("🧂 Stored hash:", user.hashed_password)
-        print("🔑 Password matches:", verify_password(payload.password, user.hashed_password))
-        print("🧪 Comparing raw password:", payload.password)
-        print("🧪 Against hash:", user.hashed_password)
-        print("🧾 Rehashed password (for comparison):", hash_password(payload.password))
-
     if not user or not verify_password(payload.password, user.hashed_password):
         error_400("Invalid credentials")
 
@@ -144,11 +135,9 @@ async def forgot_password(data: PasswordResetRequest, db: AsyncSession = Depends
     )
     user = result.scalar_one_or_none()
 
-    if not user:
-        raise HTTPException(status_code=404, detail="No user with that email")
-
-    token = create_reset_token(user.id)
-    await send_password_reset_email(user.email, token)
+    if user:
+        token = create_reset_token(user.id)
+        await send_password_reset_email(user.email, token)
 
 
 class PasswordReset(BaseModel):
