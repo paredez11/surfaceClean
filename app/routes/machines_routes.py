@@ -100,13 +100,15 @@ async def delete_machine(
 from seeds.machines import seed_machines, undo_machines
 
 
-@router.post("/dev/reset-machines")
-async def reset_machines():
-    async with AsyncSessionLocal() as db:
-        await db.execute(text("DELETE FROM images"))
-        await db.execute(text("DELETE FROM machines"))
-        await db.commit()
+# FOR DEV USE ONLY #
 
-    await seed_machines()
+# @router.post("/dev/reset-machines")
+# async def reset_machines():
+#     async with AsyncSessionLocal() as db:
+#         await db.execute(text("DELETE FROM images"))
+#         await db.execute(text("DELETE FROM machines"))
+#         await db.commit()
 
-    return {"message": "Machines reset"}
+#     await seed_machines()
+
+#     return {"message": "Machines reset"}
