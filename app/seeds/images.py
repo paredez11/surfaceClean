@@ -2,13 +2,11 @@
 
 import asyncio
 from sqlalchemy import text
-from utils.db import AsyncSessionLocal, Base, engine
+from utils.db import AsyncSessionLocal
 from models.images import Image
 
 async def seed_images():
     # Ensure schema exists
-    async with engine.begin() as conn:
-        await conn.run_sync(Base.metadata.create_all)
 
     async with AsyncSessionLocal() as db:
         images = []

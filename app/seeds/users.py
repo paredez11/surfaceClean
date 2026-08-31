@@ -4,14 +4,12 @@ import asyncio
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
-from utils.db import AsyncSessionLocal, Base, engine
+from utils.db import AsyncSessionLocal
 from models.users import User
 from utils.auth import hash_password
 
 async def seed_users():
     # Ensure schema exists
-    async with engine.begin() as conn:
-        await conn.run_sync(Base.metadata.create_all)
 
     async with AsyncSessionLocal() as db:
         # Define users

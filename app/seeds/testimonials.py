@@ -3,13 +3,11 @@
 import asyncio
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
-from utils.db import AsyncSessionLocal, Base, engine
+from utils.db import AsyncSessionLocal
 from models.testimonials import Testimonial
 
 async def seed_testimonials():
     # Ensure schema exists
-    async with engine.begin() as conn:
-        await conn.run_sync(Base.metadata.create_all)
 
     async with AsyncSessionLocal() as db:
         testimonials = [

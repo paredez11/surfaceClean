@@ -3,15 +3,13 @@
 import asyncio
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
-from utils.db import AsyncSessionLocal, Base, engine
+from utils.db import AsyncSessionLocal
 from models.machines import Machine
 from decimal import Decimal
 
 
 async def seed_machines():
     # Ensure schema exists
-    async with engine.begin() as conn:
-        await conn.run_sync(Base.metadata.create_all)
 
     async with AsyncSessionLocal() as db:
         machines = [

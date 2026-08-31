@@ -3,13 +3,11 @@
 import asyncio
 from datetime import date
 from sqlalchemy import text
-from utils.db import AsyncSessionLocal, Base, engine
+from utils.db import AsyncSessionLocal
 from models.faqs import FAQ
 
 async def seed_faqs():
     # Ensure schema exists
-    async with engine.begin() as conn:
-        await conn.run_sync(Base.metadata.create_all)
 
     async with AsyncSessionLocal() as db:
         faqs = [
