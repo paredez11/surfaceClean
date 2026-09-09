@@ -1,5 +1,6 @@
 # app/api/machines_routes.py
 
+from seeds.machines import seed_machines, undo_machines
 from fastapi import APIRouter, Depends, HTTPException, Path, Body, Request
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
@@ -14,8 +15,10 @@ from services.machines_services import delete_machine as delete_machine_service
 from seeds.machines import seed_machines
 from sqlalchemy import text
 from utils.db import AsyncSessionLocal
+from datetime import datetime, timezone
 
 router = APIRouter()
+
 
 @router.get("/", response_model=List[MachineResponse])
 async def get_machines(db: AsyncSession = Depends(get_async_db)):
@@ -23,6 +26,7 @@ async def get_machines(db: AsyncSession = Depends(get_async_db)):
         select(Machine).options(selectinload(Machine.images))
     )
     return result.scalars().all()
+
 
 @router.get("/{machine_id}", response_model=MachineResponse)
 async def get_machine(
@@ -38,6 +42,7 @@ async def get_machine(
     if not machine:
         raise HTTPException(status_code=404, detail="Machine not found")
     return machine
+
 
 @router.post("/", response_model=MachineResponse)
 async def create_machine(
@@ -58,6 +63,7 @@ async def create_machine(
     )
     return result.scalar_one()
 
+
 @router.patch("/{machine_id}", response_model=MachineResponse)
 async def update_machine(
     request: Request,
@@ -72,8 +78,21 @@ async def update_machine(
     if not machine:
         raise HTTPException(status_code=404, detail="Machine not found")
 
-    for key, value in data.dict(exclude_unset=True).items():
+    updates = data.dict(exclude_unset=True)
+
+    new_status = updates.pop("status", None)
+
+    for key, value in updates.items():
         setattr(machine, key, value)
+
+    if new_status is not None and new_status != machine.status:
+        machine.status = new_status
+        
+        if new_status == "sold" and machine.sold_at is None:
+            machine.sold_at = datetime.now(timezone.utc)
+            
+        elif new_status == "delivered" and machine.delivered_at is None:
+            machine.delivered_at = datetime.now(timezone.utc)
 
     await db.commit()
     # Re-query with images eagerly loaded to avoid MissingGreenlet during serialization
@@ -83,6 +102,7 @@ async def update_machine(
         .where(Machine.id == machine_id)
     )
     return result.scalar_one()
+
 
 @router.delete("/{machine_id}")
 async def delete_machine(
@@ -96,8 +116,6 @@ async def delete_machine(
     if not deleted:
         raise HTTPException(status_code=404, detail="Machine not found")
     return {"message": "Machine deleted"}
-
-from seeds.machines import seed_machines, undo_machines
 
 
 # FOR DEV USE ONLY #

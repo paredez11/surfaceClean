@@ -7,6 +7,7 @@ import { RootState } from "../../redux/store";
 import { machineActions } from "../../redux";
 import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
 import EditMachineModal from "../EditMachineModal/EditMachineModal";
+import MarkSoldModal from "../MarkSoldModal/MarkSoldModal";
 import "./MachineCard.css";
 
 interface Image {
@@ -15,6 +16,7 @@ interface Image {
   description?: string;
   machine_id: number;
 }
+
 interface Machine {
   id: number;
   name: string;
@@ -22,6 +24,7 @@ interface Machine {
   condition: string;
   hours_used: number;
   created_at: string;
+  status: "listed" | "sold" | "delivered";
   images?: Image[];
 }
 
@@ -33,7 +36,7 @@ const MachineCard = ({ machine }: MachineCardProps) => {
   const dispatch = useDispatch<any>();
   const user = useSelector((state: RootState) => state.session.user);
   const updatedMachine = useSelector(
-    (state: RootState) => state.machines.all[machine.id]
+    (state: RootState) => state.machines.all[machine.id],
   );
 
   const [name, setName] = useState(machine.name);
@@ -42,6 +45,7 @@ const MachineCard = ({ machine }: MachineCardProps) => {
   const [hoursUsed, setHoursUsed] = useState(machine.hours_used);
   const [showConfirm, setShowConfirm] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
+  const [showMarkSold, setShowMarkSold] = useState(false);
 
   useEffect(() => {
     if (updatedMachine) {
@@ -52,7 +56,17 @@ const MachineCard = ({ machine }: MachineCardProps) => {
     }
   }, [updatedMachine]);
 
+  const currentStatus = updatedMachine?.status ?? machine.status;
+
   const handleDelete = () => setShowConfirm(true);
+
+  const handleMarkDelivered = async () => {
+    await dispatch(
+      machineActions.editMachine(machine.id, {
+        status: "delivered",
+      }),
+    );
+  };
 
   const confirmDelete = () => {
     dispatch(machineActions.removeMachine(machine.id));
@@ -68,20 +82,29 @@ const MachineCard = ({ machine }: MachineCardProps) => {
       >
         <div className="machine-details">
           <h3 className="machine-name">{name}</h3>
+
           <div className="machine-image-container">
             {(updatedMachine?.images ?? machine.images)?.[0]?.url && (
               <img
-                src={(updatedMachine?.images ?? machine.images)![0].url.replace('/upload/', '/upload/q_auto,f_auto,w_600/')}
+                src={(updatedMachine?.images ?? machine.images)![0].url.replace(
+                  "/upload/",
+                  "/upload/q_auto,f_auto,w_600/",
+                )}
                 alt={`${name} preview`}
                 className="machine-image"
               />
             )}
           </div>
+
           <p className="machine-price">Price: ${price}</p>
+
           <p className="machine-condition">
             <strong>Condition:</strong> {condition}
           </p>
-          <p className="machine-hours">Hours Used: {parseInt(hoursUsed.toString(), 10)} hrs</p>
+
+          <p className="machine-hours">
+            Hours Used: {parseInt(hoursUsed.toString(), 10)} hrs
+          </p>
         </div>
       </NavLink>
 
@@ -90,6 +113,19 @@ const MachineCard = ({ machine }: MachineCardProps) => {
           <button onClick={() => setShowEdit(true)} className="btn-edit">
             EDIT
           </button>
+
+          {currentStatus === "listed" && (
+            <button onClick={() => setShowMarkSold(true)} className="btn-edit">
+              MARK SOLD
+            </button>
+          )}
+
+          {currentStatus === "sold" && (
+            <button onClick={handleMarkDelivered} className="btn-edit">
+              MARK DELIVERED
+            </button>
+          )}
+
           <button onClick={handleDelete} className="btn-delete">
             DELETE
           </button>
@@ -110,6 +146,15 @@ const MachineCard = ({ machine }: MachineCardProps) => {
           machine={updatedMachine ?? machine}
           open={showEdit}
           onClose={() => setShowEdit(false)}
+        />
+      )}
+
+      {showMarkSold && (
+        <MarkSoldModal
+          machineId={machine.id}
+          askingPrice={price}
+          open={showMarkSold}
+          onClose={() => setShowMarkSold(false)}
         />
       )}
     </div>

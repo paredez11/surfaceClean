@@ -25,6 +25,8 @@ interface Machine {
   faq?: string;
   comparison_notes?: string;
   slug?: string;
+  status: "listed" | "sold" | "delivered";
+  sale_price?: number | null;
 
   images?: Image[];
 }
@@ -84,7 +86,7 @@ export const loadMachines = (machines: Machine[]): LoadMachinesAction => ({
 });
 
 export const loadSingleMachine = (
-  machine: Machine
+  machine: Machine,
 ): LoadSingleMachineAction => ({
   type: LOAD_SINGLE_MACHINE,
   payload: machine,
@@ -207,7 +209,7 @@ const initialState: MachinesState = {
 
 export default function machinesReducer(
   state = initialState,
-  action: MachinesActionTypes
+  action: MachinesActionTypes,
 ): MachinesState {
   switch (action.type) {
     case LOAD_MACHINES: {

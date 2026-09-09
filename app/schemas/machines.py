@@ -1,8 +1,11 @@
 # app/schemas/machines.py
 
-from pydantic import BaseModel
-from typing import Optional, List
+from datetime import datetime
 from decimal import Decimal
+from typing import List, Literal, Optional
+
+from pydantic import BaseModel
+
 from .images import ImageResponse
 
 
@@ -13,6 +16,18 @@ class MachineBase(BaseModel):
     condition: Optional[str] = None
     description: Optional[str] = None
     hours_used: Optional[Decimal] = None
+
+    status: Optional[Literal["listed", "sold", "delivered"]] = None
+    listed_at: Optional[datetime] = None
+    sold_at: Optional[datetime] = None
+    delivered_at: Optional[datetime] = None
+    sale_price: Optional[float] = None
+
+    has_warranty: Optional[bool] = None
+    warranty_duration: Optional[int] = None
+    warranty_duration_unit: Optional[str] = None
+    warranty_notes: Optional[str] = None
+
     seo_title: Optional[str] = None
     seo_description: Optional[str] = None
     best_for: Optional[str] = None
@@ -31,6 +46,12 @@ class MachineCreate(BaseModel):
     condition: str
     description: Optional[str] = None
     hours_used: Optional[Decimal] = None
+
+    has_warranty: bool = False
+    warranty_duration: Optional[int] = None
+    warranty_duration_unit: Optional[str] = None
+    warranty_notes: Optional[str] = None
+
     seo_title: Optional[str] = None
     seo_description: Optional[str] = None
     best_for: Optional[str] = None
@@ -55,6 +76,18 @@ class MachineResponse(BaseModel):
     description: Optional[str] = None
     hours_used: Optional[Decimal] = None
     images: List[ImageResponse] = []
+
+    status: str
+    listed_at: Optional[datetime] = None
+    sold_at: Optional[datetime] = None
+    delivered_at: Optional[datetime] = None
+    sale_price: Optional[float] = None
+
+    has_warranty: bool
+    warranty_duration: Optional[int] = None
+    warranty_duration_unit: Optional[str] = None
+    warranty_notes: Optional[str] = None
+
     seo_title: Optional[str] = None
     seo_description: Optional[str] = None
     best_for: Optional[str] = None

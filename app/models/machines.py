@@ -1,8 +1,11 @@
 # app/models/machines.py
 
-from sqlalchemy import Column, Integer, String, Float, Numeric, Text
-from sqlalchemy.orm import relationship
+from datetime import datetime, timezone
+
+from sqlalchemy import Boolean, Column, DateTime, Float, Integer, Numeric, String, Text
+from sqlalchemy.orm import relationship, Mapped, mapped_column
 from utils.db import Base
+
 
 class Machine(Base):
     __tablename__ = "machines"
@@ -12,7 +15,31 @@ class Machine(Base):
     description = Column(Text)
     price = Column(Float, nullable=False)
     condition = Column(String, nullable=False)
-    hours_used = Column(Numeric(10,2), nullable=True)
+    hours_used = Column(Numeric(10, 2), nullable=True)
+
+    status = Column(String, nullable=False, default="listed")
+    listed_at = Column(
+        DateTime(timezone=True),
+        nullable=True,
+        default=lambda: datetime.now(timezone.utc),
+    )
+    sold_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True),
+        nullable=True,
+    )
+
+    delivered_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True),
+        nullable=True,
+    )
+    
+    sale_price = Column(Float, nullable=True)
+
+    has_warranty = Column(Boolean, nullable=False, default=False)
+    warranty_duration = Column(Integer, nullable=True)
+    warranty_duration_unit = Column(String, nullable=True)
+    warranty_notes = Column(Text, nullable=True)
+
     seo_title = Column(String, nullable=True)
     seo_description = Column(String, nullable=True)
     best_for = Column(Text, nullable=True)
