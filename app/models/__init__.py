@@ -5,3 +5,5 @@ from .machines import Machine
 from .images import Image
 from .testimonials import Testimonial
 from .faqs import FAQ
+from .customer import Customer
+from .sale import Sale

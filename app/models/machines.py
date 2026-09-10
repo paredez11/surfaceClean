@@ -51,3 +51,9 @@ class Machine(Base):
     slug = Column(String, unique=True, index=True, nullable=True)
 
     images = relationship("Image", back_populates="machine")
+
+    sale = relationship(
+        "Sale",
+        back_populates="machine",
+        uselist=False,
+    )
