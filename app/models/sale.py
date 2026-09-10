@@ -68,3 +68,14 @@ class Sale(Base):
         "Machine",
         back_populates="sale",
     )
+    
+    warranty = relationship(
+        "Warranty",
+        back_populates="sale",
+        uselist=False,
+    )
+    
+    service_records = relationship(
+        "ServiceRecord",
+        back_populates="sale",
+    )

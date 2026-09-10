@@ -32,7 +32,7 @@ class Machine(Base):
         DateTime(timezone=True),
         nullable=True,
     )
-    
+
     sale_price = Column(Float, nullable=True)
 
     has_warranty = Column(Boolean, nullable=False, default=False)
@@ -56,4 +56,9 @@ class Machine(Base):
         "Sale",
         back_populates="machine",
         uselist=False,
+    )
+
+    service_records = relationship(
+        "ServiceRecord",
+        back_populates="machine",
     )
