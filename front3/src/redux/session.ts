@@ -108,7 +108,7 @@ export const thunkLogout = () => async (dispatch: any) => {
 
 const initialState: SessionState = {
   user: null,
-  loading: false,
+  loading: true,
 };
 
 export default function sessionReducer(state = initialState, action: SessionActionTypes): SessionState {

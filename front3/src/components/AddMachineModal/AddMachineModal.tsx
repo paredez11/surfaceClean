@@ -61,7 +61,7 @@ const AddMachineModal = () => {
                 form.append("file", file);
                 form.append("machine_id", String(created.id));
                 form.append("description", "");
-                return dispatch(imageActions.createImage(form)).catch((e) => {
+                return dispatch(imageActions.createImage(form)).catch((e: any) => {
                   console.warn("Failed to upload image:", file.name, e);
                   return null;
                 });

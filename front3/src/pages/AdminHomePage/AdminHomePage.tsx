@@ -20,6 +20,7 @@ function AdminHomePage() {
 
   const adminLinks = [
     { path: "/machines", label: "🧹 Manage Machines/Parts" },
+    { path: "/customers", label: "👥 Manage Customers"},
     { path: "/testimonials", label: "⭐ Manage Testimonials" },
     { path: "/faqs", label: "❓ Manage FAQs" },
   ];

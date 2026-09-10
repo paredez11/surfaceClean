@@ -1,16 +1,5 @@
 // src/redux/store.ts
 
-declare global {
-  interface ImportMetaEnv {
-    readonly MODE: string;
-    readonly VITE_API_BASE_URL: string;
-  }
-
-  interface ImportMeta {
-    readonly env: ImportMetaEnv;
-  }
-}
-
 import {
   legacy_createStore as createStore,
   applyMiddleware,
@@ -25,6 +14,7 @@ import faqReducer from "./faqs";
 import imageReducer from "./images";
 import machineReducer from "./machines";
 import testimonialReducer from "./testimonials";
+import customersReducer from "./customers";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
@@ -32,6 +22,7 @@ const rootReducer = combineReducers({
   images: imageReducer,
   machines: machineReducer,
   testimonials: testimonialReducer,
+  customers: customersReducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

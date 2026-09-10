@@ -1,0 +1,52 @@
+/* front3/src/pages/CustomersPage/CustomersPage.css */
+
+.customers-page {
+  padding: 2rem;
+}
+
+.customers-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.customers-header h1 {
+  color: #568EA3;
+  margin: 0 0 0.5rem;
+}
+
+.customers-header p {
+  color: #333;
+  margin: 0;
+}
+
+.add-customer-button {
+  background-color: #568EA3;
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.add-customer-button:hover {
+  opacity: 0.9;
+}
+
+.customers-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(280px, 1fr)
+  );
+  gap: 1rem;
+}
+
+.customers-message {
+  color: #333;
+  font-size: 1rem;
+}

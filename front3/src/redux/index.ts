@@ -17,3 +17,6 @@ export { default as sessionReducer } from "./session";
 
 export * as testimonialActions from "./testimonials";
 export { default as testimonialReducer } from "./testimonials";
+
+export * as customerActions from "./customers";
+export { default as customersReducer } from "./customers";

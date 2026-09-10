@@ -1,0 +1,96 @@
+/* front3/src/pages/CustomerDetailsPage/CustomerDetailsPage.css */
+
+.customer-details-page {
+  padding: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.customer-back-link {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  color: #568EA3;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.customer-back-link:hover {
+  text-decoration: underline;
+}
+
+.customer-details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.customer-details-header h1 {
+  margin: 0 0 0.5rem;
+  color: #072460;
+  font-size: 2rem;
+}
+
+.customer-details-header p {
+  margin: 0;
+  color: #568EA3;
+  font-weight: bold;
+}
+
+.customer-details-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.customer-info-card,
+.customer-history-section {
+  background-color: #FFE8D1;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.customer-info-card h2,
+.customer-history-section h2 {
+  color: #072460;
+  margin: 0 0 1rem;
+}
+
+.customer-info-card p {
+  color: #333;
+  margin: 0.5rem 0;
+}
+
+.customer-address {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  color: #333;
+  margin: 0.5rem 0;
+}
+
+.customer-address strong {
+  margin-bottom: 0.25rem;
+}
+
+.customer-history-section p {
+  color: #555;
+  margin: 0;
+}
+
+@media (max-width: 700px) {
+  .customer-details-page {
+    padding: 1rem;
+  }
+
+  .customer-details-header {
+    flex-direction: column;
+  }
+
+  .customer-details-actions {
+    width: 100%;
+  }
+}

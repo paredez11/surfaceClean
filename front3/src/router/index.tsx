@@ -8,7 +8,10 @@ import FaqsPage from "../pages/Faqs/FaqsPage";
 import TestimonialsPage from "../pages/Testimonials/TestimonialsPage";
 import AboutPage from "../pages/About/AboutPage";
 import ContactPage from "../pages/Contact/ContactPage";
+import CustomersPage from "../pages/CustomersPage";
 import AdminHomePage from "../pages/AdminHomePage/AdminHomePage";
+import ProtectedRoute from "../components/ProtectedRoute";
+import CustomerDetailsPage from "../pages/CustomerDetailsPage/CustomerDetailsPage";
 
 export const router = createBrowserRouter([
   {
@@ -45,6 +48,22 @@ export const router = createBrowserRouter([
       {
         path: "/contact",
         element: <ContactPage />,
+      },
+      {
+        path: "/customers",
+        element: (
+          <ProtectedRoute>
+            <CustomersPage />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/customers/:customerId",
+        element: (
+          <ProtectedRoute>
+            <CustomerDetailsPage />
+          </ProtectedRoute>
+        ),
       },
     ],
   },
