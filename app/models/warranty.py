@@ -2,8 +2,8 @@
 
 from datetime import datetime, timezone
 
-from sqlalchemy import Column, DateTime, ForeignKey, Integer, String, Text
-from sqlalchemy.orm import relationship
+from sqlalchemy import DateTime, ForeignKey, Integer, String, Text
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from utils.db import Base
 
@@ -11,9 +11,13 @@ from utils.db import Base
 class Warranty(Base):
     __tablename__ = "warranties"
 
-    id = Column(Integer, primary_key=True, index=True)
+    id: Mapped[int] = mapped_column(
+        Integer,
+        primary_key=True,
+        index=True,
+    )
 
-    sale_id = Column(
+    sale_id: Mapped[int] = mapped_column(
         Integer,
         ForeignKey("sales.id"),
         nullable=False,
@@ -21,25 +25,54 @@ class Warranty(Base):
         index=True,
     )
 
-    start_date = Column(DateTime(timezone=True), nullable=False)
-    end_date = Column(DateTime(timezone=True), nullable=False)
+    start_date: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True),
+        nullable=False,
+    )
 
-    duration = Column(Integer, nullable=False)
-    duration_unit = Column(String, nullable=False)
+    end_date: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True),
+        nullable=False,
+    )
 
-    status = Column(String, nullable=False, default="active")
+    duration: Mapped[int] = mapped_column(
+        Integer,
+        nullable=False,
+    )
 
-    coverage_terms = Column(Text, nullable=True)
-    exclusions = Column(Text, nullable=True)
-    notes = Column(Text, nullable=True)
+    duration_unit: Mapped[str] = mapped_column(
+        String,
+        nullable=False,
+    )
 
-    created_at = Column(
+    status: Mapped[str] = mapped_column(
+        String,
+        nullable=False,
+        default="active",
+    )
+
+    coverage_terms: Mapped[str | None] = mapped_column(
+        Text,
+        nullable=True,
+    )
+
+    exclusions: Mapped[str | None] = mapped_column(
+        Text,
+        nullable=True,
+    )
+
+    notes: Mapped[str | None] = mapped_column(
+        Text,
+        nullable=True,
+    )
+
+    created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
         nullable=False,
         default=lambda: datetime.now(timezone.utc),
     )
 
-    updated_at = Column(
+    updated_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
         nullable=False,
         default=lambda: datetime.now(timezone.utc),
@@ -50,7 +83,7 @@ class Warranty(Base):
         "Sale",
         back_populates="warranty",
     )
-    
+
     service_records = relationship(
         "ServiceRecord",
         back_populates="warranty",

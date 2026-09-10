@@ -6,6 +6,6 @@ from .images import Image
 from .testimonials import Testimonial
 from .faqs import FAQ
 from .customer import Customer
-from .sale import Sale
+from .sales import Sale
 from .warranty import Warranty
 from .service_record import ServiceRecord

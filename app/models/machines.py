@@ -17,12 +17,18 @@ class Machine(Base):
     condition = Column(String, nullable=False)
     hours_used = Column(Numeric(10, 2), nullable=True)
 
-    status = Column(String, nullable=False, default="listed")
+    status: Mapped[str] = mapped_column(
+        String,
+        nullable=False,
+        default="listed"
+    )
+    
     listed_at = Column(
         DateTime(timezone=True),
         nullable=True,
         default=lambda: datetime.now(timezone.utc),
     )
+    
     sold_at: Mapped[datetime | None] = mapped_column(
         DateTime(timezone=True),
         nullable=True,
@@ -33,7 +39,10 @@ class Machine(Base):
         nullable=True,
     )
 
-    sale_price = Column(Float, nullable=True)
+    sale_price: Mapped[float | None] = mapped_column(
+        Float,
+        nullable=True
+    )
 
     has_warranty = Column(Boolean, nullable=False, default=False)
     warranty_duration = Column(Integer, nullable=True)
@@ -52,10 +61,9 @@ class Machine(Base):
 
     images = relationship("Image", back_populates="machine")
 
-    sale = relationship(
+    sales = relationship(
         "Sale",
         back_populates="machine",
-        uselist=False,
     )
 
     service_records = relationship(

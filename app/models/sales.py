@@ -1,9 +1,9 @@
-# app/models/sale.py
+# app/models/sales.py
 
 from datetime import datetime, timezone
 
-from sqlalchemy import Column, DateTime, Float, ForeignKey, Integer, String, Text
-from sqlalchemy.orm import relationship
+from sqlalchemy import DateTime, Float, ForeignKey, String, Text
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from utils.db import Base
 
@@ -11,48 +11,62 @@ from utils.db import Base
 class Sale(Base):
     __tablename__ = "sales"
 
-    id = Column(Integer, primary_key=True, index=True)
+    id: Mapped[int] = mapped_column(
+        primary_key=True,
+        index=True,
+    )
 
-    customer_id = Column(
-        Integer,
+    customer_id: Mapped[int] = mapped_column(
         ForeignKey("customers.id"),
         nullable=False,
         index=True,
     )
 
-    machine_id = Column(
-        Integer,
+    machine_id: Mapped[int] = mapped_column(
         ForeignKey("machines.id"),
         nullable=False,
-        unique=True,
         index=True,
     )
 
-    asking_price = Column(Float, nullable=True)
-    sale_price = Column(Float, nullable=False)
+    asking_price: Mapped[float | None] = mapped_column(
+        Float,
+        nullable=True,
+    )
 
-    status = Column(String, nullable=False, default="sold")
+    sale_price: Mapped[float] = mapped_column(
+        Float,
+        nullable=False,
+    )
 
-    sold_at = Column(
+    status: Mapped[str] = mapped_column(
+        String,
+        nullable=False,
+        default="sold",
+    )
+
+    sold_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
         nullable=False,
         default=lambda: datetime.now(timezone.utc),
     )
 
-    delivered_at = Column(
+    delivered_at: Mapped[datetime | None] = mapped_column(
         DateTime(timezone=True),
         nullable=True,
     )
 
-    notes = Column(Text, nullable=True)
+    notes: Mapped[str | None] = mapped_column(
+        Text,
+        nullable=True,
+    )
 
-    created_at = Column(
+    created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
         nullable=False,
         default=lambda: datetime.now(timezone.utc),
     )
 
-    updated_at = Column(
+    updated_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
         nullable=False,
         default=lambda: datetime.now(timezone.utc),
@@ -66,15 +80,15 @@ class Sale(Base):
 
     machine = relationship(
         "Machine",
-        back_populates="sale",
+        back_populates="sales",
     )
-    
+
     warranty = relationship(
         "Warranty",
         back_populates="sale",
         uselist=False,
     )
-    
+
     service_records = relationship(
         "ServiceRecord",
         back_populates="sale",
