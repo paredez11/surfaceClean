@@ -1,10 +1,11 @@
+/* src/components/MachineCard/MachineCard.css */
+
 .machine-card {
-  background-color: #FFE8D1;
+  background-color: #ffe8d1;
   border: 1px solid #ccc;
   border-radius: 0.5rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 1rem;
-  height: 500px;
   display: flex;
   flex-direction: column;
 }

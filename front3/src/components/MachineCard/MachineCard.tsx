@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { machineActions } from "../../redux";
+import { Machine } from "../../types";
 import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
 import EditMachineModal from "../EditMachineModal/EditMachineModal";
 import MarkSoldModal from "../MarkSoldModal/MarkSoldModal";
@@ -15,17 +16,6 @@ interface Image {
   url: string;
   description?: string;
   machine_id: number;
-}
-
-interface Machine {
-  id: number;
-  name: string;
-  price: number;
-  condition: string;
-  hours_used: number;
-  created_at: string;
-  status: "listed" | "sold" | "delivered";
-  images?: Image[];
 }
 
 interface MachineCardProps {
