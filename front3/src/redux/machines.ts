@@ -1,11 +1,29 @@
-// redux/machines.ts
+// front3/src/redux/machines.ts
 
 /******************************* TYPES *******************************************/
+
 interface Image {
   id: number;
   url: string;
   description?: string;
   machine_id: number;
+}
+
+export interface EquipmentProfile {
+  id: number;
+  manufacturer: string;
+  model: string;
+  category: string;
+  description?: string | null;
+  specifications?: string | null;
+  best_for?: string | null;
+  not_for?: string | null;
+  key_benefits?: string | null;
+  common_uses?: string | null;
+  faq?: string | null;
+  comparison_notes?: string | null;
+  manufacturer_url?: string | null;
+  source_notes?: string | null;
 }
 
 interface Machine {
@@ -16,15 +34,13 @@ interface Machine {
   description?: string;
   hours_used?: number;
 
+  equipment_profile_id?: number | null;
+  equipment_profile?: EquipmentProfile | null;
+
   seo_title?: string;
   seo_description?: string;
-  best_for?: string;
-  not_for?: string;
-  key_benefits?: string;
-  common_uses?: string;
-  faq?: string;
-  comparison_notes?: string;
   slug?: string;
+
   status: "listed" | "sold" | "delivered";
   sale_price?: number | null;
 

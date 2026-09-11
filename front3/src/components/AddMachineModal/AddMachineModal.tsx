@@ -1,51 +1,64 @@
 // front3/src/components/AddMachineModal/AddMachineModal.tsx
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import * as machineActions from "../../redux/machines";
 import * as imageActions from "../../redux/images";
 import ImageUploader from "../ImageUploader/ImageUploader";
 import BaseModal from "../BaseModal/BaseModal";
+import type { EquipmentProfile } from "../../redux/machines";
 import "../BaseModal/BaseModal.css";
 
 const AddMachineModal = () => {
   const dispatch = useDispatch<any>();
   const [showModal, setShowModal] = useState(false);
+  const [equipmentProfiles, setEquipmentProfiles] = useState<
+    EquipmentProfile[]
+  >([]);
+  const [equipmentProfileId, setEquipmentProfileId] = useState("");
 
-  const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [condition, setCondition] = useState("");
   const [description, setDescription] = useState("");
   const [hoursUsed, setHoursUsed] = useState("");
-  const [seoTitle, setSeoTitle] = useState("");
-  const [seoDescription, setSeoDescription] = useState("");
-  const [bestFor, setBestFor] = useState("");
-  const [notFor, setNotFor] = useState("");
-  const [keyBenefits, setKeyBenefits] = useState("");
-  const [commonUses, setCommonUses] = useState("");
-  const [faq, setFaq] = useState("");
-  const [comparisonNotes, setComparisonNotes] = useState("");
-  const [slug, setSlug] = useState("");
   const [files, setFiles] = useState<File[]>([]);
   const [modalError, setModalError] = useState<string | null>(null);
 
+  useEffect(() => {
+    if (!showModal) return;
+
+    const loadEquipmentProfiles = async () => {
+      try {
+        const response = await fetch("/api/equipment_profiles/");
+
+        if (!response.ok) {
+          throw new Error("Failed to load equipment profiles");
+        }
+
+        const profiles: EquipmentProfile[] = await response.json();
+        setEquipmentProfiles(profiles);
+      } catch (error) {
+        console.error("Failed to load equipment profiles:", error);
+        setModalError("Unable to load equipment profiles.");
+      }
+    };
+
+    loadEquipmentProfiles();
+  }, [showModal]);
+
   const handleSubmit = async () => {
+    if (!equipmentProfileId) {
+      setModalError("Please select an equipment profile.");
+      return;
+    }
+
     try {
       const created = await dispatch(
         machineActions.createMachine({
-          name,
+          equipment_profile_id: parseInt(equipmentProfileId),
           price: parseFloat(price),
           condition,
           description,
-          hours_used: parseInt(hoursUsed),
-          seo_title: seoTitle,
-          seo_description: seoDescription,
-          best_for: bestFor,
-          not_for: notFor,
-          key_benefits: keyBenefits,
-          common_uses: commonUses,
-          faq,
-          comparison_notes: comparisonNotes,
-          slug,
+          hours_used: hoursUsed ? parseInt(hoursUsed) : undefined,
         }),
       );
 
@@ -61,10 +74,12 @@ const AddMachineModal = () => {
                 form.append("file", file);
                 form.append("machine_id", String(created.id));
                 form.append("description", "");
-                return dispatch(imageActions.createImage(form)).catch((e: any) => {
-                  console.warn("Failed to upload image:", file.name, e);
-                  return null;
-                });
+                return dispatch(imageActions.createImage(form)).catch(
+                  (e: any) => {
+                    console.warn("Failed to upload image:", file.name, e);
+                    return null;
+                  },
+                );
               }),
             );
 
@@ -82,21 +97,12 @@ const AddMachineModal = () => {
         setModalError("Something went wrong while creating the machine.");
       }
     } finally {
-      setName("");
       setPrice("");
       setCondition("");
       setDescription("");
       setHoursUsed("");
       setFiles([]);
-      setSeoTitle("");
-      setSeoDescription("");
-      setBestFor("");
-      setNotFor("");
-      setKeyBenefits("");
-      setCommonUses("");
-      setFaq("");
-      setComparisonNotes("");
-      setSlug("");
+      setEquipmentProfileId("");
     }
   };
 
@@ -109,22 +115,31 @@ const AddMachineModal = () => {
         }}
         className="add-machine-btn"
       >
-        ADD MACHINE or PART
+        ADD MACHINE
       </button>
 
       {showModal && (
         <BaseModal
-          title="Add Machine or Part"
+          title="Add Machine"
           onClose={() => setShowModal(false)}
           onSave={handleSubmit}
         >
           {modalError && <div className="modal-error">{modalError}</div>}
-          <input
+
+          <select
             className="modal-input"
-            placeholder="Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
+            value={equipmentProfileId}
+            onChange={(e) => setEquipmentProfileId(e.target.value)}
+          >
+            <option value="">Select Equipment Profile</option>
+
+            {equipmentProfiles.map((profile) => (
+              <option key={profile.id} value={profile.id}>
+                {profile.manufacturer} {profile.model} — {profile.category}
+              </option>
+            ))}
+          </select>
+
           <input
             className="modal-input"
             placeholder="Price"
@@ -140,7 +155,7 @@ const AddMachineModal = () => {
           />
           <textarea
             className="modal-textarea"
-            placeholder="Description"
+            placeholder="Machine Notes"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
@@ -150,69 +165,6 @@ const AddMachineModal = () => {
             type="number"
             value={hoursUsed}
             onChange={(e) => setHoursUsed(e.target.value)}
-          />
-
-          <input
-            className="modal-input"
-            placeholder="SEO Title"
-            value={seoTitle}
-            onChange={(e) => setSeoTitle(e.target.value)}
-          />
-
-          <textarea
-            className="modal-textarea"
-            placeholder="SEO Description"
-            value={seoDescription}
-            onChange={(e) => setSeoDescription(e.target.value)}
-          />
-
-          <textarea
-            className="modal-textarea"
-            placeholder="Best For"
-            value={bestFor}
-            onChange={(e) => setBestFor(e.target.value)}
-          />
-
-          <textarea
-            className="modal-textarea"
-            placeholder="Not Ideal For"
-            value={notFor}
-            onChange={(e) => setNotFor(e.target.value)}
-          />
-
-          <textarea
-            className="modal-textarea"
-            placeholder="Key Benefits"
-            value={keyBenefits}
-            onChange={(e) => setKeyBenefits(e.target.value)}
-          />
-
-          <textarea
-            className="modal-textarea"
-            placeholder="Common Uses"
-            value={commonUses}
-            onChange={(e) => setCommonUses(e.target.value)}
-          />
-
-          <textarea
-            className="modal-textarea"
-            placeholder="FAQ (Q: A: format)"
-            value={faq}
-            onChange={(e) => setFaq(e.target.value)}
-          />
-
-          <textarea
-            className="modal-textarea"
-            placeholder="Comparison Notes"
-            value={comparisonNotes}
-            onChange={(e) => setComparisonNotes(e.target.value)}
-          />
-
-          <input
-            className="modal-input"
-            placeholder="Slug (optional)"
-            value={slug}
-            onChange={(e) => setSlug(e.target.value)}
           />
 
           <ImageUploader onUpload={(fs) => setFiles(fs)} multiple />
