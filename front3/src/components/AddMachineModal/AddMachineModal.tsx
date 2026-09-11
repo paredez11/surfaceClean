@@ -1,20 +1,29 @@
 // front3/src/components/AddMachineModal/AddMachineModal.tsx
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
 import * as machineActions from "../../redux/machines";
 import * as imageActions from "../../redux/images";
 import ImageUploader from "../ImageUploader/ImageUploader";
 import BaseModal from "../BaseModal/BaseModal";
 import type { EquipmentProfile } from "../../redux/machines";
 import "../BaseModal/BaseModal.css";
+import "./AddMachineModal.css";
 
 const AddMachineModal = () => {
   const dispatch = useDispatch<any>();
+  const machines = useSelector((state: RootState) =>
+    Object.values(state.machines.all),
+  );
   const [showModal, setShowModal] = useState(false);
   const [equipmentProfiles, setEquipmentProfiles] = useState<
     EquipmentProfile[]
   >([]);
   const [equipmentProfileId, setEquipmentProfileId] = useState("");
+  const [equipmentSearch, setEquipmentSearch] = useState("");
+  const [showEquipmentOptions, setShowEquipmentOptions] = useState(false);
+  const [selectedEquipmentProfile, setSelectedEquipmentProfile] =
+    useState<EquipmentProfile | null>(null);
 
   const [price, setPrice] = useState("");
   const [condition, setCondition] = useState("");
@@ -44,6 +53,53 @@ const AddMachineModal = () => {
 
     loadEquipmentProfiles();
   }, [showModal]);
+
+  const equipmentUsage = machines.reduce<Record<number, number>>(
+    (usage, machine) => {
+      if (machine.equipment_profile_id) {
+        usage[machine.equipment_profile_id] =
+          (usage[machine.equipment_profile_id] || 0) + 1;
+      }
+
+      return usage;
+    },
+    {},
+  );
+
+  const filteredEquipmentProfiles = equipmentProfiles
+    .filter((profile) => {
+      const search = equipmentSearch.toLowerCase().trim();
+
+      const searchableText = [
+        profile.manufacturer,
+        profile.model,
+        profile.category,
+      ]
+        .join(" ")
+        .toLowerCase();
+
+      return searchableText.includes(search);
+    })
+    .sort((a, b) => {
+      const usageDifference =
+        (equipmentUsage[b.id] || 0) - (equipmentUsage[a.id] || 0);
+
+      if (usageDifference !== 0) {
+        return usageDifference;
+      }
+
+      return `${a.manufacturer} ${a.model}`.localeCompare(
+        `${b.manufacturer} ${b.model}`,
+      );
+    });
+
+  const frequentlyUsedProfiles = filteredEquipmentProfiles.filter(
+    (profile) => (equipmentUsage[profile.id] || 0) > 0,
+  );
+
+  const otherEquipmentProfiles = filteredEquipmentProfiles.filter(
+    (profile) => (equipmentUsage[profile.id] || 0) === 0,
+  );
 
   const handleSubmit = async () => {
     if (!equipmentProfileId) {
@@ -103,6 +159,8 @@ const AddMachineModal = () => {
       setHoursUsed("");
       setFiles([]);
       setEquipmentProfileId("");
+      setEquipmentSearch("");
+      setSelectedEquipmentProfile(null);
     }
   };
 
@@ -126,19 +184,98 @@ const AddMachineModal = () => {
         >
           {modalError && <div className="modal-error">{modalError}</div>}
 
-          <select
-            className="modal-input"
-            value={equipmentProfileId}
-            onChange={(e) => setEquipmentProfileId(e.target.value)}
-          >
-            <option value="">Select Equipment Profile</option>
+          <div className="equipment-selector">
+            <input
+              className="modal-input"
+              type="text"
+              placeholder="Search equipment..."
+              value={equipmentSearch}
+              onChange={(e) => {
+                setEquipmentSearch(e.target.value);
+                setEquipmentProfileId("");
+                setSelectedEquipmentProfile(null);
+                setShowEquipmentOptions(true);
+              }}
+              onFocus={() => setShowEquipmentOptions(true)}
+            />
 
-            {equipmentProfiles.map((profile) => (
-              <option key={profile.id} value={profile.id}>
-                {profile.manufacturer} {profile.model} — {profile.category}
-              </option>
-            ))}
-          </select>
+            {showEquipmentOptions && (
+              <div className="equipment-options">
+                {frequentlyUsedProfiles.length > 0 && (
+                  <>
+                    <div className="equipment-options-heading">
+                      Frequently Used
+                    </div>
+
+                    {frequentlyUsedProfiles.map((profile) => (
+                      <button
+                        key={profile.id}
+                        type="button"
+                        className="equipment-option"
+                        onClick={() => {
+                          setEquipmentProfileId(String(profile.id));
+                          setSelectedEquipmentProfile(profile);
+                          setEquipmentSearch(
+                            `${profile.manufacturer} ${profile.model}`,
+                          );
+                          setShowEquipmentOptions(false);
+                        }}
+                      >
+                        {profile.manufacturer} {profile.model} —{" "}
+                        {profile.category}
+                      </button>
+                    ))}
+                  </>
+                )}
+
+                {otherEquipmentProfiles.length > 0 && (
+                  <>
+                    <div className="equipment-options-heading">
+                      All Equipment
+                    </div>
+
+                    {otherEquipmentProfiles.map((profile) => (
+                      <button
+                        key={profile.id}
+                        type="button"
+                        className="equipment-option"
+                        onClick={() => {
+                          setEquipmentProfileId(String(profile.id));
+                          setSelectedEquipmentProfile(profile);
+                          setEquipmentSearch(
+                            `${profile.manufacturer} ${profile.model}`,
+                          );
+                          setShowEquipmentOptions(false);
+                        }}
+                      >
+                        {profile.manufacturer} {profile.model} —{" "}
+                        {profile.category}
+                      </button>
+                    ))}
+                  </>
+                )}
+
+                {filteredEquipmentProfiles.length === 0 && (
+                  <div className="equipment-no-results">No equipment found</div>
+                )}
+              </div>
+            )}
+
+            {selectedEquipmentProfile && (
+              <div className="equipment-profile-preview">
+                <div className="equipment-profile-found">
+                  ✓ Equipment data found
+                </div>
+
+                <div>
+                  {selectedEquipmentProfile.manufacturer}{" "}
+                  {selectedEquipmentProfile.model}
+                </div>
+
+                <div>{selectedEquipmentProfile.category}</div>
+              </div>
+            )}
+          </div>
 
           <input
             className="modal-input"

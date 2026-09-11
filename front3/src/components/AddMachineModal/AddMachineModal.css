@@ -1,0 +1,66 @@
+/* components/AddMachineModal/AddMachineModal.css */
+
+.equipment-selector {
+  position: relative;
+}
+
+.equipment-options {
+  width: 95%;
+  max-height: 240px;
+  overflow-y: auto;
+  margin-top: 4px;
+  background-color: #ffffff;
+  border: 2px solid #568ea3;
+  border-radius: 6px;
+}
+
+.equipment-options-heading {
+  padding: 8px 10px;
+  background-color: #568ea3;
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.equipment-option {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #ffffff;
+  color: #072460;
+  border: none;
+  border-bottom: 1px solid #d8e1e5;
+  text-align: left;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.equipment-option:hover {
+  background-color: #eef5f7;
+}
+
+.equipment-no-results {
+  padding: 12px 10px;
+  color: #072460;
+  text-align: center;
+}
+
+.equipment-profile-preview {
+  width: 95%;
+  box-sizing: border-box;
+  margin-top: 8px;
+  padding: 10px;
+  background-color: #ffffff;
+  border: 2px solid #568ea3;
+  border-radius: 6px;
+  color: #072460;
+  font-size: 0.9rem;
+}
+
+.equipment-profile-found {
+  margin-bottom: 4px;
+  color: #287a3d;
+  font-weight: 700;
+}
