@@ -10,7 +10,7 @@ from typing import Union
 from starlette.datastructures import UploadFile
 from pathlib import Path
 
-# Explicitly load .env from the *project root* (surfaceClean/.env)
+# Explicitly load .env from the *backend root* (app/.env)
 env_path = Path(__file__).resolve().parents[1] / ".env"
 load_dotenv(dotenv_path=env_path)
 
