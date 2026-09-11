@@ -51,6 +51,6 @@ class Settings(BaseSettings):
     CLOUDINARY_API_SECRET: str
     CLOUDINARY_URL: str
 
-    model_config = ConfigDict(extra="allow")
+    model_config = ConfigDict(extra="allow") #type: ignore
 
-settings = Settings()
+settings = Settings() #type: ignore[call-arg]

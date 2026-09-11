@@ -3,7 +3,7 @@
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
 from sqlalchemy.ext.asyncio import async_sessionmaker
 from sqlalchemy.orm import declarative_base
-from config import resolve_database_url
+from config import resolve_database_url # type: ignore
 
 # Handle different database types for async connections
 database_url = resolve_database_url()
