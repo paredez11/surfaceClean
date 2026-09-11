@@ -2,7 +2,7 @@
 
 from datetime import datetime, timezone
 
-from sqlalchemy import Boolean, Column, DateTime, Float, Integer, Numeric, String, Text
+from sqlalchemy import Boolean, Column, DateTime, Float, Integer, Numeric, String, Text, ForeignKey
 from sqlalchemy.orm import relationship, Mapped, mapped_column
 from utils.db import Base
 
@@ -22,13 +22,13 @@ class Machine(Base):
         nullable=False,
         default="listed"
     )
-    
+
     listed_at = Column(
         DateTime(timezone=True),
         nullable=True,
         default=lambda: datetime.now(timezone.utc),
     )
-    
+
     sold_at: Mapped[datetime | None] = mapped_column(
         DateTime(timezone=True),
         nullable=True,
@@ -69,4 +69,15 @@ class Machine(Base):
     service_records = relationship(
         "ServiceRecord",
         back_populates="machine",
+    )
+
+    equipment_profile_id = Column(
+        Integer,
+        ForeignKey("equipment_profiles.id"),
+        nullable=True,
+    )
+
+    equipment_profile = relationship(
+        "EquipmentProfile",
+        back_populates="machines",
     )

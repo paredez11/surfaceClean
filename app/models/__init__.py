@@ -9,3 +9,4 @@ from .customer import Customer
 from .sales import Sale
 from .warranty import Warranty
 from .service_record import ServiceRecord
+from .equipment_profiles import EquipmentProfile

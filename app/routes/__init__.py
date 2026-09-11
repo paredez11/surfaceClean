@@ -10,6 +10,7 @@ from .customers_routes import router as customers_router
 from .sales_routes import router as sales_router
 from .service_records_routes import router as service_records_router
 from .warranties_routes import router as warranties_router
+from .equipment_profiles_routes import router as equipment_profiles_router
 
 router = APIRouter()
 
@@ -22,3 +23,4 @@ router.include_router(customers_router, prefix="/api/customers", tags=["Customer
 router.include_router(sales_router, prefix="/api/sales", tags=["Sales"])
 router.include_router(service_records_router, prefix="/api/service_records", tags=["Service Records"])
 router.include_router(warranties_router, prefix="/api/warranties", tags=["Warranties"])
+router.include_router(equipment_profiles_router, prefix="/api/equipment_profiles", tags=["Equipment Profiles"])
