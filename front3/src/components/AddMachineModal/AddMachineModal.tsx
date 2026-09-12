@@ -3,10 +3,11 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import * as machineActions from "../../redux/machines";
+import * as equipmentProfileActions from "../../redux/equipmentProfiles";
 import * as imageActions from "../../redux/images";
+import type { EquipmentProfile } from "../../types";
 import ImageUploader from "../ImageUploader/ImageUploader";
 import BaseModal from "../BaseModal/BaseModal";
-import type { EquipmentProfile } from "../../redux/machines";
 import "../BaseModal/BaseModal.css";
 import "./AddMachineModal.css";
 
@@ -15,15 +16,20 @@ const AddMachineModal = () => {
   const machines = useSelector((state: RootState) =>
     Object.values(state.machines.all),
   );
+  const equipmentProfiles = useSelector((state: RootState) =>
+    Object.values(state.equipmentProfiles.all),
+  );
+
   const [showModal, setShowModal] = useState(false);
-  const [equipmentProfiles, setEquipmentProfiles] = useState<
-    EquipmentProfile[]
-  >([]);
   const [equipmentProfileId, setEquipmentProfileId] = useState("");
   const [equipmentSearch, setEquipmentSearch] = useState("");
   const [showEquipmentOptions, setShowEquipmentOptions] = useState(false);
   const [selectedEquipmentProfile, setSelectedEquipmentProfile] =
     useState<EquipmentProfile | null>(null);
+  const [showAddModel, setShowAddModel] = useState(false);
+  const [newManufacturer, setNewManufacturer] = useState("");
+  const [newModel, setNewModel] = useState("");
+  const [newCategory, setNewCategory] = useState("");
 
   const [price, setPrice] = useState("");
   const [condition, setCondition] = useState("");
@@ -35,24 +41,8 @@ const AddMachineModal = () => {
   useEffect(() => {
     if (!showModal) return;
 
-    const loadEquipmentProfiles = async () => {
-      try {
-        const response = await fetch("/api/equipment_profiles/");
-
-        if (!response.ok) {
-          throw new Error("Failed to load equipment profiles");
-        }
-
-        const profiles: EquipmentProfile[] = await response.json();
-        setEquipmentProfiles(profiles);
-      } catch (error) {
-        console.error("Failed to load equipment profiles:", error);
-        setModalError("Unable to load equipment profiles.");
-      }
-    };
-
-    loadEquipmentProfiles();
-  }, [showModal]);
+    dispatch(equipmentProfileActions.getEquipmentProfiles());
+  }, [dispatch, showModal]);
 
   const equipmentUsage = machines.reduce<Record<number, number>>(
     (usage, machine) => {
@@ -100,6 +90,39 @@ const AddMachineModal = () => {
   const otherEquipmentProfiles = filteredEquipmentProfiles.filter(
     (profile) => (equipmentUsage[profile.id] || 0) === 0,
   );
+
+  const handleAddEquipmentModel = async () => {
+    if (!newManufacturer.trim() || !newModel.trim() || !newCategory.trim()) {
+      setModalError("Manufacturer, model, and category are required.");
+      return;
+    }
+
+    try {
+      setModalError(null);
+
+      const profile = await dispatch(
+        equipmentProfileActions.createEquipmentProfile({
+          manufacturer: newManufacturer.trim(),
+          model: newModel.trim(),
+          category: newCategory.trim(),
+        }),
+      );
+
+      if (!profile) return;
+
+      setEquipmentProfileId(String(profile.id));
+      setSelectedEquipmentProfile(profile);
+      setEquipmentSearch(`${profile.manufacturer} ${profile.model}`);
+
+      setNewManufacturer("");
+      setNewModel("");
+      setNewCategory("");
+      setShowAddModel(false);
+    } catch (error) {
+      console.error("Failed to create equipment profile:", error);
+      setModalError("Unable to add the new equipment model.");
+    }
+  };
 
   const handleSubmit = async () => {
     if (!equipmentProfileId) {
@@ -258,6 +281,16 @@ const AddMachineModal = () => {
                 {filteredEquipmentProfiles.length === 0 && (
                   <div className="equipment-no-results">No equipment found</div>
                 )}
+                <button
+                  type="button"
+                  className="equipment-option equipment-add-model"
+                  onClick={() => {
+                    setShowAddModel(true);
+                    setShowEquipmentOptions(false);
+                  }}
+                >
+                  + Add New Model
+                </button>
               </div>
             )}
 
@@ -276,6 +309,50 @@ const AddMachineModal = () => {
               </div>
             )}
           </div>
+
+          {showAddModel && (
+            <div className="add-equipment-model">
+              <input
+                className="modal-input"
+                type="text"
+                placeholder="Manufacturer"
+                value={newManufacturer}
+                onChange={(e) => setNewManufacturer(e.target.value)}
+              />
+
+              <input
+                className="modal-input"
+                type="text"
+                placeholder="Model"
+                value={newModel}
+                onChange={(e) => setNewModel(e.target.value)}
+              />
+
+              <input
+                className="modal-input"
+                type="text"
+                placeholder="Category"
+                value={newCategory}
+                onChange={(e) => setNewCategory(e.target.value)}
+              />
+
+              <button
+                type="button"
+                className="equipment-add-model-btn"
+                onClick={handleAddEquipmentModel}
+              >
+                Add Model
+              </button>
+
+              <button
+                type="button"
+                className="equipment-cancel-model-btn"
+                onClick={() => setShowAddModel(false)}
+              >
+                Cancel
+              </button>
+            </div>
+          )}
 
           <input
             className="modal-input"

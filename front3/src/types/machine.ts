@@ -1,5 +1,7 @@
 // front3/src/types/machine.ts
 
+import type { EquipmentProfile } from "./equipmentProfiles";
+
 export interface MachineImage {
   id: number;
   url: string;
@@ -16,6 +18,9 @@ export interface Machine {
   hours_used?: number | null;
   created_at: string;
   status: "listed" | "sold" | "delivered";
+
+  equipment_profile_id?: number | null;
+  equipment_profile?: EquipmentProfile | null;
 
   slug?: string | null;
 

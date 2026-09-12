@@ -12,6 +12,9 @@ export { default as imageReducer } from "./images";
 export * as machineActions from "./machines";
 export { default as machineReducer } from "./machines";
 
+export * as equipmentProfileActions from "./equipmentProfiles";
+export { default as equipmentProfilesReducer } from "./equipmentProfiles";
+
 export * as sessionActions from "./session";
 export { default as sessionReducer } from "./session";
 
