@@ -128,40 +128,89 @@ const MachineDetailsPage = () => {
         </p>
       )}
 
-      {machine.best_for && (
-        <p>
-          <strong>Best For:</strong> {machine.best_for}
-        </p>
-      )}
+      {machine.equipment_profile && (
+        <>
+          <h2>About This Model</h2>
 
-      {machine.not_for && (
-        <p>
-          <strong>Not Ideal For:</strong> {machine.not_for}
-        </p>
-      )}
+          <p>
+            <strong>Manufacturer:</strong>{" "}
+            {machine.equipment_profile.manufacturer}
+          </p>
 
-      {machine.key_benefits && (
-        <p>
-          <strong>Key Benefits:</strong> {machine.key_benefits}
-        </p>
-      )}
+          <p>
+            <strong>Model:</strong> {machine.equipment_profile.model}
+          </p>
 
-      {machine.common_uses && (
-        <p>
-          <strong>Common Uses:</strong> {machine.common_uses}
-        </p>
-      )}
+          <p>
+            <strong>Category:</strong> {machine.equipment_profile.category}
+          </p>
 
-      {machine.faq && (
-        <p>
-          <strong>FAQ:</strong> {machine.faq}
-        </p>
-      )}
+          {machine.equipment_profile.description && (
+            <p>
+              <strong>About:</strong> {machine.equipment_profile.description}
+            </p>
+          )}
 
-      {machine.comparison_notes && (
-        <p>
-          <strong>Comparison:</strong> {machine.comparison_notes}
-        </p>
+          {machine.equipment_profile.best_for && (
+            <p>
+              <strong>Best For:</strong> {machine.equipment_profile.best_for}
+            </p>
+          )}
+
+          {machine.equipment_profile.not_for && (
+            <p>
+              <strong>Not Ideal For:</strong>{" "}
+              {machine.equipment_profile.not_for}
+            </p>
+          )}
+
+          {machine.equipment_profile.key_benefits && (
+            <p>
+              <strong>Key Benefits:</strong>{" "}
+              {machine.equipment_profile.key_benefits}
+            </p>
+          )}
+
+          {machine.equipment_profile.common_uses && (
+            <p>
+              <strong>Common Uses:</strong>{" "}
+              {machine.equipment_profile.common_uses}
+            </p>
+          )}
+
+          {machine.equipment_profile.specifications && (
+            <p>
+              <strong>Specifications:</strong>{" "}
+              {machine.equipment_profile.specifications}
+            </p>
+          )}
+
+          {machine.equipment_profile.faq && (
+            <p>
+              <strong>FAQ:</strong> {machine.equipment_profile.faq}
+            </p>
+          )}
+
+          {machine.equipment_profile.comparison_notes && (
+            <p>
+              <strong>Comparison:</strong>{" "}
+              {machine.equipment_profile.comparison_notes}
+            </p>
+          )}
+
+          {machine.equipment_profile.manufacturer_url && (
+            <p>
+              <strong>Manufacturer:</strong>{" "}
+              <a
+                href={machine.equipment_profile.manufacturer_url}
+                target="_blank"
+                rel="noreferrer"
+              >
+                View Manufacturer Information
+              </a>
+            </p>
+          )}
+        </>
       )}
 
       {images.length ? (
