@@ -23,3 +23,6 @@ export { default as testimonialReducer } from "./testimonials";
 
 export * as customerActions from "./customers";
 export { default as customersReducer } from "./customers";
+
+export * as salesActions from "./sales";
+export { default as salesReducer } from "./sales";

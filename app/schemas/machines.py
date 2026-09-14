@@ -19,6 +19,9 @@ class MachineBase(BaseModel):
     hours_used: Optional[Decimal] = None
 
     equipment_profile_id: Optional[int] = None
+    
+    status: Optional[Literal["listed", "sold", "delivered"]] = None
+    sale_price: Optional[float] = None
 
     has_warranty: Optional[bool] = None
     warranty_duration: Optional[int] = None

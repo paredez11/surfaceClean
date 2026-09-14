@@ -2,17 +2,9 @@
 
 import { csrfFetch } from './csrf';
 import { setLoading } from './session';
+import type { FAQ } from '../types';
 
 /******************************* TYPES *******************************************/
-
-export interface FAQ {
-  id: number;
-  question: string;
-  answer: string;
-  scheduled_post_date: string;
-  created_at: string;
-  updated_at: string;
-}
 
 interface FAQState {
   all: Record<number, FAQ>;

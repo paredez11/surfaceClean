@@ -6,17 +6,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { machineActions } from "../../redux";
 import { Machine } from "../../types";
+import type { Image } from "../../types";
 import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
 import EditMachineModal from "../EditMachineModal/EditMachineModal";
 import MarkSoldModal from "../MarkSoldModal/MarkSoldModal";
 import "./MachineCard.css";
-
-interface Image {
-  id: number;
-  url: string;
-  description?: string;
-  machine_id: number;
-}
 
 interface MachineCardProps {
   machine: Machine;
@@ -32,7 +26,7 @@ const MachineCard = ({ machine }: MachineCardProps) => {
   const [name, setName] = useState(machine.name);
   const [price, setPrice] = useState(machine.price);
   const [condition, setCondition] = useState(machine.condition);
-  const [hoursUsed, setHoursUsed] = useState(machine.hours_used);
+  const [hoursUsed, setHoursUsed] = useState(machine.hours_used ?? 0);
   const [showConfirm, setShowConfirm] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
   const [showMarkSold, setShowMarkSold] = useState(false);
@@ -42,7 +36,7 @@ const MachineCard = ({ machine }: MachineCardProps) => {
       setName(updatedMachine.name);
       setPrice(updatedMachine.price);
       setCondition(updatedMachine.condition);
-      setHoursUsed(updatedMachine.hours_used);
+      setHoursUsed(updatedMachine.hours_used ?? 0);
     }
   }, [updatedMachine]);
 
@@ -93,7 +87,9 @@ const MachineCard = ({ machine }: MachineCardProps) => {
           </p>
 
           <p className="machine-hours">
-            Hours Used: {parseInt(hoursUsed.toString(), 10)} hrs
+            <p className="machine-hours">
+              Hours Used: {parseInt((hoursUsed ?? 0).toString(), 10)} hrs
+            </p>
           </p>
         </div>
       </NavLink>

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import * as machineActions from "../../redux/machines";
+import * as salesActions from "../../redux/sales";
 import BaseModal from "../BaseModal/BaseModal";
 import "../BaseModal/BaseModal";
 
@@ -21,6 +21,8 @@ export default function MarkSoldModal({
 }: Props) {
   const dispatch = useDispatch<any>();
   const [salePrice, setSalePrice] = useState(String(askingPrice));
+  const [customerId, setCustomerId] = useState<number | null>(null);
+  const [notes, setNotes] = useState("");
 
   useEffect(() => {
     setSalePrice(String(askingPrice));
@@ -29,14 +31,22 @@ export default function MarkSoldModal({
   const handleSave = async () => {
     const parsedSalePrice = Number(salePrice);
 
-    if (!Number.isFinite(parsedSalePrice) || parsedSalePrice < 0) {
+    if (
+      !customerId ||
+      !Number.isFinite(parsedSalePrice) ||
+      parsedSalePrice < 0
+    ) {
       return;
     }
 
     await dispatch(
-      machineActions.editMachine(machineId, {
-        status: "sold",
+      salesActions.createSale({
+        customer_id: customerId,
+        machine_id: machineId,
+        asking_price: askingPrice,
         sale_price: parsedSalePrice,
+        status: "sold",
+        notes: notes || null,
       }),
     );
 

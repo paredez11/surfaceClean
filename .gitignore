@@ -8,7 +8,9 @@ __pycache__/
 *.db
 BROWSER_TESTS.MD
 BACKEND_COMMANDS.MD
-NOTES.MD
+ROADMAP.MD
+SPRINT.MD
+BACKLOG.MD
 docker-compose.yml
 
 # Python / FastAPI backend

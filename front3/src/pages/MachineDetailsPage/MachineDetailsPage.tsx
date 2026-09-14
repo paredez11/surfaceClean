@@ -277,6 +277,14 @@ const MachineDetailsPage = () => {
         />
       )}
 
+      {user && showEdit && (
+        <EditMachineModal
+          machine={machine}
+          open={showEdit}
+          onClose={() => setShowEdit(false)}
+        />
+      )}
+
       <button className="btn-edit" onClick={() => setShowEdit(true)}>
         Edit Machine
       </button>

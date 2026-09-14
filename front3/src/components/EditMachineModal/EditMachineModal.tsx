@@ -1,26 +1,9 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import * as machineActions from "../../redux/machines";
+import type { Machine } from "../../types";
 import BaseModal from "../BaseModal/BaseModal";
 import "../BaseModal/BaseModal.css";
-
-interface Machine {
-  id: number;
-  name: string;
-  price: number;
-  condition: string;
-  description: string;
-  hours_used: number;
-  seo_title?: string;
-  seo_description?: string;
-  best_for?: string;
-  not_for?: string;
-  key_benefits?: string;
-  common_uses?: string;
-  faq?: string;
-  comparison_notes?: string;
-  slug?: string;
-}
 
 interface Props {
   machine: Machine;
@@ -35,7 +18,9 @@ export default function EditMachineModal({ machine, open, onClose }: Props) {
   const [name, setName] = useState(machine.name);
   const [price, setPrice] = useState(String(machine.price));
   const [condition, setCondition] = useState(machine.condition);
-  const [description, setDescription] = useState(machine.description);
+  const [description, setDescription] = useState<string>(
+    machine.description ?? "",
+  );
   const [hoursUsed, setHoursUsed] = useState(
     machine.hours_used !== null && machine.hours_used !== undefined
       ? String(machine.hours_used)
@@ -60,7 +45,7 @@ export default function EditMachineModal({ machine, open, onClose }: Props) {
     setName(machine.name);
     setPrice(String(machine.price));
     setCondition(machine.condition);
-    setDescription(machine.description);
+    setDescription(machine.description ?? "");
     setHoursUsed(
       machine.hours_used !== null && machine.hours_used !== undefined
         ? String(machine.hours_used)

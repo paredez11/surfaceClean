@@ -1,24 +1,21 @@
-/******************************* TYPES *******************************************/
+// front3/src/redux/images.ts
 
-export interface Image {
-  id: number;
-  url: string;
-  description: string;
-  machine_id: number;
-  created_at?: string;
-  updated_at?: string;
-}
+import type { Image } from "../types";
+import { csrfFetch } from "./csrf";
+import { setLoading } from "./session";
+
+/******************************* ACTION TYPES *******************************************/
+
+const LOAD_IMAGES = "images/loadImages";
+const ADD_IMAGE = "images/addImage";
+const UPDATE_IMAGE = "images/updateImage";
+const DELETE_IMAGE = "images/deleteImage";
+
+/******************************* TYPES *******************************************/
 
 export interface ImagesState {
   images: Record<number, Image>;
 }
-
-/******************************* ACTION TYPES *******************************************/
-
-const LOAD_IMAGES = 'images/loadImages';
-const ADD_IMAGE = 'images/addImage';
-const UPDATE_IMAGE = 'images/updateImage';
-const DELETE_IMAGE = 'images/deleteImage';
 
 interface LoadImagesAction {
   type: typeof LOAD_IMAGES;
@@ -68,61 +65,79 @@ export const deleteImage = (imageId: number): DeleteImageAction => ({
   payload: imageId,
 });
 
-/******************************* THUNK ACTIONS *******************************************/
+/******************************* THUNKS *******************************************/
 
-import { csrfFetch } from './csrf';
-import { setLoading } from './session';
-
+// Get all images
 export const getAllImages = () => async (dispatch: any) => {
   try {
-    const res = await csrfFetch('/api/images/');
+    const res = await csrfFetch("/api/images/");
     const data = await res.json();
+
     dispatch(loadImages(data.images));
-  } catch (e) {
-    console.error('Error loading images:', e);
+  } catch (err) {
+    console.error("Failed to fetch images:", err);
   } finally {
     dispatch(setLoading(false));
   }
 };
 
-export const createImage = (form: FormData) => async (dispatch: any) => {
-  const res = await csrfFetch("/api/images/", {
-    method: "POST",
-    body: form,           // must be FormData with: file, description, machine_id
-    credentials: "include"
-  });
-  if (!res.ok) throw new Error("Image upload failed");
-  const data = await res.json();
-  dispatch(addImage(data));
-  return data;
-};
-
-
-export const editImage = (imageId: number, payload: Partial<Image>) => async (dispatch: any) => {
-  try {
-    const res = await csrfFetch(`/api/images/${imageId}`, {
-      method: 'PATCH',
-      body: JSON.stringify(payload),
+// Create image
+export const createImage =
+  (form: FormData) => async (dispatch: any) => {
+    const res = await csrfFetch("/api/images/", {
+      method: "POST",
+      body: form,
+      credentials: "include",
     });
-    const data = await res.json();
-    dispatch(updateImage(data));
-  } catch (e) {
-    console.error('Error updating image:', e);
-  }
-};
 
-export const removeImage = (imageId: number) => async (dispatch: any) => {
-  try {
-    await csrfFetch(`/api/images/${imageId}`, {
-      method: 'DELETE',
-    });
-    dispatch(deleteImage(imageId));
-  } catch (e) {
-    console.error('Error deleting image:', e);
-  }
-};
+    if (!res.ok) {
+      throw new Error("Image upload failed");
+    }
 
-/******************************* INITIAL STATE AND REDUCER *******************************************/
+    const newImage = await res.json();
+
+    dispatch(addImage(newImage));
+
+    return newImage;
+  };
+
+// Update image
+export const editImage =
+  (imageId: number, updates: Partial<Image>) =>
+  async (dispatch: any) => {
+    try {
+      const res = await csrfFetch(`/api/images/${imageId}`, {
+        method: "PATCH",
+        body: JSON.stringify(updates),
+      });
+
+      const data = await res.json();
+
+      dispatch(updateImage(data));
+
+      return data;
+    } catch (err) {
+      console.error("Failed to update image:", err);
+    }
+  };
+
+// Delete image
+export const removeImage =
+  (imageId: number) => async (dispatch: any) => {
+    try {
+      const res = await csrfFetch(`/api/images/${imageId}`, {
+        method: "DELETE",
+      });
+
+      if (res.ok) {
+        dispatch(deleteImage(imageId));
+      }
+    } catch (err) {
+      console.error("Failed to delete image:", err);
+    }
+  };
+
+/******************************* REDUCER *******************************************/
 
 const initialState: ImagesState = {
   images: {},
@@ -130,14 +145,22 @@ const initialState: ImagesState = {
 
 export default function imagesReducer(
   state = initialState,
-  action: ImageActionTypes
+  action: ImageActionTypes,
 ): ImagesState {
   switch (action.type) {
     case LOAD_IMAGES: {
       const newImages: Record<number, Image> = {};
-      action.payload.forEach((img) => (newImages[img.id] = img));
-      return { ...state, images: newImages };
+
+      action.payload.forEach((image) => {
+        newImages[image.id] = image;
+      });
+
+      return {
+        ...state,
+        images: newImages,
+      };
     }
+
     case ADD_IMAGE:
     case UPDATE_IMAGE:
       return {
@@ -147,11 +170,18 @@ export default function imagesReducer(
           [action.payload.id]: action.payload,
         },
       };
+
     case DELETE_IMAGE: {
-      const newState = { ...state.images };
-      delete newState[action.payload];
-      return { ...state, images: newState };
+      const newImages = { ...state.images };
+
+      delete newImages[action.payload];
+
+      return {
+        ...state,
+        images: newImages,
+      };
     }
+
     default:
       return state;
   }

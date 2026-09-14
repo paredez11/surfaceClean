@@ -1,24 +1,7 @@
 // src/redux/customers.ts
 
 import { csrfFetch } from "./csrf";
-
-export interface Customer {
-  id: number;
-  customer_type: string;
-  first_name: string | null;
-  last_name: string | null;
-  business_name: string | null;
-  email: string | null;
-  phone: string | null;
-  address_line_1: string | null;
-  address_line_2: string | null;
-  city: string | null;
-  state: string | null;
-  postal_code: string | null;
-  notes: string | null;
-  created_at: string;
-  updated_at: string;
-}
+import type { Customer } from "../types/customer";
 
 interface CustomersState {
   all: Record<number, Customer>;

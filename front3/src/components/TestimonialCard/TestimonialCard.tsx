@@ -4,17 +4,9 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import * as testimonialActions from "../../redux/testimonials";
+import type { Testimonial } from "../../types";
 import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
 import "./TestimonialCard.css";
-
-interface Testimonial {
-  id: number;
-  author_name: string;
-  stars: number;
-  notables?: string;
-  content: string;
-  created_at: string;
-}
 
 interface TestimonialCardProps {
   testimonial: Testimonial;

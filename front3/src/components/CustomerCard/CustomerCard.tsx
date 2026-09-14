@@ -1,7 +1,7 @@
 // front3/src/components/CustomerCard/CustomerCard.tsx
 
 import { NavLink } from "react-router-dom";
-import { Customer } from "../../redux/customers";
+import type { Customer } from "../../types/customer";
 import "./CustomerCard.css";
 
 interface CustomerCardProps {

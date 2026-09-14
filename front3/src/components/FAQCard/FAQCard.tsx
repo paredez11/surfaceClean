@@ -4,15 +4,9 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { faqActions } from "../../redux";
+import type { FAQ } from "../../types";
 import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
 import "./FAQCard.css";
-
-interface FAQ {
-  id: number;
-  question: string;
-  answer: string;
-  created_at: string;
-}
 
 interface FAQCardProps {
   faq: FAQ;

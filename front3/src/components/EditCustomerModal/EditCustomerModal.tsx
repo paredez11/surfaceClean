@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 
 import BaseModal from "../BaseModal/BaseModal";
-import type { Customer } from "../../redux/customers";
+import type { Customer } from "../../types/customer";
 import * as customerActions from "../../redux/customers";
 
 interface EditCustomerModalProps {

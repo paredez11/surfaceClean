@@ -5,7 +5,7 @@ const AboutPage = () => {
     <div className="about-container">
       <h1>About Surface Clean</h1>
       <p>
-        Hi, I’m Dave—husband, mountain biker, Navy veteran, and follower of Christ. I’m also the founder of Surface Clean, 
+        Hi, I’m Dave - husband, mountain biker, Navy veteran, and follower of Christ. I’m also the founder of Surface Clean, 
         where I specialize in refurbishing and selling Tennant cleaning machines and other industrial floor cleaning equipment.
       </p>
       <p>

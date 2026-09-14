@@ -6,60 +6,13 @@ import { NavLink, useParams, useNavigate } from "react-router-dom";
 
 import { customerActions } from "../../redux";
 import type { RootState } from "../../redux/store";
+import type { Machine, Sale, Warranty, ServiceRecord } from "../../types";
 import { csrfFetch } from "../../redux/csrf";
 
 import EditCustomerModal from "../../components/EditCustomerModal/EditCustomerModal";
 import ConfirmationModal from "../../components/ConfirmationModal/ConfirmationModal";
 
 import "./CustomerDetailsPage.css";
-
-interface Sale {
-  id: number;
-  customer_id: number;
-  machine_id: number;
-  asking_price: number | null;
-  sale_price: number;
-  status: string;
-  sold_at: string;
-  delivered_at: string | null;
-  notes: string | null;
-}
-
-interface Warranty {
-  id: number;
-  sale_id: number;
-  start_date: string;
-  end_date: string;
-  duration: number;
-  duration_unit: string;
-  status: string;
-  coverage_terms: string | null;
-  exclusions: string | null;
-  notes: string | null;
-}
-
-interface ServiceRecord {
-  id: number;
-  machine_id: number;
-  sale_id: number | null;
-  warranty_id: number | null;
-  service_type: string;
-  reported_issue: string | null;
-  diagnosis: string | null;
-  work_performed: string | null;
-  service_date: string;
-  covered_by_warranty: boolean;
-  labor_cost: number | null;
-  parts_cost: number | null;
-  total_cost: number | null;
-  technician: string | null;
-  notes: string | null;
-}
-
-interface Machine {
-  id: number;
-  name: string;
-}
 
 const CustomerDetailsPage = () => {
   const dispatch = useDispatch<any>();

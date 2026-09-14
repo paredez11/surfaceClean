@@ -1,6 +1,7 @@
 // front3/src/types/machine.ts
 
 import type { EquipmentProfile } from "./equipmentProfiles";
+import type { Image } from "./image";
 
 export interface MachineImage {
   id: number;
@@ -38,5 +39,5 @@ export interface Machine {
   faq?: string | null;
   comparison_notes?: string | null;
 
-  images?: MachineImage[];
+  images?: Image[];
 }

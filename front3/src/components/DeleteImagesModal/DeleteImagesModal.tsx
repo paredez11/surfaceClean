@@ -3,14 +3,8 @@ import BaseModal from "../BaseModal/BaseModal";
 import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
 import { useDispatch } from "react-redux";
 import * as imagesActions from "../../redux/images";
+import type { Image } from "../../types";
 import "./DeleteImagesModal.css";
-
-interface Image {
-  id: number;
-  url: string;
-  description?: string;
-  machine_id: number;
-}
 
 interface Props {
   open: boolean;
