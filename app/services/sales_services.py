@@ -5,6 +5,7 @@ from typing import Optional
 
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
+from sqlalchemy.orm import selectinload
 
 from models.machines import Machine
 from models.sales import Sale
@@ -44,7 +45,15 @@ async def get_all_sales(
     db: AsyncSession
 ) -> list[Sale]:
     result = await db.execute(
-        select(Sale).order_by(Sale.sold_at.desc())
+        select(Sale)
+        .options(
+            selectinload(Sale.customer),
+            selectinload(Sale.machine)
+            .selectinload(Machine.equipment_profile),
+            selectinload(Sale.machine)
+            .selectinload(Machine.images),
+        )
+        .order_by(Sale.sold_at.desc())
     )
 
     return list(result.scalars().all())
@@ -55,7 +64,15 @@ async def get_sale(
     sale_id: int
 ) -> Optional[Sale]:
     result = await db.execute(
-        select(Sale).where(Sale.id == sale_id)
+        select(Sale)
+        .options(
+            selectinload(Sale.customer),
+            selectinload(Sale.machine)
+            .selectinload(Machine.equipment_profile),
+            selectinload(Sale.machine)
+            .selectinload(Machine.images),
+        )
+        .where(Sale.id == sale_id)
     )
 
     return result.scalar_one_or_none()

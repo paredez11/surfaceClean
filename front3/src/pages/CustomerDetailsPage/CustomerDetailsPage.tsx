@@ -6,8 +6,6 @@ import { NavLink, useParams, useNavigate } from "react-router-dom";
 
 import { customerActions } from "../../redux";
 import type { RootState } from "../../redux/store";
-import type { Machine, Sale, Warranty, ServiceRecord } from "../../types";
-import { csrfFetch } from "../../redux/csrf";
 
 import EditCustomerModal from "../../components/EditCustomerModal/EditCustomerModal";
 import ConfirmationModal from "../../components/ConfirmationModal/ConfirmationModal";
@@ -22,11 +20,6 @@ const CustomerDetailsPage = () => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [deleteError, setDeleteError] = useState<string | null>(null);
 
-  const [sales, setSales] = useState<Sale[]>([]);
-  const [warranties, setWarranties] = useState<Warranty[]>([]);
-  const [serviceRecords, setServiceRecords] = useState<ServiceRecord[]>([]);
-  const [machines, setMachines] = useState<Record<number, Machine>>({});
-
   const { customerId } = useParams();
 
   const customer = useSelector((state: RootState) => state.customers.single);
@@ -36,67 +29,6 @@ const CustomerDetailsPage = () => {
       dispatch(customerActions.getCustomerDetails(customerId));
     }
   }, [dispatch, customerId]);
-
-  useEffect(() => {
-    if (!customerId) return;
-
-    const loadCustomerHistory = async () => {
-      try {
-        const [salesRes, warrantiesRes, serviceRecordsRes] = await Promise.all([
-          csrfFetch("/api/sales/"),
-          csrfFetch("/api/warranties/"),
-          csrfFetch("/api/service_records/"),
-        ]);
-
-        const allSales: Sale[] = await salesRes.json();
-        const allWarranties: Warranty[] = await warrantiesRes.json();
-        const allServiceRecords: ServiceRecord[] =
-          await serviceRecordsRes.json();
-
-        const customerSales = allSales.filter(
-          (sale) => sale.customer_id === Number(customerId),
-        );
-
-        const customerSaleIds = new Set(customerSales.map((sale) => sale.id));
-
-        const customerWarranties = allWarranties.filter((warranty) =>
-          customerSaleIds.has(warranty.sale_id),
-        );
-
-        const customerServiceRecords = allServiceRecords.filter(
-          (record) =>
-            record.sale_id !== null && customerSaleIds.has(record.sale_id),
-        );
-
-        setSales(customerSales);
-        setWarranties(customerWarranties);
-        setServiceRecords(customerServiceRecords);
-
-        const machineIds = [
-          ...new Set(customerSales.map((sale) => sale.machine_id)),
-        ];
-
-        const machineResults = await Promise.all(
-          machineIds.map(async (machineId) => {
-            const res = await csrfFetch(`/api/machines/${machineId}`);
-            return (await res.json()) as Machine;
-          }),
-        );
-
-        const machineMap: Record<number, Machine> = {};
-
-        machineResults.forEach((machine) => {
-          machineMap[machine.id] = machine;
-        });
-
-        setMachines(machineMap);
-      } catch (err) {
-        console.error("Failed to load customer history:", err);
-      }
-    };
-
-    loadCustomerHistory();
-  }, [customerId]);
 
   if (!customer) {
     return (
@@ -225,21 +157,17 @@ const CustomerDetailsPage = () => {
         )}
       </section>
 
-      {sales.length > 0 && (
+      {customer.sales.length > 0 && (
         <section className="customer-history-section">
           <h2>Purchase History</h2>
 
           <div className="customer-history-list">
-            {sales.map((sale) => {
-              const machine = machines[sale.machine_id];
+            {customer.sales.map((sale) => {
+              const machine = sale.machine;
 
               return (
                 <div key={sale.id} className="customer-history-item">
-                  <h3>
-                    {machine
-                      ? `${machine.name}`
-                      : `Machine #${sale.machine_id}`}
-                  </h3>
+                  <h3>{machine.name}</h3>
 
                   <p>
                     <strong>Sale Price:</strong>{" "}
@@ -267,19 +195,19 @@ const CustomerDetailsPage = () => {
         </section>
       )}
 
-      {warranties.length > 0 && (
+      {customer.sales.some((sale) => sale.warranty !== null) && (
         <section className="customer-history-section">
           <h2>Warranty</h2>
 
           <div className="customer-history-list">
-            {warranties.map((warranty) => {
-              const sale = sales.find((sale) => sale.id === warranty.sale_id);
+            {customer.sales.map((sale) => {
+              const warranty = sale.warranty;
 
-              const machine = sale ? machines[sale.machine_id] : null;
+              if (!warranty) return null;
 
               return (
                 <div key={warranty.id} className="customer-history-item">
-                  {machine && <h3>{machine.name}</h3>}
+                  <h3>{sale.machine.name}</h3>
 
                   <p>
                     <strong>Status:</strong> {warranty.status}
@@ -310,21 +238,15 @@ const CustomerDetailsPage = () => {
         </section>
       )}
 
-      {serviceRecords.length > 0 && (
+      {customer.sales.some((sale) => sale.service_records.length > 0) && (
         <section className="customer-history-section">
           <h2>Service History</h2>
 
           <div className="customer-history-list">
-            {serviceRecords.map((record) => {
-              const machine = machines[record.machine_id];
-
-              return (
+            {customer.sales.flatMap((sale) =>
+              sale.service_records.map((record) => (
                 <div key={record.id} className="customer-history-item">
-                  <h3>
-                    {machine
-                      ? `${machine.name}`
-                      : `Machine #${record.machine_id}`}
-                  </h3>
+                  <h3>{sale.machine.name}</h3>
 
                   <p>
                     <strong>Service Date:</strong>{" "}
@@ -359,8 +281,8 @@ const CustomerDetailsPage = () => {
                     </p>
                   )}
                 </div>
-              );
-            })}
+              )),
+            )}
           </div>
         </section>
       )}

@@ -4,8 +4,8 @@ import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
-import { machineActions } from "../../redux";
-import { Machine } from "../../types";
+import { machineActions, salesActions } from "../../redux";
+import { Machine, Sale } from "../../types";
 import type { Image } from "../../types";
 import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
 import EditMachineModal from "../EditMachineModal/EditMachineModal";
@@ -21,6 +21,9 @@ const MachineCard = ({ machine }: MachineCardProps) => {
   const user = useSelector((state: RootState) => state.session.user);
   const updatedMachine = useSelector(
     (state: RootState) => state.machines.all[machine.id],
+  );
+  const sales = useSelector((state: RootState) =>
+    Object.values(state.sales.all),
   );
 
   const [name, setName] = useState(machine.name);
@@ -44,12 +47,23 @@ const MachineCard = ({ machine }: MachineCardProps) => {
 
   const handleDelete = () => setShowConfirm(true);
 
+  const activeSale = sales.find(
+    (sale) => sale.machine_id === machine.id && sale.status === "sold",
+  );
+
   const handleMarkDelivered = async () => {
+    if (!activeSale) {
+      console.error("No active sale found for machine:", machine.id);
+      return;
+    }
+
     await dispatch(
-      machineActions.editMachine(machine.id, {
+      salesActions.editSale(activeSale.id, {
         status: "delivered",
       }),
     );
+
+    await dispatch(machineActions.getMachines());
   };
 
   const confirmDelete = () => {

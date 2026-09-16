@@ -23,6 +23,7 @@ function AdminHomePage() {
     { path: "/customers", label: "👥 Manage Customers"},
     { path: "/testimonials", label: "⭐ Manage Testimonials" },
     { path: "/faqs", label: "❓ Manage FAQs" },
+    { path: "/sales", label: "💵 Sales Archives" },
   ];
 
   return (

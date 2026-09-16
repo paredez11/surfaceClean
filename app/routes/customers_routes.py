@@ -3,12 +3,14 @@
 from fastapi import APIRouter, Depends, HTTPException, Path, Body, Request
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
+from sqlalchemy.orm import selectinload
 from utils.db import get_async_db
 from .auth_routes import get_current_user
 from utils.csrf import verify_csrf
 from models.customer import Customer
 from models.sales import Sale
-from schemas.customers import CustomerCreate, CustomerUpdate, CustomerResponse
+from models.machines import Machine
+from schemas.customers import CustomerCreate, CustomerUpdate, CustomerResponse, CustomerDetailResponse
 from typing import List
 
 
@@ -19,19 +21,32 @@ router = APIRouter()
 async def get_customers(
     db: AsyncSession = Depends(get_async_db),
     user=Depends(get_current_user)
-):    
+):
     result = await db.execute(select(Customer))
     return result.scalars().all()
 
 
-@router.get("/{customer_id}", response_model=CustomerResponse)
+@router.get("/{customer_id}", response_model=CustomerDetailResponse)
 async def get_customer(
     customer_id: int = Path(..., gt=0),
     db: AsyncSession = Depends(get_async_db),
     user=Depends(get_current_user)
 ):
     result = await db.execute(
-        select(Customer).where(Customer.id == customer_id)
+        select(Customer)
+        .options(
+            selectinload(Customer.sales)
+            .selectinload(Sale.machine)
+            .selectinload(Machine.equipment_profile),
+
+            selectinload(Customer.sales)
+            .selectinload(Sale.machine)
+            .selectinload(Machine.images),
+
+            selectinload(Customer.sales).selectinload(Sale.warranty),
+            selectinload(Customer.sales).selectinload(Sale.service_records),
+        )
+        .where(Customer.id == customer_id)
     )
     customer = result.scalar_one_or_none()
 

@@ -1,5 +1,8 @@
 // front3/src/types/sale.ts
 
+import type { Customer } from "./customer";
+import type { Machine } from "./machine";
+
 export interface Sale {
   id: number;
   customer_id: number;
@@ -12,4 +15,9 @@ export interface Sale {
   notes: string | null;
   created_at: string;
   updated_at: string;
+}
+
+export interface SaleDetail extends Sale {
+  customer: Customer;
+  machine: Machine;
 }

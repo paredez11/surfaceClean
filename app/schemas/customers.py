@@ -1,9 +1,10 @@
 # app/schemas/customers.py
 
 from datetime import datetime
-
-from pydantic import BaseModel, ConfigDict
-
+from pydantic import BaseModel, ConfigDict, Field
+from schemas.machines import MachineResponse
+from schemas.service_records import ServiceRecordResponse
+from schemas.warranties import WarrantyResponse
 
 class CustomerBase(BaseModel):
     customer_type: str = "business"
@@ -51,5 +52,33 @@ class CustomerResponse(CustomerBase):
     id: int
     created_at: datetime
     updated_at: datetime
+
+    model_config = ConfigDict(from_attributes=True)
+    
+class CustomerSaleDetail(BaseModel):
+    id: int
+    customer_id: int
+    machine_id: int
+
+    asking_price: float | None = None
+    sale_price: float
+    status: str
+
+    sold_at: datetime | None = None
+    delivered_at: datetime | None = None
+    notes: str | None = None
+
+    created_at: datetime
+    updated_at: datetime
+
+    machine: MachineResponse
+    warranty: WarrantyResponse | None = None
+    service_records: list[ServiceRecordResponse] = Field(default_factory=list)
+
+    model_config = ConfigDict(from_attributes=True)
+
+
+class CustomerDetailResponse(CustomerResponse):
+    sales: list[CustomerSaleDetail] = Field(default_factory=list)
 
     model_config = ConfigDict(from_attributes=True)

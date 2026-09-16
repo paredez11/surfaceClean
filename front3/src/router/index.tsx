@@ -2,7 +2,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Layout from "./Layout";
 import MachinesPage from "../pages/Machines/MachinesPage";
-import MachineDetailsPage from "../pages/MachineDetailsPage";
+import MachineDetailsPage from "../pages/MachineDetailsPage/MachineDetailsPage";
 import HomePage from "../pages/Home/HomePage";
 import FaqsPage from "../pages/Faqs/FaqsPage";
 import TestimonialsPage from "../pages/Testimonials/TestimonialsPage";
@@ -12,6 +12,8 @@ import CustomersPage from "../pages/CustomersPage";
 import AdminHomePage from "../pages/AdminHomePage/AdminHomePage";
 import ProtectedRoute from "../components/ProtectedRoute";
 import CustomerDetailsPage from "../pages/CustomerDetailsPage/CustomerDetailsPage";
+import SalesArchivesPage from "../pages/SalesArchivesPage";
+import SaleDetailsPage from "../pages/SaleDetailsPage";
 
 export const router = createBrowserRouter([
   {
@@ -62,6 +64,22 @@ export const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <CustomerDetailsPage />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/sales",
+        element: (
+          <ProtectedRoute>
+            <SalesArchivesPage />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/sales/:saleId",
+        element: (
+          <ProtectedRoute>
+            <SaleDetailsPage />
           </ProtectedRoute>
         ),
       },

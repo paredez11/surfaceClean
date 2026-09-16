@@ -1,11 +1,11 @@
 // src/redux/customers.ts
 
 import { csrfFetch } from "./csrf";
-import type { Customer } from "../types/customer";
+import type { Customer, CustomerDetail } from "../types/customer";
 
 interface CustomersState {
   all: Record<number, Customer>;
-  single: Customer | null;
+  single: CustomerDetail | null;
   loading: boolean;
 }
 
@@ -21,7 +21,7 @@ const loadCustomers = (customers: Customer[]) => ({
   payload: customers,
 });
 
-const loadCustomer = (customer: Customer) => ({
+const loadCustomer = (customer: CustomerDetail) => ({
   type: LOAD_CUSTOMER,
   payload: customer,
 });

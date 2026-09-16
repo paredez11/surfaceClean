@@ -4,11 +4,24 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 
 import * as customerActions from "../../redux/customers";
+import type { Customer } from "../../types/customer";
+
 import BaseModal from "../BaseModal/BaseModal";
 import "../BaseModal/BaseModal.css";
 
-const AddCustomerModal = () => {
+interface AddCustomerModalProps {
+  open?: boolean;
+  onClose?: () => void;
+  onCreated?: (customer: Customer) => void;
+}
+
+const AddCustomerModal = ({
+  open,
+  onClose,
+  onCreated,
+}: AddCustomerModalProps) => {
   const dispatch = useDispatch<any>();
+
   const [showModal, setShowModal] = useState(false);
 
   const [customerType, setCustomerType] = useState("business");
@@ -25,9 +38,38 @@ const AddCustomerModal = () => {
   const [notes, setNotes] = useState("");
   const [modalError, setModalError] = useState<string | null>(null);
 
+  const isControlled = open !== undefined;
+  const isOpen = isControlled ? open : showModal;
+
+  const resetForm = () => {
+    setCustomerType("business");
+    setFirstName("");
+    setLastName("");
+    setBusinessName("");
+    setEmail("");
+    setPhone("");
+    setAddressLine1("");
+    setAddressLine2("");
+    setCity("");
+    setState("");
+    setPostalCode("");
+    setNotes("");
+    setModalError(null);
+  };
+
+  const handleClose = () => {
+    if (isControlled) {
+      onClose?.();
+    } else {
+      setShowModal(false);
+    }
+
+    resetForm();
+  };
+
   const handleSubmit = async () => {
     try {
-      await dispatch(
+      const customer = await dispatch(
         customerActions.createCustomer({
           customer_type: customerType,
           first_name: firstName || null,
@@ -46,21 +88,15 @@ const AddCustomerModal = () => {
 
       await dispatch(customerActions.getCustomers());
 
-      setShowModal(false);
+      onCreated?.(customer);
 
-      setCustomerType("business");
-      setFirstName("");
-      setLastName("");
-      setBusinessName("");
-      setEmail("");
-      setPhone("");
-      setAddressLine1("");
-      setAddressLine2("");
-      setCity("");
-      setState("");
-      setPostalCode("");
-      setNotes("");
-      setModalError(null);
+      if (isControlled) {
+        onClose?.();
+      } else {
+        setShowModal(false);
+      }
+
+      resetForm();
     } catch (err: any) {
       console.error("Create customer failed:", err);
 
@@ -74,20 +110,22 @@ const AddCustomerModal = () => {
 
   return (
     <>
-      <button
-        onClick={() => {
-          setModalError(null);
-          setShowModal(true);
-        }}
-        className="add-customer-button"
-      >
-        ADD CUSTOMER
-      </button>
+      {!isControlled && (
+        <button
+          onClick={() => {
+            setModalError(null);
+            setShowModal(true);
+          }}
+          className="add-customer-button"
+        >
+          ADD CUSTOMER
+        </button>
+      )}
 
-      {showModal && (
+      {isOpen && (
         <BaseModal
           title="Add Customer"
-          onClose={() => setShowModal(false)}
+          onClose={handleClose}
           onSave={handleSubmit}
         >
           {modalError && <div className="modal-error">{modalError}</div>}

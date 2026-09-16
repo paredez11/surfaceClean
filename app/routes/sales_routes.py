@@ -11,7 +11,7 @@ from .auth_routes import get_current_user
 from models.customer import Customer
 from models.machines import Machine
 
-from schemas.sales import SaleCreate, SaleUpdate, SaleResponse
+from schemas.sales import SaleCreate, SaleUpdate, SaleResponse, SaleDetailResponse
 
 from services.sales_services import (
     create_sale as create_sale_service,
@@ -30,7 +30,7 @@ from typing import List
 router = APIRouter()
 
 
-@router.get("/", response_model=List[SaleResponse])
+@router.get("/", response_model=List[SaleDetailResponse])
 async def get_sales(
     db: AsyncSession = Depends(get_async_db),
     user=Depends(get_current_user)
@@ -38,7 +38,7 @@ async def get_sales(
     return await get_all_sales(db)
 
 
-@router.get("/{sale_id}", response_model=SaleResponse)
+@router.get("/{sale_id}", response_model=SaleDetailResponse)
 async def get_sale(
     sale_id: int = Path(..., gt=0),
     db: AsyncSession = Depends(get_async_db),
