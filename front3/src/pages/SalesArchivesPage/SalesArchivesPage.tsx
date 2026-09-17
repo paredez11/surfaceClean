@@ -8,6 +8,8 @@ import { salesActions } from "../../redux";
 import type { RootState } from "../../redux/store";
 import type { SaleDetail } from "../../types/sale";
 
+import "./SalesArchivesPage.css";
+
 const SalesArchivesPage = () => {
   const dispatch = useDispatch<any>();
 

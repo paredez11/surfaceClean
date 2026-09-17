@@ -1,2 +1,120 @@
 /* front3/src/pages/SaleDetailsPage/SaleDetailsPage.css */
 
+.sale-details-page {
+  width: min(1000px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 2rem 0 4rem;
+}
+
+.back-button {
+  margin-bottom: 1.5rem;
+  padding: 0;
+  border: none;
+  background: none;
+  color: #1f4f82;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.back-button:hover {
+  text-decoration: underline;
+}
+
+.sale-status-banner {
+  display: inline-block;
+  margin-bottom: 1rem;
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.sale-status-banner.sold {
+  background: #b45309;
+}
+
+.sale-status-banner.delivered {
+  background: #15803d;
+}
+
+.sale-details-page > h1 {
+  margin: 0 0 2rem;
+  color: #111827;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.1;
+}
+
+.sale-details-section {
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
+}
+
+.sale-details-section h2 {
+  margin: 0 0 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #eef2f7;
+  color: #111827;
+  font-size: 1.25rem;
+}
+
+.sale-details-section p {
+  margin: 0 0 0.85rem;
+  color: #4b5563;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.sale-details-section p:last-child {
+  margin-bottom: 0;
+}
+
+.sale-details-section strong {
+  color: #111827;
+  font-weight: 700;
+}
+
+.sale-details-section a {
+  display: inline-block;
+  margin-top: 0.5rem;
+  color: #1f4f82;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.sale-details-section a:hover {
+  text-decoration: underline;
+}
+
+.sale-details-section h2:not(:first-child) {
+  margin-top: 2rem;
+}
+
+@media (max-width: 640px) {
+  .sale-details-page {
+    width: min(100% - 1rem, 1000px);
+    padding-top: 1.25rem;
+  }
+
+  .sale-details-page > h1 {
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+  }
+
+  .sale-details-section {
+    margin-bottom: 1rem;
+    padding: 1.1rem;
+    border-radius: 10px;
+  }
+
+  .sale-details-section h2 {
+    font-size: 1.1rem;
+  }
+}
