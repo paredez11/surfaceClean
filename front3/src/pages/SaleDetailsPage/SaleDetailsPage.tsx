@@ -1,7 +1,5 @@
 // front3/src/pages/SaleDetailsPage/SaleDetailsPage.tsx
 
-// front3/src/pages/SaleDetailsPage/SaleDetailsPage.tsx
-
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
