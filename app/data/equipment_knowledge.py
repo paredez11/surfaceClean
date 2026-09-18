@@ -415,7 +415,7 @@ EQUIPMENT_KNOWLEDGE = [
             "Tennant identifies the T600 as the replacement for the discontinued 5700."
         ),
     },
-        {
+    {
         "manufacturer": "Tennant",
         "model": "T2",
         "category": "Walk-Behind Floor Scrubber",
@@ -752,7 +752,7 @@ EQUIPMENT_KNOWLEDGE = [
             "North American specification sheet, operator manual, and Tennant product guide."
         ),
     },
-        {
+    {
         "manufacturer": "Tennant",
         "model": "T16",
         "category": "Ride-On Floor Scrubber",
@@ -1080,7 +1080,7 @@ EQUIPMENT_KNOWLEDGE = [
             "information and specifications."
         ),
     },
-        {
+    {
         "manufacturer": "Tennant",
         "model": "7100",
         "category": "Ride-On Floor Scrubber",
@@ -1396,7 +1396,7 @@ EQUIPMENT_KNOWLEDGE = [
             "operator and parts documentation."
         ),
     },
-        {
+    {
         "manufacturer": "Tennant",
         "model": "1510",
         "category": "Carpet Extractor",
@@ -1711,7 +1711,7 @@ EQUIPMENT_KNOWLEDGE = [
             "830 Series II operator and parts documentation."
         ),
     },
-        {
+    {
         "manufacturer": "Tennant",
         "model": "T3+",
         "category": "Walk-Behind Floor Scrubber",
@@ -2049,7 +2049,7 @@ EQUIPMENT_KNOWLEDGE = [
             "American specifications."
         ),
     },
-        {
+    {
         "manufacturer": "Tennant",
         "model": "5700 XP",
         "category": "Walk-Behind Floor Scrubber",
@@ -2377,7 +2377,7 @@ EQUIPMENT_KNOWLEDGE = [
             "so unit-specific configuration should be confirmed when listing a machine."
         ),
     },
-        {
+    {
         "manufacturer": "Advance",
         "model": "SC6500",
         "category": "Ride-On Floor Scrubber",
@@ -2709,7 +2709,7 @@ EQUIPMENT_KNOWLEDGE = [
             "product information and current configuration documentation."
         ),
     },
-        {
+    {
         "manufacturer": "Factory Cat",
         "model": "Magnum",
         "category": "Ride-On Floor Scrubber",
@@ -3044,6 +3044,88 @@ EQUIPMENT_KNOWLEDGE = [
             "Industrial 20-inch scrubber, but the exact model remains unresolved. "
             "Only the known historical information is retained; unknown technical "
             "specifications are intentionally not guessed."
+        ),
+    },
+    {
+        "manufacturer": "Wellland",
+        "model": "FD55",
+        "category": "Walk-Behind Floor Scrubber",
+        "description": (
+            "The Wellland FD55 is a battery-powered traction-drive walk-behind floor "
+            "scrubber designed for commercial and industrial hard-floor cleaning. "
+            "Its approximately 20-inch cleaning path provides a practical balance of "
+            "productivity and maneuverability for medium-size facilities. The FD55 uses "
+            "a straightforward mechanical and electrical design intended to simplify "
+            "operation, maintenance, and service compared with floor scrubbers that rely "
+            "more heavily on proprietary electronic systems."
+        ),
+        "specifications": (
+            "Cleaning path: approximately 20 inches. "
+            "Drive type: traction drive. "
+            "Power source: battery. "
+            "Battery type: gel batteries on the Surface Clean configuration. "
+            "Machine type: walk-behind floor scrubber. "
+            "Scrub system: single-disc floor scrubbing with rear solution-recovery squeegee. "
+            "Exact tank capacities, motor ratings, runtime, and other configuration-specific "
+            "technical specifications should be confirmed from the individual machine "
+            "documentation or manufacturer data."
+        ),
+        "best_for": (
+            "Warehouses, retail stores, schools, healthcare facilities, workshops, "
+            "commercial buildings, light-industrial facilities, and other medium-size "
+            "hard-floor areas requiring routine or restorative floor scrubbing."
+        ),
+        "not_for": (
+            "Very large open facilities where a wider walk-behind or ride-on scrubber "
+            "would provide substantially greater productivity, or applications primarily "
+            "requiring dry debris sweeping rather than wet floor scrubbing."
+        ),
+        "key_benefits": (
+            "Approximately 20-inch cleaning path, traction-drive operation, battery power, "
+            "straightforward controls, serviceable design, and a compact walk-behind "
+            "footprint suitable for commercial floor maintenance."
+        ),
+        "common_uses": (
+            "Routine and deep cleaning of finished concrete, warehouse floors, retail "
+            "floors, institutional facilities, workshops, commercial buildings, and "
+            "other indoor hard-floor surfaces."
+        ),
+        "faq": (
+            "What is the Wellland FD55 used for? "
+            "The FD55 is a walk-behind floor scrubber designed for commercial and "
+            "industrial hard-floor cleaning. "
+            "How wide does the Wellland FD55 clean? "
+            "The Surface Clean FD55 is described as an approximately 20-inch floor scrubber. "
+            "Does the FD55 have traction drive? "
+            "Yes. The Surface Clean configuration is a traction-drive machine, which helps "
+            "reduce operator effort while cleaning. "
+            "What type of batteries does the FD55 use? "
+            "The Surface Clean configuration uses gel batteries. "
+            "How does the FD55 compare with a Tennant T300? "
+            "The FD55 occupies a similar general walk-behind floor-scrubber class and "
+            "approximately 20-inch size range, but buyers should compare exact machine "
+            "specifications, support, condition, and configuration rather than treating "
+            "the two models as technically identical."
+        ),
+        "comparison_notes": (
+            "The Wellland FD55 is positioned in a similar general application class to "
+            "compact commercial walk-behind scrubbers such as the Tennant T300. Both can "
+            "serve medium-size hard-floor cleaning applications where maneuverability and "
+            "commercial scrubbing capability are important. The FD55 emphasizes a simple, "
+            "serviceable design, while exact performance specifications should be compared "
+            "using the specific configuration of each machine."
+        ),
+        "manufacturer_url": (
+            "https://wellland.ru/"
+        ),
+        "source_notes": (
+            "Profile created from the model identification visible on the machine, "
+            "Surface Clean's current FD55 listing information, and available Wellland "
+            "product-family information. The pictured machine is labeled FD55 and Surface "
+            "Clean describes it as a new approximately 20-inch traction-drive floor "
+            "scrubber with gel batteries. Exact FD55 tank capacities, motor specifications, "
+            "runtime, and other configuration-specific technical data have not been added "
+            "until exact manufacturer documentation for the FD55 is verified."
         ),
     },
 ]
