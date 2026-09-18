@@ -26,7 +26,7 @@ const MachinesPage = () => {
 
   return (
     <div className="machines-page">
-      <h1>Available Machines and Parts</h1>
+      <h1>Available Machines</h1>
       {!user && <CallNowButton />}
       <div className="add-machine-container">{user && <AddMachineModal />}</div>
 

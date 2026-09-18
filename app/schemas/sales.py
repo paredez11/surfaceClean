@@ -18,6 +18,20 @@ class SaleBase(BaseModel):
     sold_at: datetime | None = None
     delivered_at: datetime | None = None
 
+    billing_address_line_1: str | None = None
+    billing_address_line_2: str | None = None
+    billing_city: str | None = None
+    billing_state: str | None = None
+    billing_postal_code: str | None = None
+
+    delivery_same_as_billing: bool = True
+
+    delivery_address_line_1: str | None = None
+    delivery_address_line_2: str | None = None
+    delivery_city: str | None = None
+    delivery_state: str | None = None
+    delivery_postal_code: str | None = None
+
     notes: str | None = None
 
 
@@ -37,6 +51,20 @@ class SaleUpdate(BaseModel):
     sold_at: datetime | None = None
     delivered_at: datetime | None = None
 
+    billing_address_line_1: str | None = None
+    billing_address_line_2: str | None = None
+    billing_city: str | None = None
+    billing_state: str | None = None
+    billing_postal_code: str | None = None
+
+    delivery_same_as_billing: bool | None = None
+
+    delivery_address_line_1: str | None = None
+    delivery_address_line_2: str | None = None
+    delivery_city: str | None = None
+    delivery_state: str | None = None
+    delivery_postal_code: str | None = None
+
     notes: str | None = None
 
 
@@ -46,7 +74,7 @@ class SaleResponse(SaleBase):
     updated_at: datetime
 
     model_config = ConfigDict(from_attributes=True)
-    
+
 
 class SaleDetailResponse(SaleResponse):
     customer: CustomerResponse

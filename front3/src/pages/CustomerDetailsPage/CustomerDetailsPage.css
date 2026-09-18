@@ -1,16 +1,24 @@
 /* front3/src/pages/CustomerDetailsPage/CustomerDetailsPage.css */
 
 .customer-details-page {
-  padding: 2rem;
   max-width: 1100px;
   margin: 0 auto;
+  padding: var(--space-xl);
 }
+
+
+/* =========================
+   BACK LINK
+========================= */
 
 .customer-back-link {
   display: inline-block;
-  margin-bottom: 1.5rem;
-  color: #568EA3;
-  font-weight: bold;
+
+  margin-bottom: var(--space-lg);
+
+  color: var(--sc-steel-blue);
+
+  font-weight: 700;
   text-decoration: none;
 }
 
@@ -18,72 +26,202 @@
   text-decoration: underline;
 }
 
+
+/* =========================
+   HEADER
+========================= */
+
 .customer-details-header {
   display: flex;
-  justify-content: space-between;
   align-items: flex-start;
-  gap: 1rem;
-  margin-bottom: 2rem;
+  justify-content: space-between;
+  gap: var(--space-md);
+
+  margin-bottom: var(--space-xl);
 }
 
 .customer-details-header h1 {
-  margin: 0 0 0.5rem;
-  color: #072460;
+  margin: 0 0 var(--space-sm);
+
+  color: var(--sc-steel-blue);
+
   font-size: 2rem;
 }
 
 .customer-details-header p {
   margin: 0;
-  color: #568EA3;
-  font-weight: bold;
+
+  color: var(--color-text-muted);
+
+  font-weight: 700;
 }
 
 .customer-details-actions {
   display: flex;
-  gap: 0.75rem;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
 }
+
+
+/* =========================
+   CUSTOMER INFO
+========================= */
 
 .customer-info-card,
 .customer-history-section {
-  background-color: #FFE8D1;
-  border: 1px solid #ccc;
-  border-radius: 0.5rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--space-lg);
+  padding: var(--space-lg);
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+
+  background: var(--sc-cream);
+
+  box-shadow: var(--shadow-sm);
 }
 
 .customer-info-card h2,
 .customer-history-section h2 {
-  color: #072460;
-  margin: 0 0 1rem;
+  margin: 0 0 var(--space-md);
+
+  color: var(--sc-steel-blue);
 }
 
 .customer-info-card p {
-  color: #333;
-  margin: 0.5rem 0;
+  margin: var(--space-sm) 0;
+
+  color: var(--color-text);
 }
 
 .customer-address {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
-  color: #333;
-  margin: 0.5rem 0;
+  gap: var(--space-xs);
+
+  margin: var(--space-sm) 0;
+
+  color: var(--color-text);
 }
 
 .customer-address strong {
-  margin-bottom: 0.25rem;
+  margin-bottom: var(--space-xs);
+}
+
+
+/* =========================
+   HISTORY
+========================= */
+
+.customer-history-list {
+  display: flex;
+  flex-direction: column;
 }
 
 .customer-history-section p {
-  color: #555;
   margin: 0;
+
+  color: var(--color-text-muted);
 }
+
+
+/* =========================
+   PURCHASES
+========================= */
+
+.customer-purchases-list {
+  gap: var(--space-xl);
+}
+
+.customer-purchase-wrapper {
+  position: relative;
+}
+
+.customer-purchases-list
+  .customer-purchase-wrapper:not(:last-child) {
+  padding-bottom: 2.5rem;
+
+  border-bottom: 6px solid var(--sc-steel-blue);
+}
+
+.customer-purchase-details {
+  margin-top: var(--space-md);
+}
+
+.customer-purchase-details > p + p {
+  margin-top: var(--space-sm);
+}
+
+
+/* =========================
+   DELIVERY
+========================= */
+
+.customer-purchase-delivery {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+
+  margin-top: var(--space-md);
+}
+
+.customer-purchase-delivery span {
+  margin-left: var(--space-md);
+}
+
+
+/* =========================
+   PURCHASE ACTIONS
+========================= */
+
+.customer-purchase-actions {
+  position: relative;
+  z-index: 3;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+
+  margin-top: var(--space-md);
+}
+
+
+/* =========================
+   CANCELLED SALE
+========================= */
+
+.customer-purchase-cancelled-stamp {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: 140%;
+
+  transform: translate(-50%, -50%) rotate(-35deg);
+
+  color: red;
+
+  font-size: 2.5rem;
+  font-weight: 900;
+  letter-spacing: 0.15rem;
+  text-align: center;
+
+  opacity: 0.35;
+
+  z-index: 50;
+
+  pointer-events: none;
+  user-select: none;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
 
 @media (max-width: 700px) {
   .customer-details-page {
-    padding: 1rem;
+    padding: var(--space-md);
   }
 
   .customer-details-header {
@@ -92,5 +230,26 @@
 
   .customer-details-actions {
     width: 100%;
+  }
+
+  .customer-details-actions button {
+    flex: 1;
+  }
+
+  .customer-info-card,
+  .customer-history-section {
+    padding: var(--space-md);
+  }
+
+  .customer-purchase-actions {
+    flex-direction: column;
+  }
+
+  .customer-purchase-actions button {
+    width: 100%;
+  }
+
+  .customer-purchase-cancelled-stamp {
+    font-size: 2rem;
   }
 }

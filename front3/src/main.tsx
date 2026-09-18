@@ -14,6 +14,7 @@ import * as imageActions from "./redux/images";
 import * as testimonialActions from "./redux/testimonials";
 import type { Store } from "redux";
 import type { RootState } from "./redux/store";
+import "./index.css";
 
 // Extend window type for dev tools
 declare global {

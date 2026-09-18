@@ -4,11 +4,14 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams, useNavigate } from "react-router-dom";
 
-import { customerActions } from "../../redux";
+import { customerActions, salesActions } from "../../redux";
 import type { RootState } from "../../redux/store";
 
 import EditCustomerModal from "../../components/EditCustomerModal/EditCustomerModal";
 import ConfirmationModal from "../../components/ConfirmationModal/ConfirmationModal";
+import MachineCard from "../../components/MachineCard/MachineCard";
+
+import { formatCurrency, formatDate } from "../../utils/formatters";
 
 import "./CustomerDetailsPage.css";
 
@@ -19,6 +22,8 @@ const CustomerDetailsPage = () => {
   const [showEditModal, setShowEditModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [deleteError, setDeleteError] = useState<string | null>(null);
+  const [saleToCancel, setSaleToCancel] = useState<number | null>(null);
+  const [saleToDeliver, setSaleToDeliver] = useState<number | null>(null);
 
   const { customerId } = useParams();
 
@@ -55,19 +60,28 @@ const CustomerDetailsPage = () => {
     customer.postal_code,
   ].filter(Boolean);
 
-  const formatDate = (date: string | null) => {
-    if (!date) return "";
+  const handleMarkDelivered = async (saleId: number) => {
+    await dispatch(
+      salesActions.editSale(saleId, {
+        status: "delivered",
+      }),
+    );
 
-    return new Date(date).toLocaleDateString();
+    if (customerId) {
+      await dispatch(customerActions.getCustomerDetails(customerId));
+    }
   };
 
-  const formatCurrency = (amount: number | null) => {
-    if (amount === null) return "";
+  const handleCancelSale = async (saleId: number) => {
+    await dispatch(
+      salesActions.editSale(saleId, {
+        status: "cancelled",
+      }),
+    );
 
-    return amount.toLocaleString("en-US", {
-      style: "currency",
-      currency: "USD",
-    });
+    if (customerId) {
+      await dispatch(customerActions.getCustomerDetails(customerId));
+    }
   };
 
   const handleDelete = async () => {
@@ -157,37 +171,104 @@ const CustomerDetailsPage = () => {
         )}
       </section>
 
-      {customer.sales.length > 0 && (
+      {customer.sales?.length > 0 && (
         <section className="customer-history-section">
-          <h2>Purchase History</h2>
+          <h2>Purchases</h2>
 
-          <div className="customer-history-list">
+          <div className="customer-history-list customer-purchases-list">
             {customer.sales.map((sale) => {
-              const machine = sale.machine;
-
               return (
-                <div key={sale.id} className="customer-history-item">
-                  <h3>{machine.name}</h3>
-
-                  <p>
-                    <strong>Sale Price:</strong>{" "}
-                    {formatCurrency(sale.sale_price)}
-                  </p>
-
-                  <p>
-                    <strong>Sold:</strong> {formatDate(sale.sold_at)}
-                  </p>
-
-                  {sale.delivered_at && (
-                    <p>
-                      <strong>Delivered:</strong>{" "}
-                      {formatDate(sale.delivered_at)}
-                    </p>
+                <div
+                  key={sale.id}
+                  className={`customer-purchase-wrapper ${
+                    sale.status === "cancelled"
+                      ? "customer-purchase-wrapper--cancelled"
+                      : ""
+                  }`}
+                >
+                  {sale.status === "cancelled" && (
+                    <span className="customer-purchase-cancelled-stamp">
+                      CANCELLED
+                    </span>
                   )}
 
-                  <p>
-                    <strong>Status:</strong> {sale.status}
-                  </p>
+                  <MachineCard
+                    machine={sale.machine}
+                    showAdminActions={false}
+                    displayStatus={
+                      sale.status === "cancelled" ? null : sale.status
+                    }
+                  />
+
+                  <div className="customer-purchase-details">
+                    <p>
+                      <strong>Sale Price:</strong>{" "}
+                      {formatCurrency(sale.sale_price)}
+                    </p>
+
+                    <p>
+                      <strong>Sold:</strong> {formatDate(sale.sold_at)}
+                    </p>
+
+                    {sale.delivered_at && (
+                      <p>
+                        <strong>Delivered:</strong>{" "}
+                        {formatDate(sale.delivered_at)}
+                      </p>
+                    )}
+
+                    <p>
+                      <strong>Status:</strong> {sale.status}
+                    </p>
+
+                    {sale.delivery_address_line_1 && (
+                      <div className="customer-purchase-delivery">
+                        <strong>Delivery:</strong>
+
+                        <span>{sale.delivery_address_line_1}</span>
+
+                        {sale.delivery_address_line_2 && (
+                          <span>{sale.delivery_address_line_2}</span>
+                        )}
+
+                        <span>
+                          {[sale.delivery_city, sale.delivery_state]
+                            .filter(Boolean)
+                            .join(", ")}{" "}
+                          {sale.delivery_postal_code}
+                        </span>
+                      </div>
+                    )}
+
+                    <div className="customer-purchase-actions">
+                      <button
+                        type="button"
+                        onClick={() => navigate(`/machines/${sale.machine.id}`)}
+                      >
+                        View Machine
+                      </button>
+
+                      {sale.status === "sold" && (
+                        <>
+                          <button
+                            type="button"
+                            className="btn-edit"
+                            onClick={() => setSaleToDeliver(sale.id)}
+                          >
+                            Mark Delivered
+                          </button>
+
+                          <button
+                            type="button"
+                            className="btn-delete"
+                            onClick={() => setSaleToCancel(sale.id)}
+                          >
+                            Cancel Sale
+                          </button>
+                        </>
+                      )}
+                    </div>
+                  </div>
                 </div>
               );
             })}
@@ -195,7 +276,7 @@ const CustomerDetailsPage = () => {
         </section>
       )}
 
-      {customer.sales.some((sale) => sale.warranty !== null) && (
+      {customer.sales?.some((sale) => sale.warranty !== null) && (
         <section className="customer-history-section">
           <h2>Warranty</h2>
 
@@ -238,7 +319,7 @@ const CustomerDetailsPage = () => {
         </section>
       )}
 
-      {customer.sales.some((sale) => sale.service_records.length > 0) && (
+      {customer.sales?.some((sale) => sale.service_records.length > 0) && (
         <section className="customer-history-section">
           <h2>Service History</h2>
 
@@ -302,6 +383,30 @@ const CustomerDetailsPage = () => {
           message={`Delete ${customerName}? This cannot be undone.`}
           onConfirm={handleDelete}
           onCancel={() => setShowDeleteModal(false)}
+        />
+      )}
+
+      {saleToDeliver !== null && (
+        <ConfirmationModal
+          title="Mark Machine Delivered"
+          message="Are you sure you want to mark this machine as delivered?"
+          onConfirm={async () => {
+            await handleMarkDelivered(saleToDeliver);
+            setSaleToDeliver(null);
+          }}
+          onCancel={() => setSaleToDeliver(null)}
+        />
+      )}
+
+      {saleToCancel !== null && (
+        <ConfirmationModal
+          title="Cancel Sale"
+          message="Are you sure you want to cancel this sale? The machine will return to available inventory."
+          onConfirm={async () => {
+            await handleCancelSale(saleToCancel);
+            setSaleToCancel(null);
+          }}
+          onCancel={() => setSaleToCancel(null)}
         />
       )}
     </main>

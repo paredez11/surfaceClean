@@ -7,6 +7,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { salesActions } from "../../redux";
 import type { RootState } from "../../redux/store";
 import type { SaleDetail } from "../../types/sale";
+import { formatCurrency, formatDate } from "../../utils/formatters";
+
+import MachineCard from "../../components/MachineCard/MachineCard";
 
 import "./SalesArchivesPage.css";
 
@@ -14,8 +17,7 @@ const SalesArchivesPage = () => {
   const dispatch = useDispatch<any>();
 
   const sales = useSelector(
-    (state: RootState) =>
-      Object.values(state.sales.all) as SaleDetail[],
+    (state: RootState) => Object.values(state.sales.all) as SaleDetail[],
   );
 
   useEffect(() => {
@@ -25,28 +27,9 @@ const SalesArchivesPage = () => {
   const archivedSales = sales.filter(
     (sale) =>
       sale.status === "sold" ||
-      sale.status === "delivered",
+      sale.status === "delivered" ||
+      sale.status === "cancelled",
   );
-
-  const formatPrice = (price: number | null) => {
-    if (price === null) return "—";
-
-    return new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-      maximumFractionDigits: 0,
-    }).format(price);
-  };
-
-  const formatDate = (date: string | null) => {
-    if (!date) return "—";
-
-    return new Date(date).toLocaleDateString("en-US", {
-      month: "short",
-      day: "numeric",
-      year: "numeric",
-    });
-  };
 
   const getCustomerName = (sale: SaleDetail) => {
     const customer = sale.customer;
@@ -55,10 +38,7 @@ const SalesArchivesPage = () => {
       return customer.business_name;
     }
 
-    const fullName = [
-      customer.first_name,
-      customer.last_name,
-    ]
+    const fullName = [customer.first_name, customer.last_name]
       .filter(Boolean)
       .join(" ");
 
@@ -70,72 +50,74 @@ const SalesArchivesPage = () => {
       <section className="sales-archive-header">
         <div>
           <h1>Sales Archive</h1>
-          <p>
-            Sold and delivered Surface Clean equipment.
-          </p>
+          <p>Sold, delivered, and cancelled Surface Clean equipment.</p>
         </div>
       </section>
 
       {archivedSales.length === 0 ? (
-        <p>No sold equipment yet.</p>
+        <p>No sales history yet.</p>
       ) : (
         <ul className="sales-archive-grid">
           {archivedSales.map((sale) => (
-            <li
-              key={sale.id}
-              className="sales-archive-card"
-            >
+            <li key={sale.id} className="sales-archive-card">
               <Link
                 to={`/sales/${sale.id}`}
                 className="sales-archive-card-link"
               >
-                <div className="sales-archive-machine">
-                  <div
-                    className={`sales-status-overlay ${sale.status}`}
-                  >
-                    {sale.status === "delivered"
-                      ? "DELIVERED"
-                      : "SOLD"}
-                  </div>
+                <div
+                  className={`sales-archive-machine ${
+                    sale.status === "cancelled"
+                      ? "sales-archive-machine--cancelled"
+                      : ""
+                  }`}
+                >
+                  {sale.status === "cancelled" && (
+                    <span className="sales-status-overlay cancelled">
+                      CANCELLED
+                    </span>
+                  )}
 
-                  <h2>{sale.machine.name}</h2>
+                  <MachineCard
+                    machine={sale.machine}
+                    showAdminActions={false}
+                    displayStatus={
+                      sale.status === "cancelled" ? null : sale.status
+                    }
+                  />
                 </div>
 
                 <div className="sales-archive-info">
                   <div>
                     <span>Customer</span>
-                    <strong>
-                      {getCustomerName(sale)}
-                    </strong>
+                    <strong>{getCustomerName(sale)}</strong>
                   </div>
 
                   <div>
                     <span>Asking Price</span>
-                    <strong>
-                      {formatPrice(sale.asking_price)}
-                    </strong>
+                    <strong>{formatCurrency(sale.asking_price)}</strong>
                   </div>
 
                   <div>
                     <span>Sale Price</span>
-                    <strong>
-                      {formatPrice(sale.sale_price)}
-                    </strong>
+                    <strong>{formatCurrency(sale.sale_price)}</strong>
                   </div>
 
                   <div>
                     <span>Sold</span>
-                    <strong>
-                      {formatDate(sale.sold_at)}
-                    </strong>
+                    <strong>{formatDate(sale.sold_at)}</strong>
                   </div>
 
                   {sale.status === "delivered" && (
                     <div>
                       <span>Delivered</span>
-                      <strong>
-                        {formatDate(sale.delivered_at)}
-                      </strong>
+                      <strong>{formatDate(sale.delivered_at)}</strong>
+                    </div>
+                  )}
+
+                  {sale.status === "cancelled" && (
+                    <div>
+                      <span>Status</span>
+                      <strong>Cancelled</strong>
                     </div>
                   )}
                 </div>

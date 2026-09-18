@@ -22,6 +22,14 @@ async def create_sale(
     sold_at = sale_data.sold_at or datetime.now(timezone.utc)
 
     data = sale_data.dict()
+
+    if data["delivery_same_as_billing"]:
+        data["delivery_address_line_1"] = data["billing_address_line_1"]
+        data["delivery_address_line_2"] = data["billing_address_line_2"]
+        data["delivery_city"] = data["billing_city"]
+        data["delivery_state"] = data["billing_state"]
+        data["delivery_postal_code"] = data["billing_postal_code"]
+
     data["status"] = "sold"
     data["sold_at"] = sold_at
     data["delivered_at"] = None
@@ -102,6 +110,28 @@ async def update_sale(
 ) -> Sale:
     updates = sale_data.dict(exclude_unset=True)
     new_status = updates.get("status", sale.status)
+
+    if updates.get("delivery_same_as_billing") is True:
+        updates["delivery_address_line_1"] = updates.get(
+            "billing_address_line_1",
+            sale.billing_address_line_1
+        )
+        updates["delivery_address_line_2"] = updates.get(
+            "billing_address_line_2",
+            sale.billing_address_line_2
+        )
+        updates["delivery_city"] = updates.get(
+            "billing_city",
+            sale.billing_city
+        )
+        updates["delivery_state"] = updates.get(
+            "billing_state",
+            sale.billing_state
+        )
+        updates["delivery_postal_code"] = updates.get(
+            "billing_postal_code",
+            sale.billing_postal_code
+        )
 
     if new_status == "sold":
         updates["delivered_at"] = None

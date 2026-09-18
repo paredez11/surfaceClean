@@ -13,7 +13,7 @@ function Navigation() {
   const pageTitles: Record<string, string> = {
     "/": "Surface Clean",
     "/admin": "🔒 Admin",
-    "/machines": "Machines and Parts",
+    "/machines": "Machines",
     "/images": "Images",
     "/testimonials": "Testimonials",
     "/faqs": "FAQs",
@@ -39,7 +39,7 @@ function Navigation() {
         </li>
         <li>
           <NavLink to="/machines" className="nav-link">
-            Machines/Parts
+            Machines
           </NavLink>
         </li>
         <li>

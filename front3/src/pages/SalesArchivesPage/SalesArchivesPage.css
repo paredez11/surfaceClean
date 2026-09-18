@@ -176,3 +176,29 @@
     grid-column: auto;
   }
 }
+
+.sales-archive-machine {
+  position: relative;
+}
+
+.sales-status-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 140%;
+
+  transform: translate(-50%, -50%) rotate(-35deg);
+
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 900;
+  letter-spacing: 0.15rem;
+
+  color: red;
+  opacity: 0.35;
+
+  z-index: 50;
+
+  pointer-events: none;
+  user-select: none;
+}

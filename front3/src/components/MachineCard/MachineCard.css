@@ -8,6 +8,7 @@
   padding: 1rem;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .machine-details {
@@ -59,4 +60,30 @@
   display: flex;
   gap: 0.5rem;
   margin-top: auto;
+}
+
+.machine-status-overlay {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%) rotate(-35deg);
+
+  width: 140%;
+
+  text-align: center;
+
+  font-size: 2.5rem;
+  font-weight: 900;
+  letter-spacing: 0.15rem;
+
+  color: red;
+
+  opacity: 0.35;
+
+  z-index: 20;
+
+  pointer-events: none;
+  user-select: none;
 }

@@ -2,7 +2,7 @@
 
 from datetime import datetime, timezone
 
-from sqlalchemy import DateTime, Float, ForeignKey, String, Text
+from sqlalchemy import Boolean, DateTime, Float, ForeignKey, String, Text
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from utils.db import Base
@@ -55,6 +55,62 @@ class Sale(Base):
         nullable=True,
     )
 
+    billing_address_line_1: Mapped[str | None] = mapped_column(
+        String,
+        nullable=True,
+    )
+
+    billing_address_line_2: Mapped[str | None] = mapped_column(
+        String,
+        nullable=True,
+    )
+
+    billing_city: Mapped[str | None] = mapped_column(
+        String,
+        nullable=True,
+    )
+
+    billing_state: Mapped[str | None] = mapped_column(
+        String,
+        nullable=True,
+    )
+
+    billing_postal_code: Mapped[str | None] = mapped_column(
+        String,
+        nullable=True,
+    )
+
+    delivery_same_as_billing: Mapped[bool] = mapped_column(
+        Boolean,
+        nullable=False,
+        default=True,
+    )
+
+    delivery_address_line_1: Mapped[str | None] = mapped_column(
+        String,
+        nullable=True,
+    )
+
+    delivery_address_line_2: Mapped[str | None] = mapped_column(
+        String,
+        nullable=True,
+    )
+
+    delivery_city: Mapped[str | None] = mapped_column(
+        String,
+        nullable=True,
+    )
+
+    delivery_state: Mapped[str | None] = mapped_column(
+        String,
+        nullable=True,
+    )
+
+    delivery_postal_code: Mapped[str | None] = mapped_column(
+        String,
+        nullable=True,
+    )
+    
     notes: Mapped[str | None] = mapped_column(
         Text,
         nullable=True,

@@ -19,7 +19,7 @@ function AdminHomePage() {
   }, [user, setModalContent]);
 
   const adminLinks = [
-    { path: "/machines", label: "🧹 Manage Machines/Parts" },
+    { path: "/machines", label: "🧹 Manage Machines" },
     { path: "/customers", label: "👥 Manage Customers"},
     { path: "/testimonials", label: "⭐ Manage Testimonials" },
     { path: "/faqs", label: "❓ Manage FAQs" },

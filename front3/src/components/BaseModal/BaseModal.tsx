@@ -7,6 +7,7 @@ interface BaseModalProps {
   onClose: () => void;
   onSave?: () => void;
   showButtons?: boolean;
+  isSaving?: boolean;
   children: React.ReactNode;
 }
 
@@ -15,6 +16,7 @@ const BaseModal = ({
   onClose,
   onSave,
   showButtons = true,
+  isSaving,
   children,
 }: BaseModalProps) => {
   return (
@@ -26,8 +28,12 @@ const BaseModal = ({
 
         {showButtons && (
           <div className="base-modal__actions">
-            <button className="btn-edit" onClick={() => onSave?.()}>
-              Save
+            <button
+              className="btn-edit"
+              onClick={() => onSave?.()}
+              disabled={isSaving}
+            >
+              {isSaving ? "Saving..." : "Save"}
             </button>
             <button className="btn-delete" onClick={onClose}>
               Cancel

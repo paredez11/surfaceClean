@@ -14,9 +14,15 @@ import "./MachineCard.css";
 
 interface MachineCardProps {
   machine: Machine;
+  showAdminActions?: boolean;
+  displayStatus?: "listed" | "sold" | "delivered" | null;
 }
 
-const MachineCard = ({ machine }: MachineCardProps) => {
+const MachineCard = ({
+  machine,
+  showAdminActions = true,
+  displayStatus,
+}: MachineCardProps) => {
   const dispatch = useDispatch<any>();
   const user = useSelector((state: RootState) => state.session.user);
   const updatedMachine = useSelector(
@@ -44,6 +50,8 @@ const MachineCard = ({ machine }: MachineCardProps) => {
   }, [updatedMachine]);
 
   const currentStatus = updatedMachine?.status ?? machine.status;
+  const statusForDisplay =
+    displayStatus === undefined ? currentStatus : displayStatus;
 
   const handleDelete = () => setShowConfirm(true);
 
@@ -73,6 +81,11 @@ const MachineCard = ({ machine }: MachineCardProps) => {
 
   return (
     <div className="machine-card">
+      {(statusForDisplay === "sold" || statusForDisplay === "delivered") && (
+        <span className="machine-status-overlay">
+          {statusForDisplay === "sold" ? "SOLD" : "DELIVERED"}
+        </span>
+      )}
       <NavLink
         to={`/machines/${machine.id}`}
         key="view"
@@ -101,14 +114,12 @@ const MachineCard = ({ machine }: MachineCardProps) => {
           </p>
 
           <p className="machine-hours">
-            <p className="machine-hours">
-              Hours Used: {parseInt((hoursUsed ?? 0).toString(), 10)} hrs
-            </p>
+            Hours Used: {parseInt((hoursUsed ?? 0).toString(), 10)} hrs
           </p>
         </div>
       </NavLink>
 
-      {user && (
+      {user && showAdminActions && (
         <div className="machine-actions">
           <button onClick={() => setShowEdit(true)} className="btn-edit">
             EDIT

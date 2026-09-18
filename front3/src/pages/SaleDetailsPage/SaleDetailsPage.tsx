@@ -7,6 +7,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { salesActions } from "../../redux";
 import type { RootState } from "../../redux/store";
 import type { SaleDetail } from "../../types/sale";
+import { formatCurrency, formatDate } from "../../utils/formatters";
 
 import "./SaleDetailsPage.css";
 
@@ -16,8 +17,7 @@ const SaleDetailsPage = () => {
   const navigate = useNavigate();
 
   const sale = useSelector(
-    (state: RootState) =>
-      state.sales.single.details as SaleDetail | null,
+    (state: RootState) => state.sales.single.details as SaleDetail | null,
   );
 
   useEffect(() => {
@@ -37,37 +37,19 @@ const SaleDetailsPage = () => {
       .join(" ") ||
     `Customer #${sale.customer.id}`;
 
-  const formatPrice = (price: number | null) => {
-    if (price === null) return "—";
-
-    return new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-      maximumFractionDigits: 0,
-    }).format(price);
-  };
-
-  const formatDate = (date: string | null) => {
-    if (!date) return "—";
-
-    return new Date(date).toLocaleDateString("en-US", {
-      month: "short",
-      day: "numeric",
-      year: "numeric",
-    });
-  };
 
   return (
     <div className="sale-details-page">
-      <button
-        className="back-button"
-        onClick={() => navigate("/sales")}
-      >
+      <button className="back-button" onClick={() => navigate("/sales")}>
         Back to Sales Archive
       </button>
 
       <div className={`sale-status-banner ${sale.status}`}>
-        {sale.status === "delivered" ? "DELIVERED" : "SOLD"}
+        {sale.status === "delivered"
+          ? "DELIVERED"
+          : sale.status === "cancelled"
+            ? "CANCELLED"
+            : "SOLD"}
       </div>
 
       <h1>{sale.machine.name}</h1>
@@ -76,13 +58,11 @@ const SaleDetailsPage = () => {
         <h2>Sale Information</h2>
 
         <p>
-          <strong>Asking Price:</strong>{" "}
-          {formatPrice(sale.asking_price)}
+          <strong>Asking Price:</strong> {formatCurrency(sale.asking_price)}
         </p>
 
         <p>
-          <strong>Sale Price:</strong>{" "}
-          {formatPrice(sale.sale_price)}
+          <strong>Sale Price:</strong> {formatCurrency(sale.sale_price)}
         </p>
 
         <p>
@@ -91,8 +71,7 @@ const SaleDetailsPage = () => {
 
         {sale.delivered_at && (
           <p>
-            <strong>Delivered:</strong>{" "}
-            {formatDate(sale.delivered_at)}
+            <strong>Delivered:</strong> {formatDate(sale.delivered_at)}
           </p>
         )}
 
@@ -122,9 +101,7 @@ const SaleDetailsPage = () => {
           </p>
         )}
 
-        <Link to={`/customers/${sale.customer.id}`}>
-          View Customer Details
-        </Link>
+        <Link to={`/customers/${sale.customer.id}`}>View Customer Details</Link>
       </section>
 
       <section className="sale-details-section">
@@ -137,18 +114,13 @@ const SaleDetailsPage = () => {
         {sale.machine.hours_used != null && (
           <p>
             <strong>Hours Used:</strong>{" "}
-            {parseInt(
-              sale.machine.hours_used.toString(),
-              10,
-            )}{" "}
-            hrs
+            {parseInt(sale.machine.hours_used.toString(), 10)} hrs
           </p>
         )}
 
         {sale.machine.description && (
           <p>
-            <strong>Description:</strong>{" "}
-            {sale.machine.description}
+            <strong>Description:</strong> {sale.machine.description}
           </p>
         )}
 
@@ -162,8 +134,7 @@ const SaleDetailsPage = () => {
             </p>
 
             <p>
-              <strong>Model:</strong>{" "}
-              {sale.machine.equipment_profile.model}
+              <strong>Model:</strong> {sale.machine.equipment_profile.model}
             </p>
 
             <p>
@@ -215,18 +186,14 @@ const SaleDetailsPage = () => {
 
             {sale.machine.equipment_profile.faq && (
               <p>
-                <strong>FAQ:</strong>{" "}
-                {sale.machine.equipment_profile.faq}
+                <strong>FAQ:</strong> {sale.machine.equipment_profile.faq}
               </p>
             )}
 
             {sale.machine.equipment_profile.comparison_notes && (
               <p>
                 <strong>Comparison:</strong>{" "}
-                {
-                  sale.machine.equipment_profile
-                    .comparison_notes
-                }
+                {sale.machine.equipment_profile.comparison_notes}
               </p>
             )}
 
@@ -234,10 +201,7 @@ const SaleDetailsPage = () => {
               <p>
                 <strong>Manufacturer:</strong>{" "}
                 <a
-                  href={
-                    sale.machine.equipment_profile
-                      .manufacturer_url
-                  }
+                  href={sale.machine.equipment_profile.manufacturer_url}
                   target="_blank"
                   rel="noreferrer"
                 >
