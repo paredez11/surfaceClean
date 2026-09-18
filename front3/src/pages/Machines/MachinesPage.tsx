@@ -29,12 +29,13 @@ const MachinesPage = () => {
       <h1>Available Machines</h1>
       {!user && <CallNowButton />}
       <div className="add-machine-container">{user && <AddMachineModal />}</div>
-
-      {listedMachines.map((m) => (
-        <li key={`machine-${m.id}`}>
-          <MachineCard machine={m} />
-        </li>
-      ))}
+      <ul className="machine-list">
+        {listedMachines.map((m) => (
+          <li key={`machine-${m.id}`}>
+            <MachineCard machine={m} />
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

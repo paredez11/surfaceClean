@@ -38,7 +38,8 @@
 
 .machine-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 420px));
+  justify-content: center;
   gap: 1.5rem;
   list-style: none;
   padding: 0;
