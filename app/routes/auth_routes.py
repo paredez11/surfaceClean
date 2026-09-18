@@ -8,7 +8,7 @@ from sqlalchemy import select
 from jose import JWTError
 from pydantic import BaseModel, EmailStr, field_validator
 
-from config import settings # type: ignore
+from config import settings  # type: ignore
 from models.users import User
 from utils.db import get_async_db
 from utils.errors import error_400
@@ -54,7 +54,7 @@ async def login(
         user.hashed_password,
     ):
         error_400("Invalid credentials")
-        
+
     assert user is not None
 
     access_token = create_access_token(
@@ -191,7 +191,15 @@ async def logout():
         samesite=same_site,
     )
 
-    # Must match the domain used when the CSRF cookie was created.
+    # Delete any legacy API-host-only CSRF cookie.
+    response.delete_cookie(
+        key="csrf_token",
+        httponly=False,
+        secure=secure_cookie,
+        samesite=same_site,
+    )
+
+    # Delete the current shared-domain CSRF cookie.
     response.delete_cookie(
         key="csrf_token",
         httponly=False,
@@ -221,10 +229,10 @@ async def forgot_password(
     user = result.scalar_one_or_none()
 
     if user:
-        token = create_reset_token(user.id) # type: ignore
+        token = create_reset_token(user.id)  # type: ignore
 
         await send_password_reset_email(
-            user.email, # type: ignore
+            user.email,  # type: ignore
             token,
         )
 
