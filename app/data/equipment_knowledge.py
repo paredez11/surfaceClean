@@ -3215,79 +3215,79 @@ EQUIPMENT_KNOWLEDGE = [
         ),
     },
     {
-    "manufacturer": "Wellland",
-    "model": "FD90",
-    "category": "Walk-Behind Floor Scrubber",
-    "description": (
-        "The Wellland FD90 is a battery-powered walk-behind floor scrubber "
-        "designed for commercial and industrial hard-floor cleaning. "
-        "Surface Clean identifies this configuration as an approximately "
-        "32-inch scrubber intended for larger floor areas where higher "
-        "productivity and capacity are needed than with compact walk-behind machines."
-    ),
-    "specifications": (
-        "Cleaning path: approximately 32 inches based on the Surface Clean "
-        "machine listing. "
-        "Machine type: walk-behind floor scrubber. "
-        "Power source: battery. "
-        "The pictured machine is identified as model FD90. "
-        "Exact tank capacities, brush configuration, motor ratings, battery "
-        "specifications, runtime, and other technical specifications should be "
-        "confirmed from exact FD90 manufacturer documentation or the individual "
-        "machine data plate."
-    ),
-    "best_for": (
-        "Warehouses, distribution facilities, manufacturing areas, supermarkets, "
-        "schools, healthcare facilities, retail spaces, workshops, and other "
-        "medium-to-large commercial or industrial hard-floor environments."
-    ),
-    "not_for": (
-        "Very small or congested facilities where a compact walk-behind scrubber "
-        "would be easier to maneuver, or very large open facilities where a ride-on "
-        "scrubber would provide greater operator productivity."
-    ),
-    "key_benefits": (
-        "Approximately 32-inch commercial cleaning path, walk-behind operation, "
-        "battery power, straightforward controls, serviceable construction, and "
-        "a larger footprint intended for productive commercial floor cleaning."
-    ),
-    "common_uses": (
-        "Routine and deep cleaning of warehouse floors, finished concrete, retail "
-        "floors, institutional facilities, manufacturing areas, workshops, and "
-        "other commercial or industrial hard-floor surfaces."
-    ),
-    "faq": (
-        "What is the Wellland FD90 used for? "
-        "The FD90 is a walk-behind floor scrubber intended for commercial and "
-        "industrial hard-floor cleaning. "
-        "How wide does the Wellland FD90 clean? "
-        "Surface Clean identifies this configuration as an approximately "
-        "32-inch floor scrubber. "
-        "Is the FD90 battery powered? "
-        "Yes. The photographed machine is a battery-powered commercial scrubber. "
-        "How does the FD90 compare with Tennant floor scrubbers? "
-        "Surface Clean positions the FD90 in a larger commercial walk-behind class "
-        "similar in general application to larger Tennant scrubbers, but exact "
-        "specifications should be compared machine by machine."
-    ),
-    "comparison_notes": (
-        "Surface Clean positions the Wellland FD90 as a large commercial walk-behind "
-        "floor scrubber in the same general application class as larger Tennant "
-        "walk-behind machines. Dave's listing specifically describes it as a "
-        "32-inch scrubber and emphasizes quality, serviceability, warranty support, "
-        "parts availability, and service plans. Exact technical equivalence to any "
-        "Tennant model should not be assumed without matching specifications."
-    ),
-    "manufacturer_url": (
-        "https://wellland.ru/"
-    ),
-    "source_notes": (
-        "Profile created from the FD90 model identification visible on the machine "
-        "and Surface Clean's current listing information. The machine is physically "
-        "branded Wellland and labeled FD90. Surface Clean describes the unit as a "
-        "new approximately 32-inch floor scrubber. An exact current Wellland FD90 "
-        "manufacturer specification page was not located, so unverified tank, motor, "
-        "battery, runtime, and productivity figures are intentionally omitted."
-    ),
-},
+        "manufacturer": "Wellland",
+        "model": "FD90",
+        "category": "Walk-Behind Floor Scrubber",
+        "description": (
+            "The Wellland FD90 is a battery-powered walk-behind floor scrubber "
+            "designed for commercial and industrial hard-floor cleaning. "
+            "Surface Clean identifies this configuration as an approximately "
+            "32-inch scrubber intended for larger floor areas where higher "
+            "productivity and capacity are needed than with compact walk-behind machines."
+        ),
+        "specifications": (
+            "Cleaning path: approximately 32 inches based on the Surface Clean "
+            "machine listing. "
+            "Machine type: walk-behind floor scrubber. "
+            "Power source: battery. "
+            "The pictured machine is identified as model FD90. "
+            "Exact tank capacities, brush configuration, motor ratings, battery "
+            "specifications, runtime, and other technical specifications should be "
+            "confirmed from exact FD90 manufacturer documentation or the individual "
+            "machine data plate."
+        ),
+        "best_for": (
+            "Warehouses, distribution facilities, manufacturing areas, supermarkets, "
+            "schools, healthcare facilities, retail spaces, workshops, and other "
+            "medium-to-large commercial or industrial hard-floor environments."
+        ),
+        "not_for": (
+            "Very small or congested facilities where a compact walk-behind scrubber "
+            "would be easier to maneuver, or very large open facilities where a ride-on "
+            "scrubber would provide greater operator productivity."
+        ),
+        "key_benefits": (
+            "Approximately 32-inch commercial cleaning path, walk-behind operation, "
+            "battery power, straightforward controls, serviceable construction, and "
+            "a larger footprint intended for productive commercial floor cleaning."
+        ),
+        "common_uses": (
+            "Routine and deep cleaning of warehouse floors, finished concrete, retail "
+            "floors, institutional facilities, manufacturing areas, workshops, and "
+            "other commercial or industrial hard-floor surfaces."
+        ),
+        "faq": (
+            "What is the Wellland FD90 used for? "
+            "The FD90 is a walk-behind floor scrubber intended for commercial and "
+            "industrial hard-floor cleaning. "
+            "How wide does the Wellland FD90 clean? "
+            "Surface Clean identifies this configuration as an approximately "
+            "32-inch floor scrubber. "
+            "Is the FD90 battery powered? "
+            "Yes. The photographed machine is a battery-powered commercial scrubber. "
+            "How does the FD90 compare with Tennant floor scrubbers? "
+            "Surface Clean positions the FD90 in a larger commercial walk-behind class "
+            "similar in general application to larger Tennant scrubbers, but exact "
+            "specifications should be compared machine by machine."
+        ),
+        "comparison_notes": (
+            "Surface Clean positions the Wellland FD90 as a large commercial walk-behind "
+            "floor scrubber in the same general application class as larger Tennant "
+            "walk-behind machines. Dave's listing specifically describes it as a "
+            "32-inch scrubber and emphasizes quality, serviceability, warranty support, "
+            "parts availability, and service plans. Exact technical equivalence to any "
+            "Tennant model should not be assumed without matching specifications."
+        ),
+        "manufacturer_url": (
+            "https://wellland.ru/"
+        ),
+        "source_notes": (
+            "Profile created from the FD90 model identification visible on the machine "
+            "and Surface Clean's current listing information. The machine is physically "
+            "branded Wellland and labeled FD90. Surface Clean describes the unit as a "
+            "new approximately 32-inch floor scrubber. An exact current Wellland FD90 "
+            "manufacturer specification page was not located, so unverified tank, motor, "
+            "battery, runtime, and productivity figures are intentionally omitted."
+        ),
+    },
 ]
