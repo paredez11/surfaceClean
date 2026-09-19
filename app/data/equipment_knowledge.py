@@ -3128,4 +3128,90 @@ EQUIPMENT_KNOWLEDGE = [
             "until exact manufacturer documentation for the FD55 is verified."
         ),
     },
+    {
+    "manufacturer": "Wellland",
+    "model": "FD70",
+    "category": "Walk-Behind Floor Scrubber",
+    "description": (
+        "The Wellland FD70 is a battery-powered traction-drive walk-behind floor "
+        "scrubber designed for high-productivity commercial and industrial hard-floor "
+        "cleaning. Its approximately 28-inch dual-disc cleaning path, large solution "
+        "and recovery tanks, and powered drive make it well suited to medium and large "
+        "facilities that need more capacity than a compact walk-behind scrubber."
+    ),
+    "specifications": (
+        "Cleaning path: 720 mm / approximately 28.3 inches. "
+        "Squeegee width: 920 mm / approximately 36.2 inches. "
+        "Solution tank: 90 liters / approximately 23.8 gallons. "
+        "Recovery tank: 106 liters / approximately 28 gallons. "
+        "Theoretical productivity: 3,200 square meters per hour / approximately "
+        "34,445 square feet per hour. "
+        "Brush system: two 360 mm disc brushes. "
+        "Brush motors: 2 x 550 W. "
+        "Brush speed: 200 rpm. "
+        "Traction motor: 450 W. "
+        "Vacuum motor: 650 W. "
+        "Power system: 24 volt battery. "
+        "Noise level: approximately 67 dB. "
+        "Dimensions: 1389 x 760 x 1095 mm."
+    ),
+    "best_for": (
+        "Warehouses, distribution centers, supermarkets, schools, healthcare "
+        "facilities, manufacturing areas, workshops, retail spaces, and other "
+        "medium-to-large commercial or industrial hard-floor environments."
+    ),
+    "not_for": (
+        "Very small or highly congested spaces better suited to a compact scrubber, "
+        "or very large open facilities where a ride-on scrubber would provide "
+        "greater operator efficiency and productivity."
+    ),
+    "key_benefits": (
+        "Approximately 28-inch dual-disc cleaning path, powered traction drive, "
+        "large 90-liter solution and 106-liter recovery tanks, straightforward "
+        "operator controls, durable walk-behind construction, and theoretical "
+        "productivity up to 3,200 square meters per hour."
+    ),
+    "common_uses": (
+        "Routine and deep cleaning of finished concrete, warehouse floors, retail "
+        "floors, institutional facilities, manufacturing areas, workshops, and "
+        "other commercial or industrial hard-floor surfaces."
+    ),
+    "faq": (
+        "What is the Wellland FD70 used for? "
+        "The FD70 is a traction-drive walk-behind floor scrubber designed for "
+        "commercial and industrial hard-floor cleaning. "
+        "How wide does the Wellland FD70 clean? "
+        "Wellland lists a 720 mm cleaning width, which is approximately 28.3 inches. "
+        "How large are the tanks? "
+        "Wellland lists a 90-liter clean-water tank and a 106-liter recovery tank. "
+        "How productive is the FD70? "
+        "Wellland rates theoretical productivity at approximately 3,200 square "
+        "meters per hour. "
+        "Does the FD70 have traction drive? "
+        "Yes. The FD70 includes powered traction to reduce operator effort. "
+        "How does the FD70 compare with a Tennant T500? "
+        "The FD70 occupies a similar general commercial walk-behind scrubber class "
+        "and approximately 28-inch cleaning range, but exact specifications and "
+        "configurations should be compared machine by machine."
+    ),
+    "comparison_notes": (
+        "The Wellland FD70 occupies a similar general commercial walk-behind "
+        "scrubber class to machines such as the Tennant T500, particularly in "
+        "approximately 28-inch cleaning applications. Its traction drive, large "
+        "solution and recovery tanks, and dual-disc scrub deck make it suitable "
+        "for larger floor areas where productivity and straightforward serviceability "
+        "are important."
+    ),
+    "manufacturer_url": (
+        "https://wellland.ru/"
+    ),
+    "source_notes": (
+        "Profile created from the model identification visible on the machine, "
+        "Surface Clean's FD70 listing information, and available Wellland product "
+        "specifications. Surface Clean describes the unit as a new approximately "
+        "28-inch floor scrubber positioned similarly to the Tennant T500. Exact "
+        "battery chemistry and configuration-specific details should be confirmed "
+        "for the individual machine."
+    ),
+},
 ]
