@@ -3047,11 +3047,11 @@ EQUIPMENT_KNOWLEDGE = [
         ),
     },
     {
-        "manufacturer": "Wellland",
+        "manufacturer": "Well Land",
         "model": "FD55",
         "category": "Walk-Behind Floor Scrubber",
         "description": (
-            "The Wellland FD55 is a battery-powered traction-drive walk-behind floor "
+            "The Well Land FD55 is a battery-powered traction-drive walk-behind floor "
             "scrubber designed for commercial and industrial hard-floor cleaning. "
             "Its approximately 20-inch cleaning path provides a practical balance of "
             "productivity and maneuverability for medium-size facilities. The FD55 uses "
@@ -3091,10 +3091,10 @@ EQUIPMENT_KNOWLEDGE = [
             "other indoor hard-floor surfaces."
         ),
         "faq": (
-            "What is the Wellland FD55 used for? "
+            "What is the Well Land FD55 used for? "
             "The FD55 is a walk-behind floor scrubber designed for commercial and "
             "industrial hard-floor cleaning. "
-            "How wide does the Wellland FD55 clean? "
+            "How wide does the Well Land FD55 clean? "
             "The Surface Clean FD55 is described as an approximately 20-inch floor scrubber. "
             "Does the FD55 have traction drive? "
             "Yes. The Surface Clean configuration is a traction-drive machine, which helps "
@@ -3108,7 +3108,7 @@ EQUIPMENT_KNOWLEDGE = [
             "the two models as technically identical."
         ),
         "comparison_notes": (
-            "The Wellland FD55 is positioned in a similar general application class to "
+            "The Well Land FD55 is positioned in a similar general application class to "
             "compact commercial walk-behind scrubbers such as the Tennant T300. Both can "
             "serve medium-size hard-floor cleaning applications where maneuverability and "
             "commercial scrubbing capability are important. The FD55 emphasizes a simple, "
@@ -3116,11 +3116,11 @@ EQUIPMENT_KNOWLEDGE = [
             "using the specific configuration of each machine."
         ),
         "manufacturer_url": (
-            "https://wellland.ru/"
+            "https://Well Land.ru/"
         ),
         "source_notes": (
             "Profile created from the model identification visible on the machine, "
-            "Surface Clean's current FD55 listing information, and available Wellland "
+            "Surface Clean's current FD55 listing information, and available Well Land "
             "product-family information. The pictured machine is labeled FD55 and Surface "
             "Clean describes it as a new approximately 20-inch traction-drive floor "
             "scrubber with gel batteries. Exact FD55 tank capacities, motor specifications, "
@@ -3129,11 +3129,11 @@ EQUIPMENT_KNOWLEDGE = [
         ),
     },
     {
-        "manufacturer": "Wellland",
+        "manufacturer": "Well Land",
         "model": "FD70",
         "category": "Walk-Behind Floor Scrubber",
         "description": (
-            "The Wellland FD70 is a battery-powered traction-drive walk-behind floor "
+            "The Well Land FD70 is a battery-powered traction-drive walk-behind floor "
             "scrubber designed for high-productivity commercial and industrial hard-floor "
             "cleaning. Its approximately 28-inch dual-disc cleaning path, large solution "
             "and recovery tanks, and powered drive make it well suited to medium and large "
@@ -3177,15 +3177,15 @@ EQUIPMENT_KNOWLEDGE = [
             "other commercial or industrial hard-floor surfaces."
         ),
         "faq": (
-            "What is the Wellland FD70 used for? "
+            "What is the Well Land FD70 used for? "
             "The FD70 is a traction-drive walk-behind floor scrubber designed for "
             "commercial and industrial hard-floor cleaning. "
-            "How wide does the Wellland FD70 clean? "
-            "Wellland lists a 720 mm cleaning width, which is approximately 28.3 inches. "
+            "How wide does the Well Land FD70 clean? "
+            "Well Land lists a 720 mm cleaning width, which is approximately 28.3 inches. "
             "How large are the tanks? "
-            "Wellland lists a 90-liter clean-water tank and a 106-liter recovery tank. "
+            "Well Land lists a 90-liter clean-water tank and a 106-liter recovery tank. "
             "How productive is the FD70? "
-            "Wellland rates theoretical productivity at approximately 3,200 square "
+            "Well Land rates theoretical productivity at approximately 3,200 square "
             "meters per hour. "
             "Does the FD70 have traction drive? "
             "Yes. The FD70 includes powered traction to reduce operator effort. "
@@ -3195,7 +3195,7 @@ EQUIPMENT_KNOWLEDGE = [
             "configurations should be compared machine by machine."
         ),
         "comparison_notes": (
-            "The Wellland FD70 occupies a similar general commercial walk-behind "
+            "The Well Land FD70 occupies a similar general commercial walk-behind "
             "scrubber class to machines such as the Tennant T500, particularly in "
             "approximately 28-inch cleaning applications. Its traction drive, large "
             "solution and recovery tanks, and dual-disc scrub deck make it suitable "
@@ -3203,11 +3203,11 @@ EQUIPMENT_KNOWLEDGE = [
             "are important."
         ),
         "manufacturer_url": (
-            "https://wellland.ru/"
+            "https://Well Land.ru/"
         ),
         "source_notes": (
             "Profile created from the model identification visible on the machine, "
-            "Surface Clean's FD70 listing information, and available Wellland product "
+            "Surface Clean's FD70 listing information, and available Well Land product "
             "specifications. Surface Clean describes the unit as a new approximately "
             "28-inch floor scrubber positioned similarly to the Tennant T500. Exact "
             "battery chemistry and configuration-specific details should be confirmed "
@@ -3215,11 +3215,11 @@ EQUIPMENT_KNOWLEDGE = [
         ),
     },
     {
-        "manufacturer": "Wellland",
+        "manufacturer": "Well Land",
         "model": "FD90",
         "category": "Walk-Behind Floor Scrubber",
         "description": (
-            "The Wellland FD90 is a battery-powered walk-behind floor scrubber "
+            "The Well Land FD90 is a battery-powered walk-behind floor scrubber "
             "designed for commercial and industrial hard-floor cleaning. "
             "Surface Clean identifies this configuration as an approximately "
             "32-inch scrubber intended for larger floor areas where higher "
@@ -3257,10 +3257,10 @@ EQUIPMENT_KNOWLEDGE = [
             "other commercial or industrial hard-floor surfaces."
         ),
         "faq": (
-            "What is the Wellland FD90 used for? "
+            "What is the Well Land FD90 used for? "
             "The FD90 is a walk-behind floor scrubber intended for commercial and "
             "industrial hard-floor cleaning. "
-            "How wide does the Wellland FD90 clean? "
+            "How wide does the Well Land FD90 clean? "
             "Surface Clean identifies this configuration as an approximately "
             "32-inch floor scrubber. "
             "Is the FD90 battery powered? "
@@ -3271,7 +3271,7 @@ EQUIPMENT_KNOWLEDGE = [
             "specifications should be compared machine by machine."
         ),
         "comparison_notes": (
-            "Surface Clean positions the Wellland FD90 as a large commercial walk-behind "
+            "Surface Clean positions the Well Land FD90 as a large commercial walk-behind "
             "floor scrubber in the same general application class as larger Tennant "
             "walk-behind machines. Dave's listing specifically describes it as a "
             "32-inch scrubber and emphasizes quality, serviceability, warranty support, "
@@ -3279,13 +3279,13 @@ EQUIPMENT_KNOWLEDGE = [
             "Tennant model should not be assumed without matching specifications."
         ),
         "manufacturer_url": (
-            "https://wellland.ru/"
+            "https://Well Land.ru/"
         ),
         "source_notes": (
             "Profile created from the FD90 model identification visible on the machine "
             "and Surface Clean's current listing information. The machine is physically "
-            "branded Wellland and labeled FD90. Surface Clean describes the unit as a "
-            "new approximately 32-inch floor scrubber. An exact current Wellland FD90 "
+            "branded Well Land and labeled FD90. Surface Clean describes the unit as a "
+            "new approximately 32-inch floor scrubber. An exact current Well Land FD90 "
             "manufacturer specification page was not located, so unverified tank, motor, "
             "battery, runtime, and productivity figures are intentionally omitted."
         ),
