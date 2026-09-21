@@ -3047,11 +3047,11 @@ EQUIPMENT_KNOWLEDGE = [
         ),
     },
     {
-        "manufacturer": "Well Land",
+        "manufacturer": "WellLand",
         "model": "FD55",
         "category": "Walk-Behind Floor Scrubber",
         "description": (
-            "The Well Land FD55 is a battery-powered traction-drive walk-behind floor "
+            "The WellLand FD55 is a battery-powered traction-drive walk-behind floor "
             "scrubber designed for commercial and industrial hard-floor cleaning. "
             "Its approximately 20-inch cleaning path provides a practical balance of "
             "productivity and maneuverability for medium-size facilities. The FD55 uses "
@@ -3091,10 +3091,10 @@ EQUIPMENT_KNOWLEDGE = [
             "other indoor hard-floor surfaces."
         ),
         "faq": (
-            "What is the Well Land FD55 used for? "
+            "What is the WellLand FD55 used for? "
             "The FD55 is a walk-behind floor scrubber designed for commercial and "
             "industrial hard-floor cleaning. "
-            "How wide does the Well Land FD55 clean? "
+            "How wide does the WellLand FD55 clean? "
             "The Surface Clean FD55 is described as an approximately 20-inch floor scrubber. "
             "Does the FD55 have traction drive? "
             "Yes. The Surface Clean configuration is a traction-drive machine, which helps "
@@ -3108,7 +3108,7 @@ EQUIPMENT_KNOWLEDGE = [
             "the two models as technically identical."
         ),
         "comparison_notes": (
-            "The Well Land FD55 is positioned in a similar general application class to "
+            "The WellLand FD55 is positioned in a similar general application class to "
             "compact commercial walk-behind scrubbers such as the Tennant T300. Both can "
             "serve medium-size hard-floor cleaning applications where maneuverability and "
             "commercial scrubbing capability are important. The FD55 emphasizes a simple, "
@@ -3116,11 +3116,11 @@ EQUIPMENT_KNOWLEDGE = [
             "using the specific configuration of each machine."
         ),
         "manufacturer_url": (
-            "https://Well Land.ru/"
+            "https://WellLand.ru/"
         ),
         "source_notes": (
             "Profile created from the model identification visible on the machine, "
-            "Surface Clean's current FD55 listing information, and available Well Land "
+            "Surface Clean's current FD55 listing information, and available WellLand "
             "product-family information. The pictured machine is labeled FD55 and Surface "
             "Clean describes it as a new approximately 20-inch traction-drive floor "
             "scrubber with gel batteries. Exact FD55 tank capacities, motor specifications, "
@@ -3129,97 +3129,11 @@ EQUIPMENT_KNOWLEDGE = [
         ),
     },
     {
-        "manufacturer": "Well Land",
-        "model": "FD70",
-        "category": "Walk-Behind Floor Scrubber",
-        "description": (
-            "The Well Land FD70 is a battery-powered traction-drive walk-behind floor "
-            "scrubber designed for high-productivity commercial and industrial hard-floor "
-            "cleaning. Its approximately 28-inch dual-disc cleaning path, large solution "
-            "and recovery tanks, and powered drive make it well suited to medium and large "
-            "facilities that need more capacity than a compact walk-behind scrubber."
-        ),
-        "specifications": (
-            "Cleaning path: 720 mm / approximately 28.3 inches. "
-            "Squeegee width: 920 mm / approximately 36.2 inches. "
-            "Solution tank: 90 liters / approximately 23.8 gallons. "
-            "Recovery tank: 106 liters / approximately 28 gallons. "
-            "Theoretical productivity: 3,200 square meters per hour / approximately "
-            "34,445 square feet per hour. "
-            "Brush system: two 360 mm disc brushes. "
-            "Brush motors: 2 x 550 W. "
-            "Brush speed: 200 rpm. "
-            "Traction motor: 450 W. "
-            "Vacuum motor: 650 W. "
-            "Power system: 24 volt battery. "
-            "Noise level: approximately 67 dB. "
-            "Dimensions: 1389 x 760 x 1095 mm."
-        ),
-        "best_for": (
-            "Warehouses, distribution centers, supermarkets, schools, healthcare "
-            "facilities, manufacturing areas, workshops, retail spaces, and other "
-            "medium-to-large commercial or industrial hard-floor environments."
-        ),
-        "not_for": (
-            "Very small or highly congested spaces better suited to a compact scrubber, "
-            "or very large open facilities where a ride-on scrubber would provide "
-            "greater operator efficiency and productivity."
-        ),
-        "key_benefits": (
-            "Approximately 28-inch dual-disc cleaning path, powered traction drive, "
-            "large 90-liter solution and 106-liter recovery tanks, straightforward "
-            "operator controls, durable walk-behind construction, and theoretical "
-            "productivity up to 3,200 square meters per hour."
-        ),
-        "common_uses": (
-            "Routine and deep cleaning of finished concrete, warehouse floors, retail "
-            "floors, institutional facilities, manufacturing areas, workshops, and "
-            "other commercial or industrial hard-floor surfaces."
-        ),
-        "faq": (
-            "What is the Well Land FD70 used for? "
-            "The FD70 is a traction-drive walk-behind floor scrubber designed for "
-            "commercial and industrial hard-floor cleaning. "
-            "How wide does the Well Land FD70 clean? "
-            "Well Land lists a 720 mm cleaning width, which is approximately 28.3 inches. "
-            "How large are the tanks? "
-            "Well Land lists a 90-liter clean-water tank and a 106-liter recovery tank. "
-            "How productive is the FD70? "
-            "Well Land rates theoretical productivity at approximately 3,200 square "
-            "meters per hour. "
-            "Does the FD70 have traction drive? "
-            "Yes. The FD70 includes powered traction to reduce operator effort. "
-            "How does the FD70 compare with a Tennant T500? "
-            "The FD70 occupies a similar general commercial walk-behind scrubber class "
-            "and approximately 28-inch cleaning range, but exact specifications and "
-            "configurations should be compared machine by machine."
-        ),
-        "comparison_notes": (
-            "The Well Land FD70 occupies a similar general commercial walk-behind "
-            "scrubber class to machines such as the Tennant T500, particularly in "
-            "approximately 28-inch cleaning applications. Its traction drive, large "
-            "solution and recovery tanks, and dual-disc scrub deck make it suitable "
-            "for larger floor areas where productivity and straightforward serviceability "
-            "are important."
-        ),
-        "manufacturer_url": (
-            "https://Well Land.ru/"
-        ),
-        "source_notes": (
-            "Profile created from the model identification visible on the machine, "
-            "Surface Clean's FD70 listing information, and available Well Land product "
-            "specifications. Surface Clean describes the unit as a new approximately "
-            "28-inch floor scrubber positioned similarly to the Tennant T500. Exact "
-            "battery chemistry and configuration-specific details should be confirmed "
-            "for the individual machine."
-        ),
-    },
-    {
-        "manufacturer": "Well Land",
+        "manufacturer": "WellLand",
         "model": "FD90",
         "category": "Walk-Behind Floor Scrubber",
         "description": (
-            "The Well Land FD90 is a battery-powered walk-behind floor scrubber "
+            "The WellLand FD90 is a battery-powered walk-behind floor scrubber "
             "designed for commercial and industrial hard-floor cleaning. "
             "Surface Clean identifies this configuration as an approximately "
             "32-inch scrubber intended for larger floor areas where higher "
@@ -3257,10 +3171,10 @@ EQUIPMENT_KNOWLEDGE = [
             "other commercial or industrial hard-floor surfaces."
         ),
         "faq": (
-            "What is the Well Land FD90 used for? "
+            "What is the WellLand FD90 used for? "
             "The FD90 is a walk-behind floor scrubber intended for commercial and "
             "industrial hard-floor cleaning. "
-            "How wide does the Well Land FD90 clean? "
+            "How wide does the WellLand FD90 clean? "
             "Surface Clean identifies this configuration as an approximately "
             "32-inch floor scrubber. "
             "Is the FD90 battery powered? "
@@ -3271,7 +3185,7 @@ EQUIPMENT_KNOWLEDGE = [
             "specifications should be compared machine by machine."
         ),
         "comparison_notes": (
-            "Surface Clean positions the Well Land FD90 as a large commercial walk-behind "
+            "Surface Clean positions the WellLand FD90 as a large commercial walk-behind "
             "floor scrubber in the same general application class as larger Tennant "
             "walk-behind machines. Dave's listing specifically describes it as a "
             "32-inch scrubber and emphasizes quality, serviceability, warranty support, "
@@ -3279,15 +3193,1232 @@ EQUIPMENT_KNOWLEDGE = [
             "Tennant model should not be assumed without matching specifications."
         ),
         "manufacturer_url": (
-            "https://Well Land.ru/"
+            "https://WellLand.ru/"
         ),
         "source_notes": (
             "Profile created from the FD90 model identification visible on the machine "
             "and Surface Clean's current listing information. The machine is physically "
-            "branded Well Land and labeled FD90. Surface Clean describes the unit as a "
-            "new approximately 32-inch floor scrubber. An exact current Well Land FD90 "
+            "branded WellLand and labeled FD90. Surface Clean describes the unit as a "
+            "new approximately 32-inch floor scrubber. An exact current WellLand FD90 "
             "manufacturer specification page was not located, so unverified tank, motor, "
             "battery, runtime, and productivity figures are intentionally omitted."
+        ),
+    },
+    {
+        "manufacturer": "WellLand",
+        "model": "S3",
+        "category": "Walk-Behind Floor Scrubber",
+        "description": (
+            "The WellLand S3 is a compact battery-powered walk-behind floor scrubber "
+            "designed for routine cleaning in small to medium commercial spaces. "
+            "Its narrow cleaning path, compact footprint, and simple operator controls "
+            "make it well suited for areas where maneuverability is important."
+        ),
+        "specifications": (
+            "Cleaning path: 15.7 inches (400 mm). "
+            "Solution tank: 6.6 gallons (25 L). "
+            "Recovery tank: 7.9 gallons (30 L). "
+            "Theoretical productivity: approximately 17,222 sq ft per hour "
+            "(1,600 m²/h). "
+            "Brush configuration: one 400 mm disk brush. "
+            "Brush speed: 180 rpm. "
+            "Brush pressure: approximately 55 lb (25 kg). "
+            "Squeegee width: 22.4 inches (570 mm). "
+            "Maximum travel speed: approximately 2.5 mph (4 km/h). "
+            "Estimated run time: approximately 2.5 to 3 hours. "
+            "Sound level: approximately 65 dBA. "
+            "Power source: battery."
+        ),
+        "best_for": (
+            "Small and medium commercial facilities that need a compact floor scrubber, "
+            "including restaurants, cafes, hotels, cinemas, offices, sports facilities, "
+            "retail areas, and other spaces with tighter aisles or obstacles."
+        ),
+        "not_for": (
+            "Large warehouses or industrial facilities where wider cleaning paths, "
+            "larger tanks, and higher-productivity walk-behind or ride-on scrubbers "
+            "would reduce cleaning time."
+        ),
+        "key_benefits": (
+            "Compact 15.7-inch cleaning path, simple controls, approximately 55 lb "
+            "of brush pressure, quiet 65 dBA operation, removable recovery tank, "
+            "and a maneuverable design suited to smaller commercial spaces."
+        ),
+        "common_uses": (
+            "Restaurants, cafes, hotels, offices, cinemas, retail stores, fitness "
+            "facilities, schools, and other small-to-medium indoor hard-floor areas."
+        ),
+        "faq": (
+            "What is the WellLand S3 designed for? "
+            "The S3 is a compact professional walk-behind scrubber intended for "
+            "small and medium indoor commercial areas. "
+            "How wide does the S3 clean? "
+            "It has a 400 mm, or approximately 15.7-inch, cleaning path. "
+            "How large are the tanks? "
+            "WellLand lists a 25-liter solution tank and a 30-liter recovery tank. "
+            "How productive is the S3? "
+            "Theoretical productivity is rated at approximately 1,600 square meters "
+            "or 17,222 square feet per hour. "
+            "How long can it run? "
+            "WellLand lists approximately 2.5 to 3 hours of operation per charge."
+        ),
+        "comparison_notes": (
+            "The S3 occupies the compact end of WellLand's walk-behind scrubber range. "
+            "Its 15.7-inch cleaning path places it in the same general application "
+            "class as compact Tennant machines such as the T2, while larger WellLand "
+            "models such as the F50P and F55 provide wider cleaning paths and greater "
+            "tank capacity."
+        ),
+        "manufacturer_url": "https://wellland.ru/S3",
+        "source_notes": (
+            "Profile information verified against WellLand official S3 product "
+            "information and current WellLand catalog."
+        ),
+    },
+    {
+        "manufacturer": "WellLand",
+        "model": "F50P",
+        "category": "Walk-Behind Floor Scrubber",
+        "description": (
+            "The WellLand F50P is a professional battery-powered walk-behind floor "
+            "scrubber with a 500 mm cleaning path and larger tanks than WellLand's "
+            "compact S3. It is designed for productive routine cleaning in commercial "
+            "and institutional hard-floor environments."
+        ),
+        "specifications": (
+            "Cleaning path: 19.7 inches (500 mm). "
+            "Solution tank: 10.6 gallons (40 L). "
+            "Recovery tank: 13.2 gallons (50 L). "
+            "Theoretical productivity: approximately 24,757 sq ft per hour "
+            "(2,300 m²/h). "
+            "Brush configuration: one 500 mm disk brush. "
+            "Brush speed: approximately 180 rpm. "
+            "Brush pressure: approximately 55 lb (25 kg). "
+            "Power source: battery."
+        ),
+        "best_for": (
+            "Small to medium commercial and institutional facilities that need more "
+            "tank capacity and cleaning width than a compact scrubber while retaining "
+            "a maneuverable walk-behind format."
+        ),
+        "not_for": (
+            "Very small congested spaces where a narrower scrubber is easier to "
+            "maneuver, or large open industrial facilities where a wider walk-behind "
+            "or ride-on scrubber would provide greater productivity."
+        ),
+        "key_benefits": (
+            "19.7-inch cleaning path, 40-liter solution and 50-liter recovery tanks, "
+            "professional walk-behind design, straightforward controls, and "
+            "theoretical productivity of approximately 24,757 sq ft per hour."
+        ),
+        "common_uses": (
+            "Retail facilities, schools, offices, healthcare facilities, restaurants, "
+            "commercial buildings, and other small-to-medium indoor hard-floor areas."
+        ),
+        "faq": (
+            "How wide does the WellLand F50P clean? "
+            "The F50P has a 500 mm, or approximately 19.7-inch, cleaning path. "
+            "How large are the tanks? "
+            "It has a 40-liter solution tank and a 50-liter recovery tank. "
+            "How productive is the F50P? "
+            "WellLand rates theoretical productivity at approximately 2,300 square "
+            "meters or 24,757 square feet per hour. "
+            "Is the F50P a walk-behind machine? "
+            "Yes. It is a professional walk-behind floor scrubber."
+        ),
+        "comparison_notes": (
+            "The F50P moves above the compact WellLand S3 with a wider 19.7-inch "
+            "cleaning path and larger 40/50-liter tanks. Its general size and "
+            "application overlap with compact commercial scrubbers such as Tennant's "
+            "T300 family, although specifications and configurations differ by model."
+        ),
+        "manufacturer_url": "https://wellland.ru/F50P",
+        "source_notes": (
+            "Profile information verified against WellLand official product and "
+            "current catalog information for the F50P platform."
+        ),
+    },
+    {
+        "manufacturer": "WellLand",
+        "model": "F55",
+        "category": "Walk-Behind Floor Scrubber",
+        "description": (
+            "The WellLand F55 is a battery-powered professional walk-behind floor "
+            "scrubber with a 500 mm cleaning path and 50/55-liter tank system. "
+            "It is designed for routine commercial and facility hard-floor cleaning "
+            "where a maneuverable machine with substantial solution capacity is useful."
+        ),
+        "specifications": (
+            "Cleaning path: 19.7 inches (500 mm). "
+            "Solution tank: 13.2 gallons (50 L). "
+            "Recovery tank: 14.5 gallons (55 L). "
+            "Theoretical productivity: approximately 24,757 sq ft per hour "
+            "(2,300 m²/h). "
+            "Brush configuration: single disk. "
+            "Maximum brush pressure: approximately 90 lb (41 kg). "
+            "Estimated run time: approximately 3 hours. "
+            "Power source: battery."
+        ),
+        "best_for": (
+            "Commercial and institutional hard-floor cleaning where a 20-inch-class "
+            "walk-behind scrubber provides a good balance of maneuverability, tank "
+            "capacity, and scrubbing performance."
+        ),
+        "not_for": (
+            "Very small spaces better suited to compact scrubbers, or very large "
+            "open warehouses and industrial facilities where wider heavy-duty "
+            "walk-behind or ride-on machines provide greater productivity."
+        ),
+        "key_benefits": (
+            "19.7-inch cleaning path, 50-liter solution and 55-liter recovery tanks, "
+            "approximately 90 lb of available brush pressure, battery operation, "
+            "and a practical walk-behind footprint for commercial floor care."
+        ),
+        "common_uses": (
+            "Retail stores, schools, healthcare facilities, offices, commercial "
+            "buildings, workshops, supermarkets, and other indoor hard-floor areas."
+        ),
+        "faq": (
+            "What is the WellLand F55 used for? "
+            "The F55 is a professional battery-powered walk-behind scrubber for "
+            "commercial and facility hard-floor cleaning. "
+            "How wide does the F55 clean? "
+            "It has a 500 mm, or approximately 19.7-inch, cleaning path. "
+            "How large are the tanks? "
+            "The F55 has a 50-liter solution tank and a 55-liter recovery tank. "
+            "How productive is the F55? "
+            "WellLand rates theoretical productivity at approximately 2,300 square "
+            "meters or 24,757 square feet per hour. "
+            "How much brush pressure does it provide? "
+            "WellLand lists approximately 41 kg, or about 90 lb, of brush pressure."
+        ),
+        "comparison_notes": (
+            "The F55 is a 20-inch-class WellLand walk-behind scrubber with larger "
+            "50/55-liter tanks than the F50P. Its general application overlaps with "
+            "machines such as Tennant's T300 and T300e, while larger WellLand models "
+            "such as the FD60 and FD70 provide wider cleaning paths for larger areas."
+        ),
+        "manufacturer_url": "https://wellland.ru/F55",
+        "source_notes": (
+            "Profile information verified against WellLand official F55 product "
+            "information and current WellLand catalog."
+        ),
+    },
+    {
+        "manufacturer": "WellLand",
+        "model": "FD60",
+        "category": "Walk-Behind Floor Scrubber",
+        "description": (
+            "The WellLand FD60 is a battery-powered walk-behind floor scrubber with "
+            "a 600 mm cleaning path designed to increase productivity while retaining "
+            "walk-behind maneuverability. It bridges the gap between compact "
+            "20-inch-class scrubbers and larger heavy-duty walk-behind machines."
+        ),
+        "specifications": (
+            "Cleaning path: 23.6 inches (600 mm). "
+            "Solution tank: 10.6 gallons (40 L). "
+            "Recovery tank: 13.2 gallons (50 L). "
+            "Theoretical productivity: approximately 29,063 sq ft per hour "
+            "(2,700 m²/h). "
+            "Power source: battery."
+        ),
+        "best_for": (
+            "Medium commercial and institutional facilities where a wider cleaning "
+            "path can improve productivity without moving to a large heavy-duty "
+            "walk-behind or ride-on scrubber."
+        ),
+        "not_for": (
+            "Very tight or heavily obstructed spaces where a compact 15- to 20-inch "
+            "scrubber is easier to maneuver, or large industrial areas requiring "
+            "substantially larger tanks and cleaning paths."
+        ),
+        "key_benefits": (
+            "23.6-inch cleaning path, theoretical productivity of approximately "
+            "29,063 sq ft per hour, 40/50-liter tank system, and walk-behind "
+            "maneuverability for medium-size floor-care applications."
+        ),
+        "common_uses": (
+            "Schools, supermarkets, commercial buildings, healthcare facilities, "
+            "retail environments, workshops, and other medium-size indoor hard-floor areas."
+        ),
+        "faq": (
+            "How wide does the WellLand FD60 clean? "
+            "The FD60 has a 600 mm, or approximately 23.6-inch, cleaning path. "
+            "How large are the tanks? "
+            "It has a 40-liter solution tank and a 50-liter recovery tank. "
+            "How productive is the FD60? "
+            "WellLand rates theoretical productivity at approximately 2,700 square "
+            "meters or 29,063 square feet per hour. "
+            "Is the FD60 a ride-on scrubber? "
+            "No. The FD60 is part of WellLand's walk-behind scrubber range."
+        ),
+        "comparison_notes": (
+            "The FD60 provides a wider 23.6-inch cleaning path than WellLand's "
+            "F50P and F55. Its general application overlaps with mid-size commercial "
+            "walk-behind scrubbers, including some Tennant T300 and T5/T500 "
+            "configurations, although tank capacity and other specifications differ."
+        ),
+        "manufacturer_url": "https://wellland.ru/FD60",
+        "source_notes": (
+            "Profile information verified against WellLand official FD60 listing "
+            "and current WellLand catalog."
+        ),
+    },
+    {
+        "manufacturer": "WellLand",
+        "model": "FD70",
+        "category": "Walk-Behind Floor Scrubber",
+        "description": (
+            "The WellLand FD70 is a large battery-powered walk-behind floor scrubber "
+            "designed for productive cleaning in medium-to-large commercial and "
+            "industrial facilities. Its 720 mm cleaning path and large solution and "
+            "recovery tanks place it at the heavy-duty end of WellLand's walk-behind range."
+        ),
+        "specifications": (
+            "Cleaning path: 28.3 inches (720 mm). "
+            "Solution tank: 23.8 gallons (90 L). "
+            "Recovery tank: 28.0 gallons (106 L). "
+            "Theoretical productivity: approximately 34,445 sq ft per hour "
+            "(3,200 m²/h). "
+            "Power source: battery."
+        ),
+        "best_for": (
+            "Medium-to-large commercial and industrial facilities that need a wide "
+            "walk-behind cleaning path, large tank capacity, and greater productivity "
+            "without moving to a ride-on machine."
+        ),
+        "not_for": (
+            "Small congested spaces where its larger footprint and 28.3-inch cleaning "
+            "path would reduce maneuverability, or very large open facilities where "
+            "ride-on equipment may improve operator efficiency."
+        ),
+        "key_benefits": (
+            "Wide 28.3-inch cleaning path, large 90-liter solution and 106-liter "
+            "recovery tanks, approximately 34,445 sq ft per hour theoretical "
+            "productivity, and heavy-duty walk-behind capability."
+        ),
+        "common_uses": (
+            "Warehouses, manufacturing facilities, supermarkets, distribution areas, "
+            "large commercial buildings, workshops, and other medium-to-large "
+            "indoor hard-floor environments."
+        ),
+        "faq": (
+            "How wide does the WellLand FD70 clean? "
+            "The FD70 has a 720 mm, or approximately 28.3-inch, cleaning path. "
+            "How large are the tanks? "
+            "WellLand lists a 90-liter solution tank and a 106-liter recovery tank. "
+            "How productive is the FD70? "
+            "Theoretical productivity is approximately 3,200 square meters or "
+            "34,445 square feet per hour. "
+            "Is the FD70 a walk-behind machine? "
+            "Yes. It is a large battery-powered walk-behind floor scrubber."
+        ),
+        "comparison_notes": (
+            "The FD70 is the largest of the core WellLand walk-behind models in this "
+            "knowledge set. Its 28.3-inch cleaning path overlaps the general size class "
+            "of larger Tennant walk-behind scrubbers such as the T500 and T600, but "
+            "the Tennant machines offer different tank capacities, configurations, "
+            "and productivity ratings. The FD70 should therefore be treated as a "
+            "similar application class rather than a direct equivalent."
+        ),
+        "manufacturer_url": "https://wellland.ru/FD70",
+        "source_notes": (
+            "Profile information verified against WellLand official FD70 listing "
+            "and current WellLand catalog."
+        ),
+    },
+    {
+        "manufacturer": "WellLand",
+        "model": "MD80",
+        "category": "Ride-On Floor Scrubber",
+        "description": (
+            "The WellLand MD80 is a compact battery-powered ride-on floor scrubber "
+            "designed to combine rider productivity with maneuverability in tighter "
+            "commercial and industrial spaces. Its single 22-inch-class disk brush, "
+            "75/80-liter tank system, and compact chassis make it useful where a "
+            "traditional larger ride-on scrubber may be difficult to maneuver."
+        ),
+        "specifications": (
+            "Cleaning path: 22.0 inches (560 mm). "
+            "Solution tank: 19.8 gallons (75 L). "
+            "Recovery tank: 21.1 gallons (80 L). "
+            "Theoretical productivity: approximately 38,750 sq ft per hour "
+            "(3,600 m²/h). "
+            "Brush configuration: one 560 mm disk brush. "
+            "Brush speed: 180 rpm. "
+            "Brush pressure: approximately 79 lb (36 kg). "
+            "Brush motor: 500 W. "
+            "Drive motor: 480 W. "
+            "Vacuum motor: 450 W. "
+            "Maximum travel speed: approximately 3.7 mph (6 km/h). "
+            "Battery: 24 V / 100 Ah lithium. "
+            "Estimated runtime: approximately 2.5 to 3 hours. "
+            "Sound level: approximately 66 dBA. "
+            "Machine dimensions: approximately 54.0 x 28.3 x 44.5 inches "
+            "(1372 x 720 x 1130 mm). "
+            "Weight with batteries: approximately 225 lb (102 kg). "
+            "Power source: battery."
+        ),
+        "best_for": (
+            "Retail stores, schools, healthcare facilities, airports, transit "
+            "facilities, workshops, commercial buildings, and other facilities "
+            "that benefit from ride-on productivity but have narrow aisles, "
+            "shelving, obstacles, or limited maneuvering space."
+        ),
+        "not_for": (
+            "Very small facilities where a compact walk-behind scrubber is more "
+            "practical, or very large open industrial floors where a wider ride-on "
+            "scrubber can provide substantially greater productivity."
+        ),
+        "key_benefits": (
+            "Compact ride-on design, 22-inch cleaning path, 75/80-liter tanks, "
+            "approximately 38,750 sq ft per hour theoretical productivity, "
+            "lithium battery power, approximately three-hour runtime, quiet "
+            "operation, and maneuverability in constrained spaces."
+        ),
+        "common_uses": (
+            "Retail aisles, schools, medical facilities, airports, transit stations, "
+            "commercial buildings, production workshops, and medium-size warehouses."
+        ),
+        "faq": (
+            "What is the WellLand MD80? "
+            "The MD80 is a compact battery-powered ride-on floor scrubber. "
+            "How wide does the MD80 clean? "
+            "It has a 560 mm, or approximately 22-inch, cleaning path. "
+            "How large are the tanks? "
+            "The MD80 has a 75-liter solution tank and an 80-liter recovery tank. "
+            "How productive is the MD80? "
+            "WellLand rates theoretical productivity at approximately 3,600 square "
+            "meters or 38,750 square feet per hour. "
+            "How long does it run? "
+            "WellLand lists approximately 2.5 to 3 hours of runtime with its "
+            "24 V / 100 Ah lithium battery. "
+            "Where does the MD80 fit compared with larger ride-on scrubbers? "
+            "Its relatively narrow cleaning path and compact chassis emphasize "
+            "maneuverability rather than maximum open-floor productivity."
+        ),
+        "comparison_notes": (
+            "The MD80 is WellLand's compact rider in this knowledge set. Its "
+            "22-inch cleaning path is considerably narrower than large industrial "
+            "ride-on scrubbers and is intended to provide rider productivity in "
+            "spaces where maneuverability matters. It overlaps the general use case "
+            "of compact Tennant ride-on scrubbers such as the T7, but exact cleaning "
+            "width, tank capacity, productivity, and configuration differ."
+        ),
+        "manufacturer_url": "https://wellland.ru/MD80",
+        "source_notes": (
+            "Profile information verified against WellLand official MD80 product "
+            "documentation and current WellLand catalog."
+        ),
+    },
+    {
+        "manufacturer": "WellLand",
+        "model": "MD80S",
+        "category": "Ride-On Floor Scrubber",
+        "description": (
+            "The WellLand MD80S is a compact battery-powered ride-on floor scrubber "
+            "that pairs the MD80 platform's 75/80-liter tank system with a wider "
+            "720 mm cleaning path. It is intended for facilities that want compact "
+            "ride-on maneuverability with greater floor coverage per pass."
+        ),
+        "specifications": (
+            "Cleaning path: 28.3 inches (720 mm). "
+            "Solution tank: 19.8 gallons (75 L). "
+            "Recovery tank: 21.1 gallons (80 L). "
+            "Theoretical productivity: approximately 38,750 sq ft per hour "
+            "(3,600 m²/h). "
+            "Machine type: ride-on floor scrubber. "
+            "Power source: battery."
+        ),
+        "best_for": (
+            "Medium commercial and institutional facilities that need a wider "
+            "ride-on cleaning path while retaining a relatively compact machine, "
+            "including retail facilities, schools, healthcare buildings, airports, "
+            "commercial buildings, and light-industrial environments."
+        ),
+        "not_for": (
+            "Very narrow or heavily congested spaces where the narrower MD80 or a "
+            "walk-behind scrubber would maneuver more easily, or very large open "
+            "industrial facilities where higher-capacity riders provide greater "
+            "productivity."
+        ),
+        "key_benefits": (
+            "28.3-inch cleaning path, compact ride-on format, 75-liter solution "
+            "and 80-liter recovery tanks, approximately 38,750 sq ft per hour "
+            "theoretical productivity, and greater coverage per pass than the "
+            "narrower MD80."
+        ),
+        "common_uses": (
+            "Retail stores, schools, healthcare facilities, commercial buildings, "
+            "airports, workshops, light-industrial facilities, and medium-size "
+            "warehouse floors."
+        ),
+        "faq": (
+            "What is the difference between the MD80 and MD80S? "
+            "Both use 75-liter solution and 80-liter recovery tanks, but WellLand "
+            "lists the MD80S with a wider 720 mm cleaning path compared with "
+            "560 mm for the MD80. "
+            "How wide does the MD80S clean? "
+            "The cleaning path is 720 mm, or approximately 28.3 inches. "
+            "How productive is it? "
+            "WellLand lists theoretical productivity at approximately 3,600 square "
+            "meters or 38,750 square feet per hour. "
+            "Is the MD80S a ride-on machine? "
+            "Yes. It is part of WellLand's operator-seat floor scrubber range."
+        ),
+        "comparison_notes": (
+            "The MD80S provides a substantially wider 28.3-inch cleaning path than "
+            "the 22-inch MD80 while retaining the same listed 75/80-liter tank "
+            "capacities. Its general application overlaps with compact and mid-size "
+            "ride-on scrubbers such as Tennant's T7 and older 7100-class machines, "
+            "but it should not be treated as a direct technical equivalent."
+        ),
+        "manufacturer_url": "https://wellland.ru/MD80S",
+        "source_notes": (
+            "Profile information verified against WellLand's current official "
+            "operator-seat scrubber catalog. Only specifications confirmed in "
+            "current WellLand documentation are included."
+        ),
+    },
+    {
+        "manufacturer": "WellLand",
+        "model": "FD85",
+        "category": "Ride-On Floor Scrubber",
+        "description": (
+            "The WellLand FD85 is a high-capacity battery-powered ride-on floor "
+            "scrubber designed for regular cleaning in large commercial and "
+            "industrial facilities. Its twin-brush 850 mm cleaning deck, large "
+            "120/130-liter tanks, adjustable operating controls, and approximately "
+            "5,500 m²/h theoretical productivity make it suited to demanding "
+            "high-traffic environments."
+        ),
+        "specifications": (
+            "Cleaning path: 33.5 inches (850 mm). "
+            "Solution tank: 31.7 gallons (120 L). "
+            "Recovery tank: 34.3 gallons (130 L). "
+            "Theoretical productivity: approximately 59,202 sq ft per hour "
+            "(5,500 m²/h). "
+            "Brush configuration: two disk brushes. "
+            "Squeegee width: approximately 40.9 inches (1040 mm). "
+            "Drive motor: 450 W. "
+            "Vacuum motor: 650 W. "
+            "Maximum travel speed: approximately 4.3 mph (7 km/h). "
+            "Estimated runtime: approximately 4 hours. "
+            "Sound level: approximately 67 dBA. "
+            "Machine dimensions: approximately 62.2 x 34.3 x 53.1 inches "
+            "(1580 x 870 x 1350 mm). "
+            "Weight with batteries: approximately 1,080 lb (490 kg). "
+            "Standard battery configuration: four 6 V / 220 Ah gel batteries. "
+            "Power source: battery."
+        ),
+        "best_for": (
+            "Shopping centers, warehouses, manufacturing facilities, airports, "
+            "distribution facilities, large retail environments, institutional "
+            "buildings, and other high-traffic commercial or industrial facilities."
+        ),
+        "not_for": (
+            "Small facilities, narrow aisles, or congested spaces where its "
+            "33.5-inch cleaning deck and larger chassis would limit maneuverability."
+        ),
+        "key_benefits": (
+            "33.5-inch twin-brush cleaning deck, 120/130-liter tanks, approximately "
+            "59,202 sq ft per hour theoretical productivity, approximately four-hour "
+            "runtime, one-touch controls, ECO operating mode, adjustable brush "
+            "pressure and water flow, magnetic brush attachment, and filtration "
+            "designed to protect the vacuum system."
+        ),
+        "common_uses": (
+            "Warehouses, shopping centers, manufacturing facilities, airports, "
+            "distribution centers, supermarkets, large commercial buildings, "
+            "and other high-traffic hard-floor environments."
+        ),
+        "faq": (
+            "How wide does the WellLand FD85 clean? "
+            "The FD85 has an 850 mm, or approximately 33.5-inch, cleaning path. "
+            "How large are its tanks? "
+            "WellLand lists a 120-liter solution tank and a 130-liter recovery tank. "
+            "How productive is the FD85? "
+            "Theoretical productivity is approximately 5,500 square meters or "
+            "59,202 square feet per hour. "
+            "How long can it operate on a charge? "
+            "WellLand lists approximately four hours of runtime. "
+            "How many scrub brushes does it use? "
+            "The FD85 uses two disk brushes. "
+            "Does it have adjustable cleaning controls? "
+            "Yes. WellLand documents one-touch operation, ECO mode, adjustable "
+            "brush pressure, and adjustable solution flow."
+        ),
+        "comparison_notes": (
+            "The FD85 moves into WellLand's larger commercial and industrial rider "
+            "class with an 850 mm twin-brush deck and 120/130-liter tanks. Its general "
+            "application overlaps with larger Tennant ride-on scrubbers such as the "
+            "T12 and some T16 applications, although cleaning systems, tank capacities, "
+            "and performance specifications differ substantially by configuration."
+        ),
+        "manufacturer_url": "https://wellland.ru/FD85",
+        "source_notes": (
+            "Profile information verified against WellLand official FD85 product "
+            "documentation and current WellLand catalog."
+        ),
+    },
+    {
+        "manufacturer": "WellLand",
+        "model": "FD100",
+        "category": "Ride-On Floor Scrubber",
+        "description": (
+            "The WellLand FD100 is a compact industrial ride-on floor scrubber "
+            "designed for productive cleaning while maintaining maneuverability. "
+            "Its 720 mm cleaning path, 100/120-liter tank system, and approximately "
+            "5,000 m²/h theoretical productivity make it suitable for medium-to-large "
+            "commercial and industrial hard-floor environments."
+        ),
+        "specifications": (
+            "Cleaning path: 28.3 inches (720 mm). "
+            "Solution tank: 26.4 gallons (100 L). "
+            "Recovery tank: 31.7 gallons (120 L). "
+            "Theoretical productivity: approximately 53,820 sq ft per hour "
+            "(5,000 m²/h). "
+            "Machine type: ride-on floor scrubber. "
+            "Available battery configurations include gel and lithium options. "
+            "Power source: battery."
+        ),
+        "best_for": (
+            "Warehouses, commercial buildings, supermarkets, manufacturing areas, "
+            "distribution facilities, schools, healthcare facilities, and other "
+            "medium-to-large spaces needing productive ride-on scrubbing without "
+            "an exceptionally wide machine."
+        ),
+        "not_for": (
+            "Small congested spaces better suited to a compact rider or walk-behind "
+            "scrubber, or applications requiring a substantially wider cleaning deck "
+            "for maximum open-floor productivity."
+        ),
+        "key_benefits": (
+            "28.3-inch cleaning path, large 100-liter solution and 120-liter recovery "
+            "tanks, approximately 53,820 sq ft per hour theoretical productivity, "
+            "compact rider design, maneuverability, straightforward service access, "
+            "and available gel or lithium battery configurations."
+        ),
+        "common_uses": (
+            "Warehouses, supermarkets, manufacturing facilities, distribution areas, "
+            "commercial buildings, institutional facilities, and other medium-to-large "
+            "indoor hard-floor environments."
+        ),
+        "faq": (
+            "How wide does the WellLand FD100 clean? "
+            "The FD100 has a 720 mm, or approximately 28.3-inch, cleaning path. "
+            "How large are the tanks? "
+            "WellLand lists a 100-liter solution tank and a 120-liter recovery tank. "
+            "How productive is the FD100? "
+            "Theoretical productivity is approximately 5,000 square meters or "
+            "53,820 square feet per hour. "
+            "Is the FD100 battery powered? "
+            "Yes. WellLand offers battery configurations including gel and lithium "
+            "options. "
+            "How does it differ from the FD85? "
+            "The FD100 has a narrower listed cleaning path of 720 mm compared with "
+            "850 mm on the FD85, while retaining large 100/120-liter tanks and "
+            "high ride-on productivity."
+        ),
+        "comparison_notes": (
+            "The FD100 combines large tanks with a 28.3-inch cleaning path, giving "
+            "it a different balance of capacity and maneuverability than the wider "
+            "FD85. Its general use case overlaps with commercial and industrial "
+            "Tennant riders such as the T12 and 7100/7200 class, but it should be "
+            "treated as a similar application category rather than a direct equivalent."
+        ),
+        "manufacturer_url": "https://wellland.ru/FD100",
+        "source_notes": (
+            "Profile information verified against WellLand official FD100 product "
+            "documentation and current WellLand catalog."
+        ),
+    },
+    {
+        "manufacturer": "WellLand",
+        "model": "FD150",
+        "category": "Ride-On Floor Scrubber",
+        "description": (
+            "The WellLand FD150 is a large battery-powered ride-on floor scrubber "
+            "designed for productive cleaning of large commercial and industrial "
+            "hard-floor areas. Its wide twin-brush cleaning deck and large-capacity "
+            "solution and recovery tanks support extended cleaning in demanding facilities."
+        ),
+        "specifications": (
+            "Cleaning path: 33.5 inches (850 mm). "
+            "Solution tank: 39.6 gallons (150 L). "
+            "Recovery tank: 47.6 gallons (180 L). "
+            "Theoretical productivity: approximately 64,584 sq ft per hour "
+            "(6,000 m²/h). "
+            "Brush configuration: two disk brushes. "
+            "Machine type: ride-on floor scrubber. "
+            "Power source: battery."
+        ),
+        "best_for": (
+            "Large warehouses, manufacturing plants, distribution centers, shopping "
+            "centers, transportation facilities, and other large commercial or "
+            "industrial spaces requiring high-capacity ride-on floor scrubbing."
+        ),
+        "not_for": (
+            "Small or congested facilities where its large tanks and rider footprint "
+            "would be unnecessary, or applications primarily requiring dry sweeping "
+            "rather than wet floor scrubbing."
+        ),
+        "key_benefits": (
+            "Large 150-liter solution and 180-liter recovery tanks, 33.5-inch "
+            "twin-brush cleaning path, approximately 64,584 sq ft per hour "
+            "theoretical productivity, and high-capacity ride-on operation for "
+            "large facilities."
+        ),
+        "common_uses": (
+            "Warehouses, factories, distribution centers, shopping centers, "
+            "transportation facilities, industrial production areas, and other "
+            "large indoor hard-floor environments."
+        ),
+        "faq": (
+            "What is the WellLand FD150? "
+            "The FD150 is a large battery-powered ride-on floor scrubber intended "
+            "for commercial and industrial hard-floor cleaning. "
+            "How wide does the FD150 clean? "
+            "It has an 850 mm, or approximately 33.5-inch, cleaning path. "
+            "How large are the tanks? "
+            "WellLand lists a 150-liter solution tank and a 180-liter recovery tank. "
+            "How productive is the FD150? "
+            "Theoretical productivity is approximately 6,000 square meters or "
+            "64,584 square feet per hour. "
+            "How many scrub brushes does it use? "
+            "The FD150 uses a twin-disk scrub deck."
+        ),
+        "comparison_notes": (
+            "The FD150 sits above WellLand's smaller FD85 and FD100 riders in tank "
+            "capacity and is intended for larger commercial and industrial facilities. "
+            "Its general application overlaps with heavy-duty Tennant ride-on scrubbers "
+            "such as the T16 and T20, but cleaning systems, tank capacities, and "
+            "performance specifications differ and should not be treated as direct equivalents."
+        ),
+        "manufacturer_url": "https://wellland.ru/FD150",
+        "source_notes": (
+            "Profile information verified against WellLand official FD150 product "
+            "information and current WellLand catalog."
+        ),
+    },
+    {
+        "manufacturer": "WellLand",
+        "model": "FD230",
+        "category": "Ride-On Floor Scrubber",
+        "description": (
+            "The WellLand FD230 is a heavy-duty battery-powered ride-on floor scrubber "
+            "built for high-productivity cleaning in large industrial and commercial "
+            "facilities. Its large tank system and wide cleaning deck are intended "
+            "to reduce refill stops and increase productive cleaning time across "
+            "large hard-floor areas."
+        ),
+        "specifications": (
+            "Cleaning path: 39.4 inches (1000 mm). "
+            "Solution tank: 60.8 gallons (230 L). "
+            "Recovery tank: 68.7 gallons (260 L). "
+            "Theoretical productivity: approximately 86,111 sq ft per hour "
+            "(8,000 m²/h). "
+            "Machine type: heavy-duty ride-on floor scrubber. "
+            "Power source: battery."
+        ),
+        "best_for": (
+            "Large warehouses, factories, logistics centers, distribution facilities, "
+            "transportation terminals, and other expansive commercial or industrial "
+            "hard-floor environments."
+        ),
+        "not_for": (
+            "Small and medium facilities where its large footprint and tank capacity "
+            "would be unnecessary, or narrow environments requiring compact "
+            "walk-behind or small ride-on equipment."
+        ),
+        "key_benefits": (
+            "39.4-inch cleaning path, very large 230-liter solution and 260-liter "
+            "recovery tanks, approximately 86,111 sq ft per hour theoretical "
+            "productivity, and extended high-capacity cleaning for large facilities."
+        ),
+        "common_uses": (
+            "Large warehouses, manufacturing plants, logistics centers, distribution "
+            "facilities, transportation terminals, industrial production floors, "
+            "and other expansive hard-floor environments."
+        ),
+        "faq": (
+            "What is the WellLand FD230 designed for? "
+            "The FD230 is designed for high-productivity ride-on scrubbing in large "
+            "commercial and industrial facilities. "
+            "How wide does the FD230 clean? "
+            "Its cleaning path is approximately 1000 mm, or 39.4 inches. "
+            "How large are the tanks? "
+            "WellLand lists approximately 230 liters of solution capacity and "
+            "260 liters of recovery capacity. "
+            "How productive is the FD230? "
+            "Theoretical productivity is approximately 8,000 square meters or "
+            "86,111 square feet per hour. "
+            "Who is the FD230 best suited for? "
+            "It is intended for facilities with large floor areas where tank "
+            "capacity and productive cleaning time are priorities."
+        ),
+        "comparison_notes": (
+            "The FD230 is a high-capacity WellLand rider positioned above the FD150. "
+            "Its general application overlaps with large industrial Tennant scrubbers "
+            "such as the T20, although the machines differ in cleaning systems, "
+            "capacity, dimensions, and available configurations."
+        ),
+        "manufacturer_url": "https://wellland.ru/FD230",
+        "source_notes": (
+            "Profile information verified against WellLand official FD230 product "
+            "information and current WellLand catalog."
+        ),
+    },
+    {
+        "manufacturer": "WellLand",
+        "model": "FD300",
+        "category": "Ride-On Floor Scrubber",
+        "description": (
+            "The WellLand FD300 is a high-capacity industrial ride-on floor scrubber "
+            "designed for cleaning very large hard-floor environments. It combines "
+            "a wide cleaning path with very large solution and recovery tanks to "
+            "support extended operation in warehouses, manufacturing plants, and "
+            "other expansive facilities."
+        ),
+        "specifications": (
+            "Cleaning path: 47.2 inches (1200 mm). "
+            "Solution tank: 79.3 gallons (300 L). "
+            "Recovery tank: 95.1 gallons (360 L). "
+            "Theoretical productivity: approximately 107,639 sq ft per hour "
+            "(10,000 m²/h). "
+            "Machine type: heavy-duty industrial ride-on floor scrubber. "
+            "Power source: battery."
+        ),
+        "best_for": (
+            "Very large warehouses, factories, logistics facilities, transportation "
+            "hubs, production plants, and other expansive industrial hard-floor areas "
+            "where maximum cleaning coverage and tank capacity are priorities."
+        ),
+        "not_for": (
+            "Small or medium facilities, narrow aisles, heavily congested spaces, "
+            "or applications where a compact rider or walk-behind scrubber provides "
+            "adequate productivity."
+        ),
+        "key_benefits": (
+            "Very wide 47.2-inch cleaning path, 300-liter solution tank, "
+            "360-liter recovery tank, approximately 107,639 sq ft per hour "
+            "theoretical productivity, and extended industrial ride-on operation."
+        ),
+        "common_uses": (
+            "Large manufacturing plants, logistics centers, major warehouses, "
+            "transportation facilities, industrial production areas, and other "
+            "very large hard-floor environments."
+        ),
+        "faq": (
+            "What is the WellLand FD300? "
+            "The FD300 is a large industrial ride-on floor scrubber intended for "
+            "high-productivity cleaning of expansive hard-floor areas. "
+            "How wide does the FD300 clean? "
+            "Its cleaning path is approximately 1200 mm, or 47.2 inches. "
+            "How large are the tanks? "
+            "WellLand lists approximately 300 liters of solution capacity and "
+            "360 liters of recovery capacity. "
+            "How productive is the FD300? "
+            "Theoretical productivity is approximately 10,000 square meters or "
+            "107,639 square feet per hour. "
+            "Where does the FD300 fit in the WellLand range? "
+            "It is one of the largest high-capacity ride-on scrubbers in WellLand's "
+            "floor-cleaning lineup."
+        ),
+        "comparison_notes": (
+            "The FD300 occupies the high-capacity end of WellLand's ride-on scrubber "
+            "range. Its size and intended application overlap with large industrial "
+            "floor-cleaning equipment rather than compact commercial riders. Compared "
+            "with Tennant machines such as the T16 or T20, the FD300 should be viewed "
+            "as a similar large-facility application class rather than a direct equivalent."
+        ),
+        "manufacturer_url": "https://wellland.ru/FD300",
+        "source_notes": (
+            "Profile information verified against WellLand official FD300 product "
+            "information and current WellLand catalog."
+        ),
+    },
+    {
+        "manufacturer": "WellLand",
+        "model": "S1250",
+        "category": "Ride-On Floor Sweeper",
+        "description": (
+            "The WellLand S1250 is a battery-powered ride-on floor sweeper designed "
+            "for efficient collection of dust and dry debris across commercial and "
+            "industrial surfaces. Its rider configuration and wide sweeping path "
+            "provide substantially greater coverage than manual or walk-behind sweeping."
+        ),
+        "specifications": (
+            "Machine type: ride-on floor sweeper. "
+            "Maximum sweeping path with side brushes: approximately 49.2 inches "
+            "(1250 mm). "
+            "Power source: battery. "
+            "Designed for collection of dry dust and debris on commercial and "
+            "industrial floor surfaces."
+        ),
+        "best_for": (
+            "Warehouses, factories, parking structures, logistics facilities, "
+            "commercial properties, industrial production areas, and other spaces "
+            "requiring routine dry sweeping of dust and debris."
+        ),
+        "not_for": (
+            "Applications primarily requiring wet floor scrubbing, extraction of "
+            "liquid spills, or very small spaces where a walk-behind sweeper would "
+            "be easier to maneuver."
+        ),
+        "key_benefits": (
+            "Ride-on productivity, wide sweeping coverage, battery-powered operation, "
+            "side-brush cleaning capability, and efficient collection of dry dust "
+            "and debris across larger floor areas."
+        ),
+        "common_uses": (
+            "Warehouses, manufacturing facilities, parking structures, distribution "
+            "centers, workshops, commercial properties, and industrial floor areas."
+        ),
+        "faq": (
+            "What is the WellLand S1250? "
+            "The S1250 is a battery-powered ride-on sweeper designed for collecting "
+            "dry dust and debris. "
+            "How wide does the S1250 sweep? "
+            "WellLand lists a maximum sweeping path of approximately 1250 mm, "
+            "or 49.2 inches, with its side-brush configuration. "
+            "Is the S1250 a floor scrubber? "
+            "No. It is a sweeper intended primarily for dry debris collection. "
+            "Where is the S1250 best used? "
+            "It is suited to warehouses, factories, parking areas, logistics "
+            "facilities, and other commercial or industrial environments."
+        ),
+        "comparison_notes": (
+            "The S1250 fills the WellLand ride-on sweeping role rather than the "
+            "wet-scrubbing role of the FD-series machines. Its general application "
+            "overlaps with compact-to-mid-size Tennant ride-on sweepers such as the "
+            "6100 and 6650, but sweeping width, hopper design, filtration, and other "
+            "specifications differ by machine."
+        ),
+        "manufacturer_url": "https://wellland.ru/S1250",
+        "source_notes": (
+            "Profile information verified against WellLand official S1250 product "
+            "information and current WellLand sweeper catalog."
+        ),
+    },
+        {
+        "manufacturer": "WellLand",
+        "model": "S3",
+        "category": "Walk-Behind Floor Scrubber",
+        "description": (
+            "The WellLand S3 is a compact battery-powered walk-behind floor scrubber "
+            "designed for routine cleaning in small and medium commercial spaces. "
+            "Its narrow cleaning path and compact footprint make it well suited for "
+            "areas where maneuverability around fixtures, furniture, and aisles matters."
+        ),
+        "specifications": (
+            "Cleaning path: 15.7 inches (400 mm). "
+            "Solution tank: 6.6 gallons (25 L). "
+            "Recovery tank: 7.9 gallons (30 L). "
+            "Theoretical productivity: approximately 17,222 sq ft per hour "
+            "(1,600 m²/h). "
+            "Brush configuration: one disk brush. "
+            "Brush speed: approximately 180 rpm. "
+            "Brush pressure: approximately 55 lb (25 kg). "
+            "Squeegee width: approximately 22.4 inches (570 mm). "
+            "Maximum travel speed: approximately 2.5 mph (4 km/h). "
+            "Estimated run time: approximately 2.5 to 3 hours. "
+            "Sound level: approximately 65 dBA. "
+            "Power source: battery."
+        ),
+        "best_for": (
+            "Small commercial and institutional spaces where compact size and "
+            "maneuverability are more important than maximum tank capacity or "
+            "open-floor productivity."
+        ),
+        "not_for": (
+            "Large warehouses, manufacturing plants, or other expansive facilities "
+            "where a wider walk-behind or ride-on scrubber would substantially "
+            "reduce cleaning time."
+        ),
+        "key_benefits": (
+            "Compact 15.7-inch cleaning path, quiet operation, approximately 55 lb "
+            "of brush pressure, simple walk-behind operation, and a small footprint "
+            "for navigating tighter commercial spaces."
+        ),
+        "common_uses": (
+            "Restaurants, cafes, offices, retail stores, hotels, schools, fitness "
+            "facilities, clinics, hallways, and other smaller indoor hard-floor areas."
+        ),
+        "faq": (
+            "What is the WellLand S3 designed for? "
+            "The S3 is a compact professional walk-behind scrubber intended for "
+            "small and medium indoor commercial spaces. "
+            "How wide does the S3 clean? "
+            "It has a 400 mm, or approximately 15.7-inch, cleaning path. "
+            "How large are the tanks? "
+            "WellLand lists a 25-liter solution tank and a 30-liter recovery tank. "
+            "How productive is the S3? "
+            "Theoretical productivity is approximately 1,600 square meters or "
+            "17,222 square feet per hour. "
+            "How long does it run? "
+            "WellLand lists approximately 2.5 to 3 hours of operating time."
+        ),
+        "comparison_notes": (
+            "The S3 occupies the compact end of WellLand's walk-behind range. "
+            "Its general application is similar to compact commercial scrubbers "
+            "such as the Tennant T2, prioritizing maneuverability over tank capacity "
+            "and maximum productivity."
+        ),
+        "manufacturer_url": "https://wellland.ru/S3",
+        "source_notes": (
+            "Profile information verified against WellLand official S3 product "
+            "information and current catalog."
+        ),
+    },
+    {
+        "manufacturer": "WellLand",
+        "model": "F50P",
+        "category": "Walk-Behind Floor Scrubber",
+        "description": (
+            "The WellLand F50P is a battery-powered walk-behind floor scrubber "
+            "designed for professional commercial floor care. Its 500 mm cleaning "
+            "path provides greater coverage than WellLand's compact S3 while "
+            "retaining a maneuverable walk-behind format."
+        ),
+        "specifications": (
+            "Cleaning path: 19.7 inches (500 mm). "
+            "Solution tank: 10.6 gallons (40 L). "
+            "Recovery tank: 13.2 gallons (50 L). "
+            "Theoretical productivity: approximately 24,757 sq ft per hour "
+            "(2,300 m²/h). "
+            "Brush configuration: one disk brush. "
+            "Brush speed: approximately 180 rpm. "
+            "Brush pressure: approximately 55 lb (25 kg). "
+            "Power source: battery."
+        ),
+        "best_for": (
+            "Small to medium commercial and institutional facilities that need more "
+            "cleaning width and capacity than a compact scrubber while retaining "
+            "walk-behind maneuverability."
+        ),
+        "not_for": (
+            "Very small congested areas where a narrower scrubber is easier to "
+            "maneuver, or large industrial facilities where wider heavy-duty "
+            "equipment provides greater productivity."
+        ),
+        "key_benefits": (
+            "19.7-inch cleaning path, 40-liter solution and 50-liter recovery tanks, "
+            "approximately 24,757 sq ft per hour theoretical productivity, and "
+            "professional battery-powered walk-behind operation."
+        ),
+        "common_uses": (
+            "Schools, offices, retail facilities, healthcare buildings, restaurants, "
+            "commercial properties, and other small-to-medium indoor hard-floor areas."
+        ),
+        "faq": (
+            "How wide does the WellLand F50P clean? "
+            "The F50P has a 500 mm, or approximately 19.7-inch, cleaning path. "
+            "How large are its tanks? "
+            "It has a 40-liter solution tank and a 50-liter recovery tank. "
+            "How productive is the F50P? "
+            "Theoretical productivity is approximately 2,300 square meters or "
+            "24,757 square feet per hour. "
+            "Is the F50P battery powered? "
+            "Yes. It is a battery-powered professional walk-behind scrubber."
+        ),
+        "comparison_notes": (
+            "The F50P sits above the compact S3 in WellLand's walk-behind range. "
+            "Its 19.7-inch cleaning path places it in the same general application "
+            "class as commercial machines such as Tennant's T3 and T300 family, "
+            "although individual specifications and configurations differ."
+        ),
+        "manufacturer_url": "https://wellland.ru/F50P",
+        "source_notes": (
+            "Profile information verified against WellLand official F50P product "
+            "information and current catalog."
+        ),
+    },
+    {
+        "manufacturer": "WellLand",
+        "model": "F55",
+        "category": "Walk-Behind Floor Scrubber",
+        "description": (
+            "The WellLand F55 is a battery-powered professional walk-behind floor "
+            "scrubber with a 500 mm cleaning path and larger 50/55-liter tank system. "
+            "It is designed for routine commercial and facility hard-floor cleaning "
+            "where maneuverability and useful tank capacity need to be balanced."
+        ),
+        "specifications": (
+            "Cleaning path: 19.7 inches (500 mm). "
+            "Solution tank: 13.2 gallons (50 L). "
+            "Recovery tank: 14.5 gallons (55 L). "
+            "Theoretical productivity: approximately 24,757 sq ft per hour "
+            "(2,300 m²/h). "
+            "Brush configuration: single disk. "
+            "Maximum brush pressure: approximately 90 lb (41 kg). "
+            "Estimated run time: approximately 3 hours. "
+            "Power source: battery."
+        ),
+        "best_for": (
+            "Commercial and institutional facilities needing a maneuverable "
+            "20-inch-class walk-behind scrubber with useful tank capacity and "
+            "substantial available brush pressure."
+        ),
+        "not_for": (
+            "Very small spaces better suited to compact scrubbers, or very large "
+            "open warehouses and industrial facilities where wider walk-behind or "
+            "ride-on equipment provides greater productivity."
+        ),
+        "key_benefits": (
+            "19.7-inch cleaning path, 50-liter solution and 55-liter recovery tanks, "
+            "approximately 90 lb of available brush pressure, battery operation, "
+            "and a maneuverable commercial walk-behind footprint."
+        ),
+        "common_uses": (
+            "Retail stores, schools, healthcare facilities, offices, supermarkets, "
+            "commercial buildings, workshops, and other indoor hard-floor environments."
+        ),
+        "faq": (
+            "What is the WellLand F55 used for? "
+            "The F55 is a professional battery-powered walk-behind scrubber for "
+            "commercial and facility hard-floor cleaning. "
+            "How wide does the F55 clean? "
+            "It has a 500 mm, or approximately 19.7-inch, cleaning path. "
+            "How large are the tanks? "
+            "The F55 has a 50-liter solution tank and a 55-liter recovery tank. "
+            "How productive is the F55? "
+            "Theoretical productivity is approximately 2,300 square meters or "
+            "24,757 square feet per hour. "
+            "How much brush pressure does it provide? "
+            "WellLand lists approximately 41 kg, or about 90 lb, of brush pressure."
+        ),
+        "comparison_notes": (
+            "The F55 is a 20-inch-class WellLand walk-behind scrubber with larger "
+            "tanks and greater listed brush pressure than the F50P. Its general "
+            "application overlaps with Tennant's T300 and T300e class, while larger "
+            "WellLand models such as the FD60 and FD70 target progressively larger areas."
+        ),
+        "manufacturer_url": "https://wellland.ru/F55",
+        "source_notes": (
+            "Profile information verified against WellLand official F55 product "
+            "information and current catalog."
+        ),
+    },
+    {
+        "manufacturer": "WellLand",
+        "model": "FD60",
+        "category": "Walk-Behind Floor Scrubber",
+        "description": (
+            "The WellLand FD60 is a battery-powered walk-behind floor scrubber "
+            "with a 600 mm cleaning path designed to increase floor coverage while "
+            "retaining walk-behind maneuverability. It fills the space between "
+            "WellLand's 500 mm commercial scrubbers and the larger FD70."
+        ),
+        "specifications": (
+            "Cleaning path: 23.6 inches (600 mm). "
+            "Solution tank: 10.6 gallons (40 L). "
+            "Recovery tank: 13.2 gallons (50 L). "
+            "Theoretical productivity: approximately 29,063 sq ft per hour "
+            "(2,700 m²/h). "
+            "Power source: battery."
+        ),
+        "best_for": (
+            "Medium commercial and institutional facilities that benefit from a "
+            "wider cleaning path but still need the maneuverability and simplicity "
+            "of a walk-behind machine."
+        ),
+        "not_for": (
+            "Tight congested spaces where a smaller 15- to 20-inch scrubber is "
+            "easier to maneuver, or large industrial facilities requiring greater "
+            "tank capacity and ride-on productivity."
+        ),
+        "key_benefits": (
+            "23.6-inch cleaning path, approximately 29,063 sq ft per hour "
+            "theoretical productivity, 40/50-liter tank system, and productive "
+            "battery-powered walk-behind operation."
+        ),
+        "common_uses": (
+            "Schools, supermarkets, commercial buildings, healthcare facilities, "
+            "retail environments, workshops, and other medium-size hard-floor areas."
+        ),
+        "faq": (
+            "How wide does the WellLand FD60 clean? "
+            "The FD60 has a 600 mm, or approximately 23.6-inch, cleaning path. "
+            "How large are the tanks? "
+            "It has a 40-liter solution tank and a 50-liter recovery tank. "
+            "How productive is the FD60? "
+            "Theoretical productivity is approximately 2,700 square meters or "
+            "29,063 square feet per hour. "
+            "Is the FD60 a ride-on scrubber? "
+            "No. It is a battery-powered walk-behind floor scrubber."
+        ),
+        "comparison_notes": (
+            "The FD60 provides a wider cleaning path than WellLand's F50P and F55. "
+            "Its general application overlaps with mid-size commercial walk-behind "
+            "scrubbers, including some Tennant T300, T5, and T500 configurations, "
+            "although capacity and performance differ."
+        ),
+        "manufacturer_url": "https://wellland.ru/FD60",
+        "source_notes": (
+            "Profile information verified against WellLand official FD60 product "
+            "information and current catalog."
+        ),
+    },
+    {
+        "manufacturer": "WellLand",
+        "model": "FD70",
+        "category": "Walk-Behind Floor Scrubber",
+        "description": (
+            "The WellLand FD70 is a large battery-powered walk-behind floor scrubber "
+            "designed for productive cleaning in medium-to-large commercial and "
+            "industrial facilities. Its wide cleaning path and large tank capacities "
+            "place it at the heavy-duty end of WellLand's walk-behind range."
+        ),
+        "specifications": (
+            "Cleaning path: 28.3 inches (720 mm). "
+            "Solution tank: 23.8 gallons (90 L). "
+            "Recovery tank: 28.0 gallons (106 L). "
+            "Theoretical productivity: approximately 34,445 sq ft per hour "
+            "(3,200 m²/h). "
+            "Power source: battery."
+        ),
+        "best_for": (
+            "Medium-to-large commercial and industrial facilities needing a wide "
+            "walk-behind cleaning path and large tank capacity without moving to "
+            "a ride-on machine."
+        ),
+        "not_for": (
+            "Small congested areas where its 28.3-inch cleaning path would reduce "
+            "maneuverability, or very large open facilities where ride-on equipment "
+            "may provide better operator efficiency."
+        ),
+        "key_benefits": (
+            "Wide 28.3-inch cleaning path, large 90-liter solution and 106-liter "
+            "recovery tanks, approximately 34,445 sq ft per hour theoretical "
+            "productivity, and heavy-duty walk-behind capability."
+        ),
+        "common_uses": (
+            "Warehouses, manufacturing facilities, supermarkets, distribution areas, "
+            "large commercial buildings, workshops, and other medium-to-large "
+            "indoor hard-floor environments."
+        ),
+        "faq": (
+            "How wide does the WellLand FD70 clean? "
+            "The FD70 has a 720 mm, or approximately 28.3-inch, cleaning path. "
+            "How large are the tanks? "
+            "WellLand lists a 90-liter solution tank and a 106-liter recovery tank. "
+            "How productive is the FD70? "
+            "Theoretical productivity is approximately 3,200 square meters or "
+            "34,445 square feet per hour. "
+            "Is the FD70 a walk-behind machine? "
+            "Yes. It is a large battery-powered walk-behind floor scrubber."
+        ),
+        "comparison_notes": (
+            "The FD70 is the largest WellLand walk-behind scrubber in this core "
+            "knowledge group. Its 28.3-inch cleaning path places it in the general "
+            "application class of larger Tennant walk-behind machines such as the "
+            "T500, T600, 5680, and 5700, while specifications and configurations differ."
+        ),
+        "manufacturer_url": "https://wellland.ru/FD70",
+        "source_notes": (
+            "Profile information verified against WellLand official FD70 product "
+            "information and current catalog."
         ),
     },
 ]
