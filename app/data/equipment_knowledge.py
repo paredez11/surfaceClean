@@ -4101,7 +4101,7 @@ EQUIPMENT_KNOWLEDGE = [
             "information and current WellLand sweeper catalog."
         ),
     },
-        {
+    {
         "manufacturer": "WellLand",
         "model": "S3",
         "category": "Walk-Behind Floor Scrubber",
