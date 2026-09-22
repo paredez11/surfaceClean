@@ -87,3 +87,18 @@
   pointer-events: none;
   user-select: none;
 }
+
+.machine-warranty {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-top: 0.75rem;
+}
+
+.machine-warranty strong {
+  font-weight: 700;
+}
+
+.machine-warranty span {
+  font-size: 0.9rem;
+}

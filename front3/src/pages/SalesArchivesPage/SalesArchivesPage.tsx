@@ -1,6 +1,6 @@
 // front3/src/pages/SalesArchivesPage/SalesArchivesPage.tsx
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -8,6 +8,7 @@ import { salesActions } from "../../redux";
 import type { RootState } from "../../redux/store";
 import type { SaleDetail } from "../../types/sale";
 import { formatCurrency, formatDate } from "../../utils/formatters";
+import ConfirmationModal from "../../components/ConfirmationModal/ConfirmationModal";
 
 import MachineCard from "../../components/MachineCard/MachineCard";
 
@@ -15,6 +16,7 @@ import "./SalesArchivesPage.css";
 
 const SalesArchivesPage = () => {
   const dispatch = useDispatch<any>();
+  const [saleToDeliver, setSaleToDeliver] = useState<number | null>(null);
 
   const sales = useSelector(
     (state: RootState) => Object.values(state.sales.all) as SaleDetail[],
@@ -24,12 +26,19 @@ const SalesArchivesPage = () => {
     dispatch(salesActions.getSales());
   }, [dispatch]);
 
-  const archivedSales = sales.filter(
-    (sale) =>
-      sale.status === "sold" ||
-      sale.status === "delivered" ||
-      sale.status === "cancelled",
-  );
+  const archivedSales = sales
+    .filter(
+      (sale) =>
+        sale.status === "sold" ||
+        sale.status === "delivered" ||
+        sale.status === "cancelled",
+    )
+    .sort((a, b) => {
+      const aTime = a.sold_at ? new Date(a.sold_at).getTime() : 0;
+      const bTime = b.sold_at ? new Date(b.sold_at).getTime() : 0;
+
+      return bTime - aTime;
+    });
 
   const getCustomerName = (sale: SaleDetail) => {
     const customer = sale.customer;
@@ -43,6 +52,16 @@ const SalesArchivesPage = () => {
       .join(" ");
 
     return fullName || `Customer #${customer.id}`;
+  };
+
+  const handleMarkDelivered = async (saleId: number) => {
+    await dispatch(
+      salesActions.editSale(saleId, {
+        status: "delivered",
+      }),
+    );
+
+    await dispatch(salesActions.getSales());
   };
 
   return (
@@ -120,6 +139,16 @@ const SalesArchivesPage = () => {
                       <strong>Cancelled</strong>
                     </div>
                   )}
+
+                  {sale.status === "sold" && (
+                    <button
+                      type="button"
+                      className="btn-edit"
+                      onClick={() => setSaleToDeliver(sale.id)}
+                    >
+                      Mark Delivered
+                    </button>
+                  )}
                 </div>
               </Link>
 
@@ -132,6 +161,18 @@ const SalesArchivesPage = () => {
             </li>
           ))}
         </ul>
+      )}
+
+      {saleToDeliver !== null && (
+        <ConfirmationModal
+          title="Mark Machine Delivered"
+          message="Are you sure you want to mark this machine as delivered?"
+          onConfirm={async () => {
+            await handleMarkDelivered(saleToDeliver);
+            setSaleToDeliver(null);
+          }}
+          onCancel={() => setSaleToDeliver(null)}
+        />
       )}
     </main>
   );

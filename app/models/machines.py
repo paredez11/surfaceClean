@@ -44,10 +44,26 @@ class Machine(Base):
         nullable=True
     )
 
-    has_warranty = Column(Boolean, nullable=False, default=False)
-    warranty_duration = Column(Integer, nullable=True)
-    warranty_duration_unit = Column(String, nullable=True)
-    warranty_notes = Column(Text, nullable=True)
+    has_warranty: Mapped[bool] = mapped_column(
+    Boolean,
+    nullable=False,
+    default=False,
+    )
+
+    warranty_duration: Mapped[int | None] = mapped_column(
+        Integer,
+        nullable=True,
+    )
+
+    warranty_duration_unit: Mapped[str | None] = mapped_column(
+        String,
+        nullable=True,
+    )
+
+    warranty_notes: Mapped[str | None] = mapped_column(
+        Text,
+        nullable=True,
+    )
 
     seo_title = Column(String, nullable=True)
     seo_description = Column(String, nullable=True)

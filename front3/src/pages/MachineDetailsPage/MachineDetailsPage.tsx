@@ -128,6 +128,29 @@ const MachineDetailsPage = () => {
         </p>
       )}
 
+      {machine.has_warranty &&
+        machine.warranty_duration &&
+        machine.warranty_duration_unit && (
+          <section className="machine-details-warranty">
+            <h2>Warranty</h2>
+
+            <p>
+              <strong>Coverage:</strong> {machine.warranty_duration}{" "}
+              {machine.warranty_duration === 1
+                ? machine.warranty_duration_unit.replace(/s$/, "")
+                : machine.warranty_duration_unit}
+            </p>
+
+            {machine.warranty_notes && (
+              <p>
+                <strong>Terms:</strong> {machine.warranty_notes}
+              </p>
+            )}
+
+            <p>Warranty coverage begins when the machine is delivered.</p>
+          </section>
+        )}
+
       {machine.equipment_profile && (
         <>
           <h2>About This Model</h2>

@@ -13,19 +13,18 @@ import AddCustomerModal from "../../components/AddCustomerModal/AddCustomerModal
 const CustomersPage = () => {
   const dispatch = useDispatch<any>();
 
-  const customers = useSelector(
-    (state: RootState) => state.customers.all,
-  );
+  const customers = useSelector((state: RootState) => state.customers.all);
 
-  const loading = useSelector(
-    (state: RootState) => state.customers.loading,
-  );
+  const loading = useSelector((state: RootState) => state.customers.loading);
 
   useEffect(() => {
     dispatch(customerActions.getCustomers());
   }, [dispatch]);
 
-  const customerList = Object.values(customers);
+  const customerList = Object.values(customers).sort(
+    (a, b) =>
+      new Date(b.created_at).getTime() - new Date(a.created_at).getTime(),
+  );
 
   return (
     <main className="customers-page">
@@ -41,16 +40,11 @@ const CustomersPage = () => {
       {loading ? (
         <p className="customers-message">Loading customers...</p>
       ) : customerList.length === 0 ? (
-        <p className="customers-message">
-          No customers have been added yet.
-        </p>
+        <p className="customers-message">No customers have been added yet.</p>
       ) : (
         <div className="customers-grid">
           {customerList.map((customer) => (
-            <CustomerCard
-              key={customer.id}
-              customer={customer}
-            />
+            <CustomerCard key={customer.id} customer={customer} />
           ))}
         </div>
       )}

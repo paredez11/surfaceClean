@@ -37,6 +37,10 @@ const AddMachineModal = () => {
   const [hoursUsed, setHoursUsed] = useState("");
   const [files, setFiles] = useState<File[]>([]);
   const [modalError, setModalError] = useState<string | null>(null);
+  const [hasWarranty, setHasWarranty] = useState(false);
+  const [warrantyDuration, setWarrantyDuration] = useState("");
+  const [warrantyDurationUnit, setWarrantyDurationUnit] = useState("months");
+  const [warrantyNotes, setWarrantyNotes] = useState("");
 
   useEffect(() => {
     if (!showModal) return;
@@ -138,6 +142,12 @@ const AddMachineModal = () => {
           condition,
           description,
           hours_used: hoursUsed ? parseInt(hoursUsed) : undefined,
+          has_warranty: hasWarranty,
+          warranty_duration:
+            hasWarranty && warrantyDuration ? parseInt(warrantyDuration) : null,
+          warranty_duration_unit: hasWarranty ? warrantyDurationUnit : null,
+          warranty_notes:
+            hasWarranty && warrantyNotes.trim() ? warrantyNotes.trim() : null,
         }),
       );
 
@@ -180,6 +190,10 @@ const AddMachineModal = () => {
       setCondition("");
       setDescription("");
       setHoursUsed("");
+      setHasWarranty(false);
+      setWarrantyDuration("");
+      setWarrantyDurationUnit("months");
+      setWarrantyNotes("");
       setFiles([]);
       setEquipmentProfileId("");
       setEquipmentSearch("");
@@ -380,6 +394,45 @@ const AddMachineModal = () => {
             value={hoursUsed}
             onChange={(e) => setHoursUsed(e.target.value)}
           />
+
+          <label className="modal-checkbox-label">
+            <input
+              type="checkbox"
+              checked={hasWarranty}
+              onChange={(e) => setHasWarranty(e.target.checked)}
+            />
+            Includes Warranty
+          </label>
+
+          {hasWarranty && (
+            <>
+              <input
+                className="modal-input"
+                placeholder="Warranty Duration"
+                type="number"
+                min="1"
+                value={warrantyDuration}
+                onChange={(e) => setWarrantyDuration(e.target.value)}
+              />
+
+              <select
+                className="modal-input"
+                value={warrantyDurationUnit}
+                onChange={(e) => setWarrantyDurationUnit(e.target.value)}
+              >
+                <option value="days">Days</option>
+                <option value="months">Months</option>
+                <option value="years">Years</option>
+              </select>
+
+              <textarea
+                className="modal-textarea"
+                placeholder="Warranty Notes"
+                value={warrantyNotes}
+                onChange={(e) => setWarrantyNotes(e.target.value)}
+              />
+            </>
+          )}
 
           <ImageUploader onUpload={(fs) => setFiles(fs)} multiple />
         </BaseModal>

@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import * as salesActions from "../../redux/sales";
 import * as customerActions from "../../redux/customers";
+import * as machineActions from "../../redux/machines";
 import type { RootState } from "../../redux/store";
 import type { Customer } from "../../types/customer";
 
@@ -201,6 +202,8 @@ export default function MarkSoldModal({
         }),
       );
 
+      await dispatch(machineActions.getMachines());
+      
       onClose();
     } catch (err) {
       const message =

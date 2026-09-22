@@ -60,6 +60,13 @@ const CustomerDetailsPage = () => {
     customer.postal_code,
   ].filter(Boolean);
 
+  const sortedSales = [...(customer.sales ?? [])].sort((a, b) => {
+    const aTime = a.sold_at ? new Date(a.sold_at).getTime() : 0;
+    const bTime = b.sold_at ? new Date(b.sold_at).getTime() : 0;
+
+    return bTime - aTime;
+  });
+
   const handleMarkDelivered = async (saleId: number) => {
     await dispatch(
       salesActions.editSale(saleId, {
@@ -171,12 +178,12 @@ const CustomerDetailsPage = () => {
         )}
       </section>
 
-      {customer.sales?.length > 0 && (
+      {sortedSales?.length > 0 && (
         <section className="customer-history-section">
           <h2>Purchases</h2>
 
           <div className="customer-history-list customer-purchases-list">
-            {customer.sales.map((sale) => {
+            {sortedSales.map((sale) => {
               return (
                 <div
                   key={sale.id}
@@ -269,101 +276,46 @@ const CustomerDetailsPage = () => {
                       )}
                     </div>
                   </div>
-                </div>
-              );
-            })}
-          </div>
-        </section>
-      )}
 
-      {customer.sales?.some((sale) => sale.warranty !== null) && (
-        <section className="customer-history-section">
-          <h2>Warranty</h2>
+                  {sale.warranty && (
+                    <div className="customer-machine-warranty">
+                      <h3>Warranty</h3>
 
-          <div className="customer-history-list">
-            {customer.sales.map((sale) => {
-              const warranty = sale.warranty;
+                      <p>
+                        <strong>Status:</strong> {sale.warranty.status}
+                      </p>
 
-              if (!warranty) return null;
+                      <p>
+                        <strong>Coverage:</strong> {sale.warranty.duration}{" "}
+                        {sale.warranty.duration_unit}
+                      </p>
 
-              return (
-                <div key={warranty.id} className="customer-history-item">
-                  <h3>{sale.machine.name}</h3>
+                      <p>
+                        <strong>Starts:</strong>{" "}
+                        {formatDate(sale.warranty.start_date)}
+                      </p>
 
-                  <p>
-                    <strong>Status:</strong> {warranty.status}
-                  </p>
+                      <p>
+                        <strong>Ends:</strong>{" "}
+                        {formatDate(sale.warranty.end_date)}
+                      </p>
 
-                  <p>
-                    <strong>Coverage:</strong> {warranty.duration}{" "}
-                    {warranty.duration_unit}
-                  </p>
+                      {sale.warranty.coverage_terms && (
+                        <p>
+                          <strong>Terms:</strong> {sale.warranty.coverage_terms}
+                        </p>
+                      )}
 
-                  <p>
-                    <strong>Starts:</strong> {formatDate(warranty.start_date)}
-                  </p>
-
-                  <p>
-                    <strong>Ends:</strong> {formatDate(warranty.end_date)}
-                  </p>
-
-                  {warranty.coverage_terms && (
-                    <p>
-                      <strong>Terms:</strong> {warranty.coverage_terms}
-                    </p>
+                      {sale.warranty.notes && (
+                        <p>
+                          <strong>Notes:</strong> {sale.warranty.notes}
+                        </p>
+                      )}
+                    </div>
                   )}
                 </div>
               );
             })}
-          </div>
-        </section>
-      )}
-
-      {customer.sales?.some((sale) => sale.service_records.length > 0) && (
-        <section className="customer-history-section">
-          <h2>Service History</h2>
-
-          <div className="customer-history-list">
-            {customer.sales.flatMap((sale) =>
-              sale.service_records.map((record) => (
-                <div key={record.id} className="customer-history-item">
-                  <h3>{sale.machine.name}</h3>
-
-                  <p>
-                    <strong>Service Date:</strong>{" "}
-                    {formatDate(record.service_date)}
-                  </p>
-
-                  <p>
-                    <strong>Type:</strong> {record.service_type}
-                  </p>
-
-                  <p>
-                    <strong>Warranty:</strong>{" "}
-                    {record.covered_by_warranty ? "Covered" : "Not Covered"}
-                  </p>
-
-                  {record.work_performed && (
-                    <p>
-                      <strong>Work Performed:</strong> {record.work_performed}
-                    </p>
-                  )}
-
-                  {record.total_cost !== null && (
-                    <p>
-                      <strong>Total Cost:</strong>{" "}
-                      {formatCurrency(record.total_cost)}
-                    </p>
-                  )}
-
-                  {record.technician && (
-                    <p>
-                      <strong>Technician:</strong> {record.technician}
-                    </p>
-                  )}
-                </div>
-              )),
-            )}
           </div>
         </section>
       )}

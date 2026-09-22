@@ -52,6 +52,7 @@ const MachineCard = ({
   const currentStatus = updatedMachine?.status ?? machine.status;
   const statusForDisplay =
     displayStatus === undefined ? currentStatus : displayStatus;
+  const machineForDisplay = updatedMachine ?? machine;
 
   const handleDelete = () => setShowConfirm(true);
 
@@ -116,6 +117,23 @@ const MachineCard = ({
           <p className="machine-hours">
             Hours Used: {parseInt((hoursUsed ?? 0).toString(), 10)} hrs
           </p>
+          {machineForDisplay.has_warranty &&
+            machineForDisplay.warranty_duration &&
+            machineForDisplay.warranty_duration_unit && (
+              <div className="machine-warranty">
+                <strong>
+                  Includes {machineForDisplay.warranty_duration}{" "}
+                  {machineForDisplay.warranty_duration === 1
+                    ? machineForDisplay.warranty_duration_unit.replace(/s$/, "")
+                    : machineForDisplay.warranty_duration_unit}{" "}
+                  Warranty
+                </strong>
+
+                {machineForDisplay.warranty_notes && (
+                  <span>{machineForDisplay.warranty_notes}</span>
+                )}
+              </div>
+            )}
         </div>
       </NavLink>
 

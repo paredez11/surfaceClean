@@ -1,6 +1,7 @@
 # app/services/sales_services.py
 
 from datetime import datetime, timezone
+from dateutil.relativedelta import relativedelta
 from typing import Optional
 
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -102,6 +103,25 @@ async def get_active_machine_sale(
     return result.scalar_one_or_none()
 
 
+def calculate_warranty_end_date(
+    start_date: datetime,
+    duration: int,
+    duration_unit: str,
+) -> datetime:
+    if duration_unit == "days":
+        return start_date + relativedelta(days=duration)
+
+    if duration_unit == "months":
+        return start_date + relativedelta(months=duration)
+
+    if duration_unit == "years":
+        return start_date + relativedelta(years=duration)
+
+    raise ValueError(
+        f"Unsupported warranty duration unit: {duration_unit}"
+    )
+
+
 async def update_sale(
     db: AsyncSession,
     sale: Sale,
@@ -150,6 +170,31 @@ async def update_sale(
 
         machine.status = "delivered"
         machine.delivered_at = delivered_at
+        
+        warranty_duration = machine.warranty_duration
+        warranty_duration_unit = machine.warranty_duration_unit
+
+        if (
+            machine.has_warranty
+            and warranty_duration is not None
+            and warranty_duration_unit is not None
+            and not await sale_has_warranty(db, sale.id)
+        ):
+            warranty = Warranty(
+            sale_id=sale.id,
+            start_date=delivered_at,
+            end_date=calculate_warranty_end_date(
+                delivered_at,
+                warranty_duration,
+                warranty_duration_unit,
+            ),
+            duration=warranty_duration,
+            duration_unit=warranty_duration_unit,
+            status="active",
+            notes=machine.warranty_notes,
+            )
+
+            db.add(warranty)
 
     elif new_status == "cancelled":
         updates["delivered_at"] = None
