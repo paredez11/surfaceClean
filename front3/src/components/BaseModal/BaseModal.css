@@ -35,10 +35,34 @@
 
 /* body */
 .base-modal__body {
-  background-color: #ffe8d1; /* Cream */
-  color: #072460; /* Patriotic Blue */
+  padding: 0 var(--space-md);
+}
+
+.base-modal__body label {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.base-modal__body input:not([type="checkbox"]),
+.base-modal__body textarea {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+
+  border: 2px solid #568ea3;
+  border-radius: 6px;
+
+  background-color: #ffffff;
+  color: #072460;
+
+  font-size: 1rem;
   font-weight: 600;
-  padding: 20px;
+}
+
+.base-modal__body input[type="checkbox"] {
+  width: auto;
+  margin: 0 0.5rem 0 0;
 }
 
 /* actions row */
@@ -80,19 +104,6 @@
   background-color: #b31942;
 }
 
-/* Optional: inputs inside modal body */
-.base-modal__body input,
-.base-modal__body textarea {
-  width: 95%;
-  padding: 10px;
-  margin-top: 10px;
-  border: 2px solid #568ea3;
-  border-radius: 6px;
-  font-size: 1rem;
-  background-color: #ffffff;
-  color: #072460;
-  font-weight: 600;
-}
 
 .star-select-row {
   display: flex;

@@ -1,6 +1,7 @@
 // front3/src/pages/CustomerDetailsPage/CustomerDetailsPage.tsx
 
 import { useEffect, useState } from "react";
+import type { ComponentProps } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams, useNavigate } from "react-router-dom";
 
@@ -10,6 +11,7 @@ import type { RootState } from "../../redux/store";
 import EditCustomerModal from "../../components/EditCustomerModal/EditCustomerModal";
 import ConfirmationModal from "../../components/ConfirmationModal/ConfirmationModal";
 import MachineCard from "../../components/MachineCard/MachineCard";
+import AddServiceRecordModal from "../../components/AddServiceRecordModal/AddServiceRecordModal";
 
 import { formatCurrency, formatDate } from "../../utils/formatters";
 
@@ -24,6 +26,7 @@ const CustomerDetailsPage = () => {
   const [deleteError, setDeleteError] = useState<string | null>(null);
   const [saleToCancel, setSaleToCancel] = useState<number | null>(null);
   const [saleToDeliver, setSaleToDeliver] = useState<number | null>(null);
+  const [saleForService, setSaleForService] = useState<number | null>(null);
 
   const { customerId } = useParams();
 
@@ -83,6 +86,32 @@ const CustomerDetailsPage = () => {
     await dispatch(
       salesActions.editSale(saleId, {
         status: "cancelled",
+      }),
+    );
+
+    if (customerId) {
+      await dispatch(customerActions.getCustomerDetails(customerId));
+    }
+  };
+
+  const handleCreateServiceRecord = async (
+    saleId: number,
+    serviceData: Parameters<
+      ComponentProps<typeof AddServiceRecordModal>["onSave"]
+    >[0],
+  ) => {
+    const sale = customer.sales?.find((item) => item.id === saleId);
+
+    if (!sale) {
+      throw new Error("Sale not found.");
+    }
+
+    await dispatch(
+      customerActions.createServiceRecord({
+        ...serviceData,
+        machine_id: sale.machine.id,
+        sale_id: sale.id,
+        warranty_id: sale.warranty?.id ?? null,
       }),
     );
 
@@ -178,7 +207,7 @@ const CustomerDetailsPage = () => {
         )}
       </section>
 
-      {sortedSales?.length > 0 && (
+      {sortedSales.length > 0 && (
         <section className="customer-history-section">
           <h2>Purchases</h2>
 
@@ -255,6 +284,16 @@ const CustomerDetailsPage = () => {
                         View Machine
                       </button>
 
+                      {sale.status === "delivered" && (
+                        <button
+                          type="button"
+                          className="btn-edit"
+                          onClick={() => setSaleForService(sale.id)}
+                        >
+                          Add Service Record
+                        </button>
+                      )}
+
                       {sale.status === "sold" && (
                         <>
                           <button
@@ -282,7 +321,10 @@ const CustomerDetailsPage = () => {
                       <h3>Warranty</h3>
 
                       <p>
-                        <strong>Status:</strong> {sale.warranty.status}
+                        <strong>Status:</strong>{" "}
+                        {new Date(sale.warranty.end_date) >= new Date()
+                          ? "active"
+                          : "expired"}
                       </p>
 
                       <p>
@@ -313,6 +355,93 @@ const CustomerDetailsPage = () => {
                       )}
                     </div>
                   )}
+
+                  {sale.status === "delivered" && (
+                    <div className="customer-machine-service-history">
+                      <h3>Service History</h3>
+
+                      {sale.service_records.length === 0 ? (
+                        <p>No service records yet.</p>
+                      ) : (
+                        sale.service_records.map((record) => (
+                          <div
+                            key={record.id}
+                            className="customer-service-record"
+                          >
+                            <p>
+                              <strong>Service:</strong> {record.service_type}
+                            </p>
+
+                            {record.service_date && (
+                              <p>
+                                <strong>Date:</strong>{" "}
+                                {formatDate(record.service_date)}
+                              </p>
+                            )}
+
+                            {record.reported_issue && (
+                              <p>
+                                <strong>Issue:</strong> {record.reported_issue}
+                              </p>
+                            )}
+
+                            {record.diagnosis && (
+                              <p>
+                                <strong>Diagnosis:</strong> {record.diagnosis}
+                              </p>
+                            )}
+
+                            {record.work_performed && (
+                              <p>
+                                <strong>Work Performed:</strong>{" "}
+                                {record.work_performed}
+                              </p>
+                            )}
+
+                            <p>
+                              <strong>Warranty:</strong>{" "}
+                              {record.covered_by_warranty
+                                ? "Covered"
+                                : "Not Covered"}
+                            </p>
+
+                            {record.labor_cost !== null && (
+                              <p>
+                                <strong>Labor:</strong>{" "}
+                                {formatCurrency(record.labor_cost)}
+                              </p>
+                            )}
+
+                            {record.parts_cost !== null && (
+                              <p>
+                                <strong>Parts:</strong>{" "}
+                                {formatCurrency(record.parts_cost)}
+                              </p>
+                            )}
+
+                            {record.total_cost !== null && (
+                              <p>
+                                <strong>Total:</strong>{" "}
+                                {formatCurrency(record.total_cost)}
+                              </p>
+                            )}
+
+                            {record.technician && (
+                              <p>
+                                <strong>Technician:</strong> {record.technician}
+                              </p>
+                            )}
+
+                            {record.notes && (
+                              <p>
+                                <strong>Notes:</strong> {record.notes}
+                              </p>
+                            )}
+                          </div>
+                        ))
+                      )}
+                    </div>
+                  )}
                 </div>
               );
             })}
@@ -321,6 +450,29 @@ const CustomerDetailsPage = () => {
       )}
 
       {deleteError && <p className="customer-delete-error">{deleteError}</p>}
+
+      {saleForService !== null &&
+        (() => {
+          const sale = customer.sales?.find(
+            (item) => item.id === saleForService,
+          );
+
+          if (!sale) return null;
+
+          return (
+            <AddServiceRecordModal
+              machineName={sale.machine.name}
+              hasWarranty={
+                Boolean(sale.warranty) &&
+                new Date(sale.warranty!.end_date) >= new Date()
+              }
+              onClose={() => setSaleForService(null)}
+              onSave={(serviceData) =>
+                handleCreateServiceRecord(sale.id, serviceData)
+              }
+            />
+          );
+        })()}
 
       {showEditModal && (
         <EditCustomerModal

@@ -6,5 +6,6 @@ export * from "./sale";
 export * from "./image";
 export * from "./faq";
 export * from "./testimonial";
+export * from "./customer";
 export * from "./warranty";
 export * from "./serviceRecord";

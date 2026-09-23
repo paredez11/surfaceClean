@@ -14,7 +14,6 @@ from models.warranty import Warranty
 
 from schemas.service_records import (
     ServiceRecordCreate,
-    ServiceRecordUpdate,
     ServiceRecordResponse,
 )
 
@@ -25,8 +24,6 @@ from services.service_records_services import (
     get_machine_service_records,
     get_sale_service_records,
     get_warranty_service_records,
-    update_service_record as update_service_record_service,
-    delete_service_record as delete_service_record_service,
 )
 
 from typing import List
@@ -230,73 +227,3 @@ async def create_service_record(
         db,
         data
     )
-
-
-@router.patch(
-    "/{service_record_id}",
-    response_model=ServiceRecordResponse
-)
-async def update_service_record(
-    request: Request,
-    service_record_id: int = Path(..., gt=0),
-    data: ServiceRecordUpdate = Body(),
-    db: AsyncSession = Depends(get_async_db),
-    user=Depends(get_current_user)
-):
-    verify_csrf(request)
-
-    service_record = await get_service_record_service(
-        db,
-        service_record_id
-    )
-
-    if not service_record:
-        raise HTTPException(
-            status_code=404,
-            detail="Service record not found"
-        )
-
-    updates = data.dict(exclude_unset=True)
-
-    if (
-        updates.get("covered_by_warranty") is True
-        and service_record.warranty_id is None
-    ):
-        raise HTTPException(
-            status_code=400,
-            detail="Warranty coverage requires a warranty"
-        )
-
-    return await update_service_record_service(
-        db,
-        service_record,
-        data
-    )
-
-
-@router.delete("/{service_record_id}")
-async def delete_service_record(
-    request: Request,
-    service_record_id: int = Path(..., gt=0),
-    db: AsyncSession = Depends(get_async_db),
-    user=Depends(get_current_user)
-):
-    verify_csrf(request)
-
-    service_record = await get_service_record_service(
-        db,
-        service_record_id
-    )
-
-    if not service_record:
-        raise HTTPException(
-            status_code=404,
-            detail="Service record not found"
-        )
-
-    await delete_service_record_service(
-        db,
-        service_record
-    )
-
-    return {"message": "Service record deleted"}

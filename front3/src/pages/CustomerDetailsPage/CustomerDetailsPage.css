@@ -6,7 +6,6 @@
   padding: var(--space-xl);
 }
 
-
 /* =========================
    BACK LINK
 ========================= */
@@ -25,7 +24,6 @@
 .customer-back-link:hover {
   text-decoration: underline;
 }
-
 
 /* =========================
    HEADER
@@ -62,13 +60,11 @@
   gap: var(--space-sm);
 }
 
-
 /* =========================
    CUSTOMER INFO
 ========================= */
 
-.customer-info-card,
-.customer-history-section {
+.customer-info-card {
   margin-bottom: var(--space-lg);
   padding: var(--space-lg);
 
@@ -80,11 +76,8 @@
   box-shadow: var(--shadow-sm);
 }
 
-.customer-info-card h2,
-.customer-history-section h2 {
-  margin: 0 0 var(--space-md);
-
-  color: var(--sc-steel-blue);
+.customer-history-section {
+  margin-bottom: var(--space-lg);
 }
 
 .customer-info-card p {
@@ -107,7 +100,6 @@
   margin-bottom: var(--space-xs);
 }
 
-
 /* =========================
    HISTORY
 ========================= */
@@ -123,7 +115,6 @@
   color: var(--color-text-muted);
 }
 
-
 /* =========================
    PURCHASES
 ========================= */
@@ -134,13 +125,15 @@
 
 .customer-purchase-wrapper {
   position: relative;
-}
 
-.customer-purchases-list
-  .customer-purchase-wrapper:not(:last-child) {
-  padding-bottom: 2.5rem;
+  padding: var(--space-lg);
 
-  border-bottom: 6px solid var(--sc-steel-blue);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+
+  background: var(--sc-cream);
+
+  box-shadow: var(--shadow-sm);
 }
 
 .customer-purchase-details {
@@ -150,7 +143,6 @@
 .customer-purchase-details > p + p {
   margin-top: var(--space-sm);
 }
-
 
 /* =========================
    DELIVERY
@@ -168,7 +160,6 @@
   margin-left: var(--space-md);
 }
 
-
 /* =========================
    PURCHASE ACTIONS
 ========================= */
@@ -183,7 +174,6 @@
 
   margin-top: var(--space-md);
 }
-
 
 /* =========================
    CANCELLED SALE
@@ -214,6 +204,69 @@
   user-select: none;
 }
 
+/* =========================
+   WARRANTY
+========================= */
+
+.customer-machine-warranty {
+  margin-top: var(--space-lg);
+  padding: var(--space-md);
+
+  border: 2px solid #b8a58f;
+  border-radius: var(--radius-md);
+
+  background: var(--color-background);
+  box-shadow: var(--shadow-sm);
+}
+
+.customer-machine-warranty h3 {
+  margin: 0 0 var(--space-md);
+
+  color: var(--sc-steel-blue);
+}
+
+.customer-machine-warranty p {
+  margin: var(--space-xs) 0;
+}
+
+/* =========================
+   SERVICE HISTORY
+========================= */
+
+.customer-machine-service-history {
+  margin-top: var(--space-lg);
+  padding: var(--space-md);
+
+  border: 2px solid #b8a58f;
+  border-radius: var(--radius-md);
+
+  background: var(--color-background);
+  box-shadow: var(--shadow-sm);
+}
+
+.customer-machine-service-history h3 {
+  margin: 0 0 var(--space-md);
+
+  color: var(--sc-steel-blue);
+}
+
+.customer-service-record {
+  padding: var(--space-md);
+
+  border: 2px solid #a9957e;
+  border-radius: var(--radius-md);
+
+  background: var(--sc-cream);
+  box-shadow: var(--shadow-sm);
+}
+
+.customer-service-record + .customer-service-record {
+  margin-top: var(--space-md);
+}
+
+.customer-service-record p {
+  margin: var(--space-xs) 0;
+}
 
 /* =========================
    RESPONSIVE
@@ -236,8 +289,7 @@
     flex: 1;
   }
 
-  .customer-info-card,
-  .customer-history-section {
+  .customer-info-card {
     padding: var(--space-md);
   }
 

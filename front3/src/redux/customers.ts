@@ -1,8 +1,7 @@
 // src/redux/customers.ts
 
 import { csrfFetch } from "./csrf";
-import type { Customer, CustomerDetail } from "../types/customer";
-
+import type { Customer, CustomerDetail, ServiceRecord } from "../types";
 
 /******************************* ACTION TYPES *******************************************/
 
@@ -13,7 +12,6 @@ const UPDATE_CUSTOMER = "customers/UPDATE_CUSTOMER";
 const DELETE_CUSTOMER = "customers/DELETE_CUSTOMER";
 const SET_LOADING = "customers/SET_LOADING";
 
-
 /******************************* TYPES *******************************************/
 
 interface CustomersState {
@@ -21,7 +19,6 @@ interface CustomersState {
   single: CustomerDetail | null;
   loading: boolean;
 }
-
 
 /******************************* ACTION CREATORS *******************************************/
 
@@ -55,7 +52,6 @@ const setLoading = (loading: boolean) => ({
   payload: loading,
 });
 
-
 /******************************* THUNKS *******************************************/
 
 export const getCustomers = () => async (dispatch: any) => {
@@ -72,7 +68,6 @@ export const getCustomers = () => async (dispatch: any) => {
     dispatch(setLoading(false));
   }
 };
-
 
 export const getCustomerDetails =
   (id: string | number) => async (dispatch: any) => {
@@ -91,6 +86,23 @@ export const getCustomerDetails =
     }
   };
 
+export const createServiceRecord =
+  (serviceData: Partial<ServiceRecord>) => async () => {
+    const res = await csrfFetch("/api/service_records/", {
+      method: "POST",
+      body: JSON.stringify(serviceData),
+    });
+
+    if (!res.ok) {
+      const error = await res.json().catch(() => null);
+
+      throw new Error(error?.detail || "Failed to create service record.");
+    }
+
+    const serviceRecord: ServiceRecord = await res.json();
+
+    return serviceRecord;
+  };
 
 export const createCustomer =
   (customerData: Partial<Customer>) => async (dispatch: any) => {
@@ -108,7 +120,6 @@ export const createCustomer =
     }
   };
 
-
 export const editCustomer =
   (id: number, updates: Partial<Customer>) => async (dispatch: any) => {
     const res = await csrfFetch(`/api/customers/${id}`, {
@@ -125,24 +136,21 @@ export const editCustomer =
     }
   };
 
+export const removeCustomer = (id: number) => async (dispatch: any) => {
+  const res = await csrfFetch(`/api/customers/${id}`, {
+    method: "DELETE",
+  });
 
-export const removeCustomer =
-  (id: number) => async (dispatch: any) => {
-    const res = await csrfFetch(`/api/customers/${id}`, {
-      method: "DELETE",
-    });
+  if (!res.ok) {
+    const data = await res.json();
 
-    if (!res.ok) {
-      const data = await res.json();
+    throw new Error(data.detail || "Failed to delete customer");
+  }
 
-      throw new Error(data.detail || "Failed to delete customer");
-    }
+  dispatch(deleteCustomer(id));
 
-    dispatch(deleteCustomer(id));
-
-    return true;
-  };
-
+  return true;
+};
 
 /******************************* REDUCER *******************************************/
 
@@ -151,7 +159,6 @@ const initialState: CustomersState = {
   single: null,
   loading: false,
 };
-
 
 export default function customersReducer(
   state = initialState,
@@ -210,10 +217,7 @@ export default function customersReducer(
       return {
         ...state,
         all,
-        single:
-          state.single?.id === action.payload
-            ? null
-            : state.single,
+        single: state.single?.id === action.payload ? null : state.single,
       };
     }
 

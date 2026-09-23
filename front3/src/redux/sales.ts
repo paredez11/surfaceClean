@@ -1,6 +1,6 @@
 // front3/src/redux/sales.ts
 
-import type { Sale } from "../types";
+import type { Sale, Customer, ServiceRecord } from "../types";
 import { csrfFetch } from "./csrf";
 import { setLoading } from "./session";
 
@@ -126,7 +126,7 @@ export const createSale =
     if (res.ok) {
       const newSale = await res.json();
 
-      dispatch(addSale(newSale));
+      await dispatch(getSales());
 
       return newSale;
     }
@@ -161,6 +161,25 @@ export const removeSale = (id: number) => async (dispatch: any) => {
     dispatch(deleteSale(id));
   }
 };
+
+// Create service record
+export const createServiceRecord =
+  (serviceData: Partial<ServiceRecord>) => async () => {
+    const res = await csrfFetch("/api/service_records/", {
+      method: "POST",
+      body: JSON.stringify(serviceData),
+    });
+
+    if (!res.ok) {
+      const error = await res.json().catch(() => null);
+
+      throw new Error(error?.detail || "Failed to create service record.");
+    }
+
+    const newServiceRecord: ServiceRecord = await res.json();
+
+    return newServiceRecord;
+  };
 
 /******************************* REDUCER *******************************************/
 
@@ -199,12 +218,23 @@ export default function salesReducer(
       };
 
     case ADD_SALE:
-    case UPDATE_SALE:
       return {
         ...state,
         all: {
           ...state.all,
           [action.payload.id]: action.payload,
+        },
+      };
+
+    case UPDATE_SALE:
+      return {
+        ...state,
+        all: {
+          ...state.all,
+          [action.payload.id]: {
+            ...state.all[action.payload.id],
+            ...action.payload,
+          },
         },
       };
 
