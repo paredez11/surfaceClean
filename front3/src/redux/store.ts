@@ -17,6 +17,7 @@ import testimonialReducer from "./testimonials";
 import customersReducer from "./customers";
 import equipmentProfilesReducer from "./equipmentProfiles";
 import salesReducer from "./sales";
+import dashboardReducer from "./dashboard";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
@@ -27,6 +28,7 @@ const rootReducer = combineReducers({
   customers: customersReducer,
   equipmentProfiles: equipmentProfilesReducer,
   sales: salesReducer,
+  dashboard: dashboardReducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;
