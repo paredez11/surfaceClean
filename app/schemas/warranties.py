@@ -3,6 +3,7 @@
 from datetime import datetime
 
 from pydantic import BaseModel, ConfigDict
+from typing import Optional
 
 
 class WarrantyBase(BaseModel):
@@ -45,3 +46,26 @@ class WarrantyResponse(WarrantyBase):
     updated_at: datetime
 
     model_config = ConfigDict(from_attributes=True)
+    
+    
+class WarrantyCustomerSummary(BaseModel):
+    id: int
+    customer_type: str
+    first_name: Optional[str] = None
+    last_name: Optional[str] = None
+    business_name: Optional[str] = None
+
+    model_config = ConfigDict(from_attributes=True)
+
+
+class WarrantyMachineSummary(BaseModel):
+    id: int
+    name: str
+    status: str
+
+    model_config = ConfigDict(from_attributes=True)
+
+
+class WarrantyListResponse(WarrantyResponse):
+    customer: WarrantyCustomerSummary
+    machine: WarrantyMachineSummary

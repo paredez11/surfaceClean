@@ -14,6 +14,7 @@ from models.warranty import Warranty
 
 from schemas.service_records import (
     ServiceRecordCreate,
+    ServiceRecordListResponse,
     ServiceRecordResponse,
 )
 
@@ -32,7 +33,7 @@ from typing import List
 router = APIRouter()
 
 
-@router.get("/", response_model=List[ServiceRecordResponse])
+@router.get("/", response_model=List[ServiceRecordListResponse])
 async def get_service_records(
     db: AsyncSession = Depends(get_async_db),
     user=Depends(get_current_user)

@@ -60,3 +60,26 @@ class ServiceRecordResponse(ServiceRecordBase):
     updated_at: datetime
 
     model_config = ConfigDict(from_attributes=True)
+    
+    
+class ServiceRecordMachineSummary(BaseModel):
+    id: int
+    name: str
+    status: str
+
+    model_config = ConfigDict(from_attributes=True)
+
+
+class ServiceRecordCustomerSummary(BaseModel):
+    id: int
+    customer_type: str
+    first_name: str | None = None
+    last_name: str | None = None
+    business_name: str | None = None
+
+    model_config = ConfigDict(from_attributes=True)
+
+
+class ServiceRecordListResponse(ServiceRecordResponse):
+    machine: ServiceRecordMachineSummary
+    customer: ServiceRecordCustomerSummary | None = None

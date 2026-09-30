@@ -19,3 +19,22 @@ export interface ServiceRecord {
   created_at: string;
   updated_at: string;
 }
+
+export interface ServiceRecordMachineSummary {
+  id: number;
+  name: string;
+  status: string;
+}
+
+export interface ServiceRecordCustomerSummary {
+  id: number;
+  customer_type: string;
+  first_name: string | null;
+  last_name: string | null;
+  business_name: string | null;
+}
+
+export interface ServiceRecordListItem extends ServiceRecord {
+  machine: ServiceRecordMachineSummary;
+  customer: ServiceRecordCustomerSummary | null;
+}

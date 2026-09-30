@@ -313,7 +313,7 @@ async def get_dashboard_summary(db: AsyncSession):
             "completed_sales": completed_sales,
             "total_revenue": total_revenue,
         },
-        "warranties": {
+        "warranty": {
             "active": active_warranties,
             "expiring_soon": expiring_soon,
         },

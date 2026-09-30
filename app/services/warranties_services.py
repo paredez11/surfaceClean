@@ -5,8 +5,10 @@ from typing import Optional
 
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
+from sqlalchemy.orm import selectinload
 
 from models.warranty import Warranty
+from models.sales import Sale
 from schemas.warranties import WarrantyCreate, WarrantyUpdate
 
 
@@ -24,13 +26,52 @@ async def create_warranty(
 
 
 async def get_all_warranties(
-    db: AsyncSession
-) -> list[Warranty]:
-    result = await db.execute(
-        select(Warranty).order_by(Warranty.created_at.desc())
+    db: AsyncSession,
+    status: str | None = None,
+):
+    now = datetime.now(timezone.utc)
+
+    query = (
+        select(Warranty)
+        .options(
+            selectinload(Warranty.sale).selectinload(Sale.customer),
+            selectinload(Warranty.sale).selectinload(Sale.machine),
+        )
+        .order_by(Warranty.end_date.asc())
     )
 
-    return list(result.scalars().all())
+    if status == "active":
+        query = query.where(
+            Warranty.start_date <= now,
+            Warranty.end_date >= now,
+        )
+    elif status == "expired":
+        query = query.where(
+            Warranty.end_date < now,
+        )
+
+    result = await db.execute(query)
+    warranties = result.scalars().all()
+
+    return [
+        {
+            "id": warranty.id,
+            "sale_id": warranty.sale_id,
+            "start_date": warranty.start_date,
+            "end_date": warranty.end_date,
+            "duration": warranty.duration,
+            "duration_unit": warranty.duration_unit,
+            "status": warranty.status,
+            "coverage_terms": warranty.coverage_terms,
+            "exclusions": warranty.exclusions,
+            "notes": warranty.notes,
+            "created_at": warranty.created_at,
+            "updated_at": warranty.updated_at,
+            "customer": warranty.sale.customer,
+            "machine": warranty.sale.machine,
+        }
+        for warranty in warranties
+    ]
 
 
 async def get_warranty(

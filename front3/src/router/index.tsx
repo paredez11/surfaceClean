@@ -14,6 +14,8 @@ import ProtectedRoute from "../components/ProtectedRoute";
 import CustomerDetailsPage from "../pages/CustomerDetailsPage/CustomerDetailsPage";
 import SalesArchivesPage from "../pages/SalesArchivesPage";
 import SaleDetailsPage from "../pages/SaleDetailsPage";
+import WarrantiesPage from "../pages/WarrantiesPage";
+import ServiceRecordsPage from "../pages/ServiceRecordsPage";
 
 export const router = createBrowserRouter([
   {
@@ -80,6 +82,22 @@ export const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <SaleDetailsPage />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/warranties",
+        element: (
+          <ProtectedRoute>
+            <WarrantiesPage />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/services",
+        element: (
+          <ProtectedRoute>
+            <ServiceRecordsPage />
           </ProtectedRoute>
         ),
       },

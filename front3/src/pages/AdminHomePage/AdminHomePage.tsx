@@ -13,7 +13,6 @@ import LoginModal from "../../components/LoginModal/LoginModal";
 
 import "./AdminHomePage.css";
 
-
 function AdminHomePage() {
   const dispatch = useDispatch<any>();
   const navigate = useNavigate();
@@ -73,6 +72,19 @@ function AdminHomePage() {
     }
   };
 
+  const attentionPath = (type: string) => {
+    switch (type) {
+      case "awaiting_delivery":
+        return "/sales";
+
+      case "warranty_expiring":
+        return "/warranties";
+
+      default:
+        return "/admin";
+    }
+  };
+
   const activityLabel = (type: string) => {
     switch (type) {
       case "sale":
@@ -92,10 +104,7 @@ function AdminHomePage() {
   return (
     <>
       <div className="page-wrapper">
-        <button
-          className="btn-delete"
-          onClick={() => setShowChangePw(true)}
-        >
+        <button className="btn-delete" onClick={() => setShowChangePw(true)}>
           Change Password
         </button>
       </div>
@@ -103,9 +112,7 @@ function AdminHomePage() {
       <main className="admin-home-container">
         <div className="admin-dashboard-header">
           <div>
-            <h1 className="admin-home-heading">
-              Admin Dashboard
-            </h1>
+            <h1 className="admin-home-heading">Admin Dashboard</h1>
 
             <p className="admin-dashboard-subheading">
               Surface Clean business overview
@@ -114,9 +121,7 @@ function AdminHomePage() {
         </div>
 
         <section className="dashboard-section admin-navigation-section">
-          <h2 className="dashboard-section-title">
-            Admin Navigation
-          </h2>
+          <h2 className="dashboard-section-title">Admin Navigation</h2>
 
           <div className="admin-home-buttons">
             {adminLinks.map(({ path, label }) => (
@@ -132,23 +137,17 @@ function AdminHomePage() {
         </section>
 
         {loading && !dashboard && (
-          <div className="dashboard-message">
-            Loading dashboard...
-          </div>
+          <div className="dashboard-message">Loading dashboard...</div>
         )}
 
         {error && !dashboard && (
-          <div className="dashboard-message dashboard-error">
-            {error}
-          </div>
+          <div className="dashboard-message dashboard-error">{error}</div>
         )}
 
         {dashboard && (
           <>
             <section className="dashboard-section">
-              <h2 className="dashboard-section-title">
-                Business Overview
-              </h2>
+              <h2 className="dashboard-section-title">Business Overview</h2>
 
               <div className="dashboard-summary-grid">
                 <button
@@ -181,9 +180,7 @@ function AdminHomePage() {
                   className="dashboard-card dashboard-card-button"
                   onClick={() => navigate("/customers")}
                 >
-                  <span className="dashboard-card-label">
-                    Customers
-                  </span>
+                  <span className="dashboard-card-label">Customers</span>
 
                   <strong className="dashboard-card-value">
                     {dashboard.business.customers}
@@ -194,9 +191,7 @@ function AdminHomePage() {
                   className="dashboard-card dashboard-card-button"
                   onClick={() => navigate("/sales")}
                 >
-                  <span className="dashboard-card-label">
-                    Completed Sales
-                  </span>
+                  <span className="dashboard-card-label">Completed Sales</span>
 
                   <strong className="dashboard-card-value">
                     {dashboard.business.completed_sales}
@@ -204,37 +199,37 @@ function AdminHomePage() {
                 </button>
 
                 <div className="dashboard-card">
-                  <span className="dashboard-card-label">
-                    Recorded Revenue
-                  </span>
+                  <span className="dashboard-card-label">Recorded Revenue</span>
 
                   <strong className="dashboard-card-value">
-                    {formatCurrency(
-                      dashboard.business.total_revenue,
-                    )}
+                    {formatCurrency(dashboard.business.total_revenue)}
                   </strong>
                 </div>
 
-                <div className="dashboard-card">
+                <button
+                  type="button"
+                  className="dashboard-card dashboard-card-button"
+                  onClick={() => navigate("/warranties")}
+                >
                   <span className="dashboard-card-label">
                     Active Warranties
                   </span>
 
                   <strong className="dashboard-card-value">
-                    {dashboard.warranties.active}
+                    {dashboard.warranty.active}
                   </strong>
 
-                  {dashboard.warranties.expiring_soon > 0 && (
-                    <span className="dashboard-card-detail">
-                      {dashboard.warranties.expiring_soon} expiring soon
-                    </span>
-                  )}
-                </div>
-
-                <div className="dashboard-card">
-                  <span className="dashboard-card-label">
-                    Service Records
+                  <span className="dashboard-card-detail">
+                    {dashboard.warranty.expiring_soon} expiring soon
                   </span>
+                </button>
+
+                <button
+                  type="button"
+                  className="dashboard-card dashboard-card-button"
+                  onClick={() => navigate("/services")}
+                >
+                  <span className="dashboard-card-label">Service Records</span>
 
                   <strong className="dashboard-card-value">
                     {dashboard.service.total_records}
@@ -244,7 +239,7 @@ function AdminHomePage() {
                     {dashboard.service.warranty_covered} warranty ·{" "}
                     {dashboard.service.non_warranty} non-warranty
                   </span>
-                </div>
+                </button>
 
                 <div className="dashboard-card">
                   <span className="dashboard-card-label">
@@ -252,9 +247,7 @@ function AdminHomePage() {
                   </span>
 
                   <strong className="dashboard-card-value">
-                    {formatCurrency(
-                      dashboard.service.total_cost,
-                    )}
+                    {formatCurrency(dashboard.service.total_cost)}
                   </strong>
                 </div>
               </div>
@@ -262,9 +255,7 @@ function AdminHomePage() {
 
             <div className="dashboard-detail-grid">
               <section className="dashboard-section dashboard-panel">
-                <h2 className="dashboard-section-title">
-                  Needs Attention
-                </h2>
+                <h2 className="dashboard-section-title">Needs Attention</h2>
 
                 {dashboard.needs_attention.length === 0 ? (
                   <div className="dashboard-empty">
@@ -276,16 +267,14 @@ function AdminHomePage() {
                       <button
                         key={`${item.type}-${item.sale_id}`}
                         className="dashboard-list-item"
-                        onClick={() => navigate("/sales")}
+                        onClick={() => navigate(attentionPath(item.type))}
                       >
                         <div className="dashboard-list-content">
                           <span className="dashboard-item-type">
                             {attentionLabel(item.type)}
                           </span>
 
-                          <strong>
-                            {item.machine_name}
-                          </strong>
+                          <strong>{item.machine_name}</strong>
 
                           <span className="dashboard-item-customer">
                             {item.customer_name}
@@ -302,42 +291,34 @@ function AdminHomePage() {
               </section>
 
               <section className="dashboard-section dashboard-panel">
-                <h2 className="dashboard-section-title">
-                  Recent Activity
-                </h2>
+                <h2 className="dashboard-section-title">Recent Activity</h2>
 
                 {dashboard.recent_activity.length === 0 ? (
-                  <div className="dashboard-empty">
-                    No recent activity yet.
-                  </div>
+                  <div className="dashboard-empty">No recent activity yet.</div>
                 ) : (
                   <div className="dashboard-list">
-                    {dashboard.recent_activity.map(
-                      (item, index) => (
-                        <div
-                          key={`${item.type}-${item.date}-${index}`}
-                          className="dashboard-list-item dashboard-activity-item"
-                        >
-                          <div className="dashboard-list-content">
-                            <span className="dashboard-item-type">
-                              {activityLabel(item.type)}
-                            </span>
+                    {dashboard.recent_activity.map((item, index) => (
+                      <div
+                        key={`${item.type}-${item.date}-${index}`}
+                        className="dashboard-list-item dashboard-activity-item"
+                      >
+                        <div className="dashboard-list-content">
+                          <span className="dashboard-item-type">
+                            {activityLabel(item.type)}
+                          </span>
 
-                            <strong>
-                              {item.machine_name}
-                            </strong>
+                          <strong>{item.machine_name}</strong>
 
-                            <span className="dashboard-item-customer">
-                              {item.customer_name}
-                            </span>
-                          </div>
-
-                          <span className="dashboard-item-date">
-                            {formatDate(item.date)}
+                          <span className="dashboard-item-customer">
+                            {item.customer_name}
                           </span>
                         </div>
-                      ),
-                    )}
+
+                        <span className="dashboard-item-date">
+                          {formatDate(item.date)}
+                        </span>
+                      </div>
+                    ))}
                   </div>
                 )}
               </section>

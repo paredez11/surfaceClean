@@ -1,6 +1,6 @@
 # app/routes/warranties_routes.py
 
-from fastapi import APIRouter, Body, Depends, HTTPException, Path, Request
+from fastapi import APIRouter, Body, Depends, HTTPException, Path, Query, Request
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 
@@ -10,7 +10,7 @@ from .auth_routes import get_current_user
 
 from models.sales import Sale
 from models.service_record import ServiceRecord
-from schemas.warranties import WarrantyCreate, WarrantyUpdate, WarrantyResponse
+from schemas.warranties import WarrantyCreate, WarrantyUpdate, WarrantyResponse, WarrantyListResponse
 from services.warranties_services import (
     create_warranty as create_warranty_service,
     get_all_warranties,
@@ -26,12 +26,16 @@ from typing import List
 router = APIRouter()
 
 
-@router.get("/", response_model=List[WarrantyResponse])
+@router.get("/", response_model=List[WarrantyListResponse])
 async def get_warranties(
+    status: str | None = Query(default=None),
     db: AsyncSession = Depends(get_async_db),
     user=Depends(get_current_user)
 ):
-    return await get_all_warranties(db)
+    return await get_all_warranties(
+        db,
+        status=status,
+    )
 
 
 @router.get("/sale/{sale_id}", response_model=WarrantyResponse)

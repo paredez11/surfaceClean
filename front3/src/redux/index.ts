@@ -26,3 +26,6 @@ export { default as customersReducer } from "./customers";
 
 export * as salesActions from "./sales";
 export { default as salesReducer } from "./sales";
+
+export * as warrantiesActions from "./warranties";
+export { default as warrantiesReducer } from "./warranties";

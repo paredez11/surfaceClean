@@ -1,0 +1,315 @@
+/* front3/src/pages/ServiceRecordsPage/ServiceRecordsPage.css */
+
+.service-records-page {
+  width: min(1200px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 2rem 0 4rem;
+}
+
+/* HEADER */
+
+.service-records-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.service-records-header h1 {
+  margin: 0;
+  font-size: 2rem;
+  color: #111827;
+}
+
+.service-records-header p {
+  margin: 0.4rem 0 0;
+  color: #6b7280;
+  font-size: 0.95rem;
+}
+
+.service-records-count {
+  flex-shrink: 0;
+  padding: 0.45rem 0.8rem;
+
+  border: 1px solid #d1d5db;
+  border-radius: 999px;
+
+  background: #ffffff;
+
+  color: #4b5563;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+/* GRID */
+
+.service-records-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+/* CARD */
+
+.service-record-card {
+  overflow: hidden;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.04),
+    0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+/* MACHINE HEADER */
+
+.service-record-machine {
+  min-height: 125px;
+  padding: 1.25rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  background: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0.97),
+    rgba(30, 41, 59, 0.92)
+  );
+}
+
+.service-record-machine h2 {
+  margin: 1.5rem 0 0;
+
+  color: #ffffff;
+  font-size: 1.3rem;
+  line-height: 1.3;
+}
+
+/* BADGES */
+
+.service-record-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.service-type-badge,
+.warranty-covered-badge {
+  display: inline-flex;
+  align-items: center;
+
+  width: fit-content;
+
+  padding: 0.3rem 0.55rem;
+
+  border-radius: 5px;
+
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.service-type-badge {
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+}
+
+.warranty-covered-badge {
+  background: #dcfce7;
+  color: #166534;
+}
+
+/* CARD CONTENT */
+
+.service-record-content {
+  padding: 1.25rem;
+}
+
+/* CUSTOMER + DATE */
+
+.service-record-summary {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1.5rem;
+
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.service-record-summary > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.service-record-summary > div:last-child {
+  text-align: right;
+}
+
+/* SHARED LABEL */
+
+.service-record-label {
+  display: block;
+
+  color: #6b7280;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* WORK DETAILS */
+
+.service-record-section {
+  margin-top: 1rem;
+}
+
+.service-record-section p {
+  margin: 0.3rem 0 0;
+
+  color: #374151;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* COST LEDGER */
+
+.service-record-costs {
+  display: grid;
+  grid-template-columns: 1.4fr repeat(3, 1fr);
+  gap: 0;
+
+  margin-top: 1.25rem;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+
+  overflow: hidden;
+}
+
+.service-record-costs > div {
+  min-width: 0;
+  padding: 0.8rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+
+  border-right: 1px solid #e5e7eb;
+
+  background: #f9fafb;
+}
+
+.service-record-costs > div:last-child {
+  border-right: none;
+}
+
+.service-record-costs strong {
+  color: #111827;
+  font-size: 0.85rem;
+  overflow-wrap: anywhere;
+}
+
+/* VIEW CUSTOMER */
+
+.service-record-customer-link {
+  width: 100%;
+
+  margin-top: 1.25rem;
+  padding: 0.7rem 1rem;
+
+  border: 1px solid #d1d5db;
+  border-radius: 7px;
+
+  background: #ffffff;
+
+  color: #1f2937;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    transform 0.15s ease;
+}
+
+.service-record-customer-link:hover {
+  background: #f9fafb;
+  border-color: #9ca3af;
+}
+
+.service-record-customer-link:active {
+  transform: translateY(1px);
+}
+
+/* LOADING / ERROR / EMPTY */
+
+.service-records-state {
+  margin: 3rem 0;
+
+  color: #6b7280;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+.service-records-error {
+  color: #b91c1c;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+  .service-records-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .service-records-page {
+    width: min(100% - 1rem, 1200px);
+    padding-top: 1rem;
+  }
+
+  .service-records-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .service-record-summary {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .service-record-summary > div:last-child {
+    text-align: left;
+  }
+
+  .service-record-costs {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .service-record-costs > div {
+    border-right: 1px solid #e5e7eb;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .service-record-costs > div:nth-child(2n) {
+    border-right: none;
+  }
+
+  .service-record-costs > div:nth-last-child(-n + 2) {
+    border-bottom: none;
+  }
+}

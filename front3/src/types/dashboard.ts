@@ -56,7 +56,7 @@ export interface RecentActivityItem {
 export interface DashboardData {
   inventory: InventorySummary;
   business: BusinessSummary;
-  warranties: WarrantySummary;
+  warranty: WarrantySummary;
   service: ServiceSummary;
   needs_attention: AttentionItem[];
   recent_activity: RecentActivityItem[];

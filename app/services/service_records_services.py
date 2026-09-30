@@ -6,6 +6,7 @@ from typing import Optional
 from fastapi import HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
+from sqlalchemy.orm import selectinload
 
 from models.sales import Sale
 from models.service_record import ServiceRecord
@@ -88,12 +89,46 @@ async def create_service_record(
 
 async def get_all_service_records(
     db: AsyncSession
-) -> list[ServiceRecord]:
+):
     result = await db.execute(
-        select(ServiceRecord).order_by(ServiceRecord.service_date.desc())
+        select(ServiceRecord)
+        .options(
+            selectinload(ServiceRecord.machine),
+            selectinload(ServiceRecord.sale).selectinload(Sale.customer),
+        )
+        .order_by(ServiceRecord.service_date.desc())
     )
 
-    return list(result.scalars().all())
+    service_records = result.scalars().all()
+
+    return [
+        {
+            "id": record.id,
+            "machine_id": record.machine_id,
+            "sale_id": record.sale_id,
+            "warranty_id": record.warranty_id,
+            "service_type": record.service_type,
+            "reported_issue": record.reported_issue,
+            "diagnosis": record.diagnosis,
+            "work_performed": record.work_performed,
+            "service_date": record.service_date,
+            "covered_by_warranty": record.covered_by_warranty,
+            "labor_cost": record.labor_cost,
+            "parts_cost": record.parts_cost,
+            "total_cost": record.total_cost,
+            "technician": record.technician,
+            "notes": record.notes,
+            "created_at": record.created_at,
+            "updated_at": record.updated_at,
+            "machine": record.machine,
+            "customer": (
+                record.sale.customer
+                if record.sale is not None
+                else None
+            ),
+        }
+        for record in service_records
+    ]
 
 
 async def get_service_record(

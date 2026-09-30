@@ -52,7 +52,7 @@ class RecentActivityItem(BaseModel):
 class DashboardResponse(BaseModel):
     inventory: InventorySummary
     business: BusinessSummary
-    warranties: WarrantySummary
+    warranty: WarrantySummary
     service: ServiceSummary
     needs_attention: list[AttentionItem]
     recent_activity: list[RecentActivityItem]
